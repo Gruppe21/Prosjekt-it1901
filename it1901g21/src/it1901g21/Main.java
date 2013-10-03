@@ -6,6 +6,8 @@ public class Main {
         System.out.println("Hello, World. test push endret av Li");
         
         System.out.print("Titus Pullo, by Wien");
+        
+        System.out.print("weeee!");
     }
 
 }
