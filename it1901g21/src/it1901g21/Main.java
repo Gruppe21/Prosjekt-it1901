@@ -11,7 +11,7 @@ public class Main {
         
         System.out.print("weeee! lii");
         
-        System.out.println("Hello world bitches");
+        System.out.println("Hello world bitches yo");
     }
 
 }
