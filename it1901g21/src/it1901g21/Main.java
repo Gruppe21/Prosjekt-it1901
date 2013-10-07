@@ -1,10 +1,15 @@
 package it1901g21;
 
+import java.io.File;
+
 /**
  * Main Class.
  * Program entry point. 
  */
 public class Main {
+	
+	/** The absolute path of the project */
+	private final String PROJECTPATH;
 	
 	private SQL sql;
 	
@@ -18,18 +23,28 @@ public class Main {
 	 */
     public Main() {
     	
+    	PROJECTPATH = setProjectPath().getPath() + "";
+    	
     	sql = new SQL();
     	
-    	System.out.println("Hello, World. test push endret av Li");
-        
-        System.out.print("Titus Pullo, by Wien");
-        
-        System.out.print("weeee! fixed?");
-        
-        System.out.print("weeee! lii");
-        
-        System.out.println("Hello world bitches yo");
+    	System.out.println(getProjectPath());
     	
     }
+    
+    /**
+	 * Gets the absolute path of the project, in this case "/Prosjekt-it1901"
+	 * This method returns a File, and is only used to set the project path. 
+	 */
+	public File setProjectPath() {
+		return new File((new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath())).getParentFile().getPath());
+	}
+    
+    /**
+	 * Gets the project path.
+	 * @return the path of the project.
+	 */
+	public String getProjectPath() {
+		return PROJECTPATH;
+	}
     
 }
