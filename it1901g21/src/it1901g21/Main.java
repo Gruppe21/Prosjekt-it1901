@@ -10,6 +10,8 @@ public class Main {
         System.out.print("weeee!");
         
         System.out.print("weeee! lii");
+        
+        System.out.println("Hello world bitches");
     }
 
 }
