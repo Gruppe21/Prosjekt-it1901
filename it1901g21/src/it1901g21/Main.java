@@ -8,7 +8,11 @@ public class Main {
         
         System.out.print("Titus Pullo, by Wien");
         
-        System.out.print("weeee! :D");
+        System.out.print("weeee! fixed?");
+        
+        System.out.print("weeee! lii");
+        
+        System.out.println("Hello world bitches yo");
         
     }
 
