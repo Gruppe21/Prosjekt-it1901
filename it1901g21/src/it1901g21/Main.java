@@ -8,6 +8,8 @@ public class Main {
         System.out.print("Titus Pullo, by Wien");
         
         System.out.print("weeee!");
+        
+        System.out.print("weeee! liiiii");
     }
 
 }
