@@ -2,7 +2,7 @@ package it1901g21;
 
 /**
  * Main Class.
- * Progam entry point. 
+ * Program entry point. 
  */
 public class Main {
 	
