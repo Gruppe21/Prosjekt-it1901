@@ -14,23 +14,23 @@ public class Main {
 	private SQL sql;
 	
 	/* Entry point */
-    public static void main(String[] args) {
-    	Main main = new Main();
-    }
-    
-    /**
+	public static void main(String[] args) {
+		Main main = new Main();
+	}
+	
+	/**
 	 * Standard Main constructor
 	 */
-    public Main() {
-    	
-    	PROJECTPATH = setProjectPath().getPath() + "";
-    	
-    	sql = new SQL();
-    	
-    	System.out.println(getProjectPath());
-    	
-    }
-    
+	public Main() {
+		
+		PROJECTPATH = setProjectPath().getPath();
+		
+		sql = new SQL();
+		
+		System.out.println(getProjectPath());
+		
+	}
+	
     /**
 	 * Sets the absolute path of the project, in this case "/it1901g21"
 	 * This method returns a File, and is only used to set the project path. 

@@ -8,29 +8,46 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 
-
+/**
+ * Class for communicating with the mySQl database
+ */
 public class SQL {
-	private Connection connect = null;
-	private Statement statement = null;
-	private PreparedStatement preparedStatement = null;
-	private ResultSet resultSet = null;
-
+	
+	private Connection connect;
+	private Statement statement;
+	private PreparedStatement preparedStatement;
+	private ResultSet resultSet;
+	
+	public SQL() {
+		
+		connect = null;
+		statement = null;
+		preparedStatement = null;
+		resultSet = null;
+		
+		/* Test database */
+		try {
+			//readDataBase();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void readDataBase() throws Exception{
-		try{
+		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			connect = DriverManager.getConnection("jdbc:mysql://mysql.stud.ntnu.no/kennew_IT1901db", "kennew_IT1901", "imsdal");
 			statement = connect.createStatement();
 			resultSet = statement.executeQuery("select * from BONDE.EMAIL");
 			writeResultSet(resultSet);
-			
 			//Mangler kode
 			
 			
 			
 			
-		}catch (Exception e){
+		} catch (Exception e){
 			throw e;
-		}finally{
+		} finally {
 			close();
 		}
 	}
@@ -57,6 +74,8 @@ public class SQL {
 				connect.close();
 			}
 		}catch (Exception e){
+			System.out.println("Error encountered!");
+			e.printStackTrace();
 		}
 	}
 }	
