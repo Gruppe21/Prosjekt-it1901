@@ -6,6 +6,8 @@ package it1901g21;
  */
 public class Main {
 	
+	private SQL sql;
+	
 	/* Entry point */
     public static void main(String[] args) {
     	Main main = new Main();
@@ -15,6 +17,8 @@ public class Main {
 	 * Standard Main constructor
 	 */
     public Main() {
+    	
+    	sql = new SQL();
     	
     	System.out.println("Hello, World. test push endret av Li");
         
