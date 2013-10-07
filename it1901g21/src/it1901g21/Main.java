@@ -32,7 +32,7 @@ public class Main {
     }
     
     /**
-	 * Gets the absolute path of the project, in this case "/Prosjekt-it1901"
+	 * Sets the absolute path of the project, in this case "/it1901g21"
 	 * This method returns a File, and is only used to set the project path. 
 	 */
 	public File setProjectPath() {
