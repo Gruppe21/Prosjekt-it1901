@@ -12,13 +12,11 @@ public class Main {
 	/** The absolute path of the project */
 	private final String PROJECTPATH;
 	
-	private SQL sql;
+	private SQL dao;
 	
 	/* Entry point */
 	public static void main(String[] args) throws Exception {
 		Main main = new Main();
-		SQL dao = new SQL();
-		dao.readDataBase();
 	}
 	
 	/**
@@ -28,7 +26,16 @@ public class Main {
 		
 		PROJECTPATH = setProjectPath().getPath();
 		
-		sql = new SQL();
+		dao = new SQL();
+		
+		/* Tests the database */
+		try {
+			
+			dao.readDataBase();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		System.out.println(getProjectPath());
 		
