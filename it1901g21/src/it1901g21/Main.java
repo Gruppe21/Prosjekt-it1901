@@ -1,6 +1,7 @@
 package it1901g21;
 
 import java.io.File;
+import it1901g21.SQL;
 
 /**
  * Main Class.
@@ -14,8 +15,10 @@ public class Main {
 	private SQL sql;
 	
 	/* Entry point */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		Main main = new Main();
+		SQL dao = new SQL();
+		dao.readDataBase();
 	}
 	
 	/**
