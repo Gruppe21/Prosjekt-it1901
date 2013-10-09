@@ -25,12 +25,6 @@ public class SQL {
 		preparedStatement = null;
 		resultSet = null;
 		
-		/* Test database */
-		try {
-			//readDataBase();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 	
 	public void readDataBase() throws Exception{
