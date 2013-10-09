@@ -36,7 +36,7 @@ public class SQL {
 	public void readDataBase() throws Exception{
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			connect = DriverManager.getConnection("jdbc:mysql://mysql.stud.ntnu.no/kennew_IT1901db", "kennew_IT1901", "imsdal");
+			connect = DriverManager.getConnection("jdbc:mysql://mysql.stud.ntnu.no/kennew_IT1901G21", "kennew_IT1901", "imsdal");
 			statement = connect.createStatement();
 			resultSet = statement.executeQuery("select * from BONDE.EMAIL");
 			writeResultSet(resultSet);
