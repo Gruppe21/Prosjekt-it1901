@@ -24,7 +24,7 @@ public class Main {
 	 */
 	public Main() {
 		
-		PROJECTPATH = setProjectPath().getPath();
+		PROJECTPATH = findProjectPath();
 		
 		dao = new SQL();
 		
@@ -42,11 +42,11 @@ public class Main {
 	}
 	
     /**
-	 * Sets the absolute path of the project, in this case "/it1901g21"
-	 * This method returns a File, and is only used to set the project path. 
+	 * Gets the absolute path of the project, in this case "/it1901g21"
+	 * This method is only used to find the project path, and should only be ran once. 
 	 */
-	public File setProjectPath() {
-		return new File((new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath())).getParentFile().getPath());
+	private String findProjectPath() {
+		return new String((new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath())).getParentFile().getPath());
 	}
     
     /**
