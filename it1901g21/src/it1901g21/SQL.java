@@ -32,8 +32,8 @@ public class SQL {
 			Class.forName("com.mysql.jdbc.Driver");
 			connect = DriverManager.getConnection("jdbc:mysql://mysql.stud.ntnu.no/kennew_IT1901G21", "kennew_IT1901", "imsdal");
 			statement = connect.createStatement();
-			resultSet = statement.executeQuery("select * from BONDE.EMAIL");
-			writeResultSet(resultSet);
+			//resultSet = statement.executeQuery("select * from BONDE.EMAIL");
+			//writeResultSet(resultSet);
 			//Mangler kode
 			
 			
