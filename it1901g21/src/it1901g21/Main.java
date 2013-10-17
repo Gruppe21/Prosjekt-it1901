@@ -31,13 +31,16 @@ public class Main {
 		dao = new SQL();
 		farmerpst = new Farmers();
 		sheeppst = new Sheep();
+
 		
 		/* Tests the database */
 		try {
 			
-			//dao.readDataBase();
 			farmerpst.register("kennew@stud.ntnu.no", "Kenneth Westli", "lomper", "99118822", "ken_wes@hotmail.com", "11223344");
 			sheeppst.addSheep(1, 102012, 45, 50.34234, 53.51233, "Frisk");
+			
+			dao.logIn("kennew_IT1901", "imsdal");	
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
