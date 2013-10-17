@@ -35,11 +35,11 @@ public class SQL {
 	 * Logs in to SQL database
 	 * @throws Exception
 	 */
-	public void logIn() throws Exception {
+	public void logIn(String user, String password) throws Exception {
 		
 		url = "jdbc:mysql://mysql.stud.ntnu.no/kennew_IT1901G21";
-		user = "kennew_IT1901";
-		password = "imsdal";
+		this.user = user;
+		this.password = password;
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		connect = DriverManager.getConnection(url, user, password);

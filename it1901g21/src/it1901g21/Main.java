@@ -31,7 +31,7 @@ public class Main {
 		/* Tests the database */
 		try {
 			
-			dao.readDataBase();
+			dao.logIn("kennew_IT1901", "imsald");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
