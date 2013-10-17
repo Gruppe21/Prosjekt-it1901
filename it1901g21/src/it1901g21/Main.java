@@ -14,7 +14,7 @@ public class Main {
 	
 	private SQL dao;
 	
-	/* Entry point */
+	/* Entry point, only used to initiate Main */
 	public static void main(String[] args) throws Exception {
 		Main main = new Main();
 	}
@@ -43,7 +43,8 @@ public class Main {
 	
     /**
 	 * Gets the absolute path of the project, in this case "/it1901g21"
-	 * This method is only used to find the project path, and should only be ran once. 
+	 * This method is only used to find the project path, and should only be ran once.
+	 * @return the path of the project 
 	 */
 	private String findProjectPath() {
 		return new String((new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath())).getParentFile().getPath());

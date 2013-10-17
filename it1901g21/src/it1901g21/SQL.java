@@ -18,6 +18,10 @@ public class SQL {
 	private PreparedStatement preparedStatement;
 	private ResultSet resultSet;
 	
+	private String url;
+	private String user;
+	private String password;
+	
 	public SQL() {
 		
 		connect = null;
@@ -27,15 +31,31 @@ public class SQL {
 		
 	}
 	
+	/**
+	 * Logs in to SQL database
+	 * @throws Exception
+	 */
+	public void logIn() throws Exception {
+		
+		url = "jdbc:mysql://mysql.stud.ntnu.no/kennew_IT1901G21";
+		user = "kennew_IT1901";
+		password = "imsdal";
+		
+		Class.forName("com.mysql.jdbc.Driver");
+		connect = DriverManager.getConnection(url, user, password);
+		
+	}
+	
+	/**
+	 * Logs out of SQL database
+	 * @throws Exception
+	 */
+	public void logOut() throws Exception {
+		
+	}
+	
 	public void readDataBase() throws Exception{
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			connect = DriverManager.getConnection("jdbc:mysql://mysql.stud.ntnu.no/kennew_IT1901G21", "kennew_IT1901", "imsdal");
-			statement = connect.createStatement();
-			//resultSet = statement.executeQuery("select * from BONDE.EMAIL");
-			//writeResultSet(resultSet);
-			//Mangler kode
-			
+		try {			
 			
 			
 			
