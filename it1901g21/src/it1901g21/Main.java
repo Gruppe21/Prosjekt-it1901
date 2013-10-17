@@ -27,14 +27,12 @@ public class Main {
 		
 		PROJECTPATH = findProjectPath();
 		
-		dao = new SQL();
 		pst = new Farmers();
 		
 		/* Tests the database */
 		try {
 			
-			dao.logIn("kennew_IT1901", "imsald");
-			
+			pst.logIn("kennew_IT1901", "imsdal");	
 			pst.register("kennew@stud.ntnu.no", "Kenneth Westli", "lomper", "99118822", "ken_wes@hotmail.com", "11223344");
 			
 		} catch (Exception e) {

@@ -42,7 +42,7 @@ public class SQL {
 		this.password = password;
 		
 		Class.forName("com.mysql.jdbc.Driver");
-		connect = DriverManager.getConnection(url, user, password);
+		connect = DriverManager.getConnection(url, this.user, this.password);
 		
 	}
 	
