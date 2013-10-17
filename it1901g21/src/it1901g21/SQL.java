@@ -32,32 +32,43 @@ public class SQL {
 	}
 	
 	/**
-	 * Logs in to SQL database
+	 * Logs in to the SQL database
+	 * @param user the username
+	 * @param password the password
 	 * @throws Exception
 	 */
 	public void logIn(String user, String password) throws Exception {
 		
-		url = "jdbc:mysql://mysql.stud.ntnu.no/kennew_IT1901G21";
 		this.user = user;
 		this.password = password;
 		
+		if (url == null) {
+			System.out.println("URL to database missing!");
+			return;
+		}
 		Class.forName("com.mysql.jdbc.Driver");
 		connect = DriverManager.getConnection(url, this.user, this.password);
 		
 	}
 	
 	/**
-	 * Logs out of SQL database
+	 * Logs out of the SQL database
 	 * @throws Exception
 	 */
 	public void logOut() throws Exception {
 		
 	}
 	
+	/**
+	 * Sets the url to the SQL database
+	 * @param url the database to access
+	 */
+	public void setDatabaseURL(String url) {
+		this.url = url;
+	}
+	
 	public void readDataBase() throws Exception{
 		try {			
-			
-			
 			
 		} catch (Exception e){
 			throw e;
