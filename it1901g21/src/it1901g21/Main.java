@@ -13,7 +13,8 @@ public class Main {
 	private final String PROJECTPATH;
 	
 	private SQL dao;
-	private Farmers pst;
+	private Farmers farmerpst;
+	private Sheep sheeppst;
 	
 	/* Entry point, only used to initiate Main */
 	public static void main(String[] args) throws Exception {
@@ -28,14 +29,15 @@ public class Main {
 		PROJECTPATH = findProjectPath();
 		
 		dao = new SQL();
-		pst = new Farmers();
+		farmerpst = new Farmers();
+		sheeppst = new Sheep();
 		
 		/* Tests the database */
 		try {
 			
 			//dao.readDataBase();
-			pst.register("kennew@stud.ntnu.no", "Kenneth Westli", "lomper", "99118822", "ken_wes@hotmail.com", "11223344");
-			
+			farmerpst.register("kennew@stud.ntnu.no", "Kenneth Westli", "lomper", "99118822", "ken_wes@hotmail.com", "11223344");
+			sheeppst.addSheep(1, 102012, 45, 50.34234, 53.51233, "Frisk");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
