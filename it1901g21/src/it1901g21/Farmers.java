@@ -47,8 +47,6 @@ public class Farmers extends SQL{
 		
 	}
 	
-	
-	
 	/**
 	 * Add sheep to chosen farmer's herd.
 	 */
@@ -65,7 +63,7 @@ public class Farmers extends SQL{
 			preparedStatement.setString(6, Health);
 			preparedStatement.executeUpdate();
 		}catch (SQLException ex){
-			Logger lgr = Logger.getLogger(Sheep.class.getName());
+			Logger lgr = Logger.getLogger(Farmers.class.getName());
 			lgr.log(Level.SEVERE, ex.getMessage(), ex);
 		}finally{
 			
@@ -77,12 +75,38 @@ public class Farmers extends SQL{
 					connect.close();
 				}
 			}catch(SQLException ex){
-				Logger lgr = Logger.getLogger(Sheep.class.getName());
+				Logger lgr = Logger.getLogger(Farmers.class.getName());
 				lgr.log(Level.SEVERE, ex.getMessage(), ex);
 			}
 		}
 		
 	}
 	
+	public void deleteSheep(int Id){
+		try{
+			connect = DriverManager.getConnection("jdbc:mysql://mysql.stud.ntnu.no/kennew_IT1901G21", "kennew_IT1901", "imsdal");
+	
+			preparedStatement = connect.prepareStatement("DELETE FROM Sheep WHERE Id = ?");
+			preparedStatement.setInt(1, Id);
+			preparedStatement.executeUpdate();
+		}catch (SQLException ex){
+			Logger lgr = Logger.getLogger(Farmers.class.getName());
+			lgr.log(Level.SEVERE, ex.getMessage(), ex);
+		}finally{
+			
+			try{
+				if(preparedStatement != null){
+					preparedStatement.close();
+				}
+				if (connect != null){
+					connect.close();
+				}
+			}catch(SQLException ex){
+				Logger lgr = Logger.getLogger(Farmers.class.getName());
+				lgr.log(Level.SEVERE, ex.getMessage(), ex);
+			}
+		}
+		
+	}
 	
 }

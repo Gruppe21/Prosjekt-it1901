@@ -33,9 +33,9 @@ public class Main {
 		/* Tests the database */
 		try {
 			
-			pst.register("kennew@stud.ntnu.no", "Kenneth Westli", "lomper", "99118822", "ken_wes@hotmail.com", "11223344");
-			pst.addSheep(1, 102012, 45, 50.34234, 53.51233, "Frisk");
-			
+			//pst.register("kennew@stud.ntnu.no", "Kenneth Westli", "lomper", "99118822", "ken_wes@hotmail.com", "11223344");
+			//pst.addSheep(1, 102012, 45, 50.34234, 53.51233, "Frisk");
+			//pst.deleteSheep(1);
 			dao.setDatabaseURL("jdbc:mysql://mysql.stud.ntnu.no/kennew_IT1901G21");
 			dao.logIn("kennew_IT1901", "imsdal");
 
