@@ -14,6 +14,7 @@ public class Map extends JFrame {
 
 	static JFrame frame = new JFrame("SHOW ME WHERE THEM SHEEP AT");
 
+	/*en eksempeltabell med sauekoordinater, disse må selvsagt hentes fra databasen*/
 	static String[][] farmersSheepCoordinates = new String[][] {
 			{ "63.415884", "10.403452" }, 
 			{ "63.417497", "10.408589" },
@@ -26,6 +27,7 @@ public class Map extends JFrame {
 		frame.setVisible(true);
 	}
 
+	/*setter opp kartet ved å generere deler av google maps-linken ut ifra sauenes koordinater*/
 	public static void setUpMap() {
 
 		String sheepUrl = null;
