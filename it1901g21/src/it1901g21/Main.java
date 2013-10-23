@@ -1,7 +1,13 @@
 package it1901g21;
 
+import java.awt.BorderLayout;
+import java.awt.Image;
 import java.io.File;
 import java.util.Date;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /**
  * Main Class.
@@ -20,6 +26,7 @@ public class Main {
 	/* Entry point, only used to initiate Main */
 	public static void main(String[] args) throws Exception {
 		Main main = new Main();
+		map();
 	}
 	
 	/**
@@ -83,6 +90,22 @@ public class Main {
 	 */
 	private String findProjectPath() {
 		return new String((new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath())).getParentFile().getPath());
+	}
+	
+	static JFrame frame = new JFrame();
+	public static String bondeid = "0001";
+	
+	private static void map() {
+		
+		JLabel text = Map.setUpText(bondeid);
+		Image image = Map.setUpMap(bondeid);
+		
+		// denne måten å skrive bilde til applikasjonen må naturligvis endres til valgt GUI
+		JLabel lblimage = new JLabel(new ImageIcon(image));
+		frame.getContentPane().add(lblimage, BorderLayout.AFTER_LAST_LINE);
+		frame.getContentPane().add(text);
+		frame.setSize(900, 600);
+		frame.setVisible(true);
 	}
         
 }
