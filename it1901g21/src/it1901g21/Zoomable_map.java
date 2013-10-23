@@ -15,13 +15,13 @@ public class Zoomable_map extends JFrame{
 		jep.setEditable(false);   
 
 	try {
-			jep.setPage("map.html");
+			jep.setPage(".../map.html");
 		}catch (IOException e) {
 		  jep.setContentType("text/html");
-		  jep.setText("Could not load");
+		  jep.setText("Could not load map.");
 		} 
   
-		JFrame f = new JFrame("Show those maddafakkings sheep");
+		JFrame f = new JFrame("where those sheep at");
 		f.setSize(600,450);
 		f.setLocationRelativeTo(null);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
