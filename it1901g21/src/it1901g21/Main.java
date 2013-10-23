@@ -1,7 +1,13 @@
 package it1901g21;
 
+import java.awt.BorderLayout;
+import java.awt.Image;
 import java.io.File;
 import java.util.Date;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /**
  * Main Class.
@@ -13,9 +19,11 @@ public class Main {
 	private Farmers pst;
 	private Pinger pinger;
 	
+	private JFrame frame;
 	private Date date;
 	
 	private final String PROJECTPATH;
+	private String bondeid;
 	
 	/* Entry point, only used to initiate Main */
 	public static void main(String[] args) throws Exception {
@@ -35,8 +43,12 @@ public class Main {
 		pinger = new Pinger(this);
 		
 		date = new Date();
-				
+		frame = new JFrame();
+		bondeid = "0001";
+		
+		
 		databaseTest();
+		map();
 		
 	}
 	
@@ -85,4 +97,16 @@ public class Main {
 		return new String((new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath())).getParentFile().getPath());
 	}
 	
+	private void map() {
+		
+		JLabel text = Map.setUpText(bondeid);
+		Image image = Map.setUpMap(bondeid);
+		
+		// denne måten å skrive bilde til applikasjonen må naturligvis endres til valgt GUI
+		JLabel lblimage = new JLabel(new ImageIcon(image));
+		frame.getContentPane().add(lblimage, BorderLayout.AFTER_LAST_LINE);
+		frame.getContentPane().add(text);
+		frame.setSize(900, 600);
+		frame.setVisible(true);
+	}
 }

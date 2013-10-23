@@ -1,34 +1,22 @@
 package it1901g21;
 
-import java.awt.BorderLayout;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class Map extends JFrame {
-
-	static JFrame frame = new JFrame("SHOW ME WHERE THEM SHEEP AT");
-
-	/*en eksempeltabell med sauekoordinater, disse må selvsagt hentes fra databasen*/
+	
+	// eksempelkoordinater, disse skal naturligvis hentes fra databasen ut ifra bondeid som sendes til setUpMap/setUpText
 	static String[][] farmersSheepCoordinates = new String[][] {
 			{ "63.415884", "10.403452" }, 
 			{ "63.417497", "10.408589" },
 			{ "63.414809", "10.410305" } };
 
-	public static void main(String[] args) {
-		setUpMap();
-		setUpText();
-		frame.setSize(900, 600);
-		frame.setVisible(true);
-	}
-
-	/*setter opp kartet ved å generere deler av google maps-linken ut ifra sauenes koordinater*/
-	public static void setUpMap() {
+	public static Image setUpMap(String bondeid) {
 
 		String sheepUrl = null;
 		
@@ -44,14 +32,13 @@ public class Map extends JFrame {
 			image = ImageIO.read(url);
 		} catch (IOException e) {
 		}
-
-		JLabel lblimage = new JLabel(new ImageIcon(image));
-		frame.getContentPane().add(lblimage, BorderLayout.AFTER_LAST_LINE);
+		
+		return image;
 	}
 	
-	public static void setUpText() {
-		JLabel moves = new JLabel("Her er bonde #847362 sine sauer");
-		frame.getContentPane().add(moves);
+	public static JLabel setUpText(String bondeid) {
+		JLabel moves = new JLabel("Her er bonde #" +bondeid+ " sine sauer");
+		return moves;
 	}
 
 }
