@@ -35,7 +35,6 @@ public class SQL {
 	 * Logs in to the SQL database
 	 * @param user the username
 	 * @param password the password
-	 * @throws Exception
 	 */
 	public void logIn(String user, String password) {
 		
@@ -44,13 +43,14 @@ public class SQL {
 		
 		/* Checks if url is set */
 		if (url == null) {
-			System.out.println("URL to database missing!");
+			System.out.println("Set URL to the database first!");
 			return;
 		}
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			connect = DriverManager.getConnection(url, this.user, this.password);
+			System.out.println("Log in complete");
 		}
 		catch (Exception e) {
 			e.printStackTrace();

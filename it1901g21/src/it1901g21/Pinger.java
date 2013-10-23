@@ -11,18 +11,26 @@ public class Pinger {
 	Main main;
 	Update update;
 	Timer timer;
-	int updateFreqency;
+	int updateFrequency;
 	
 	public Pinger(Main main) {
 		
 		this.main = main; 
 		update = new Update(main);
 		timer = new Timer("Update");
-		updateFreqency = 2000; // 1 hour is 3600000 ms
+		updateFrequency = 2000; // 1 hour is 3600000 ms
 		
-		timer.scheduleAtFixedRate(update, 0, updateFreqency);
+		startPinger();
 		
 	}
+	
+	/**
+	 * Starts the continuous updates from the pinger at the update frequency
+	 */
+	public void startPinger() {
+		timer.scheduleAtFixedRate(update, 0, updateFrequency);
+	}
+	
 }
 
 /**
@@ -46,9 +54,10 @@ class Update extends TimerTask {
 	}
 	
 	/**
-	 * Prints the timer update to the console. Used for testing purposes only.
+	 * Prints the timer update to the console, along with relevant information.
+	 * Used for testing purposes only.
 	 */
 	private void printTimeUpdate() {
-		System.out.println("Update number " + count + ".  Date: " + main.getCurrentTime());
+		System.out.println("Ping number " + count + ".  Date: " + main.getCurrentTime());
 	}
 }
