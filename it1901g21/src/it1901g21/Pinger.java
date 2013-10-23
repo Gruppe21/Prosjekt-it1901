@@ -18,7 +18,7 @@ public class Pinger {
 		this.main = main; 
 		update = new Update(main, this);
 		timer = new Timer("Update");
-		updateFrequency = 2000; // 1 hour is 3600000 ms
+		updateFrequency = 1000; // 1 hour is 3600000 ms
 		
 		startPinger();
 		
@@ -43,13 +43,26 @@ public class Pinger {
 	}
 	
 	/**
-	 * Generates new coordinates based on the current coordinates
+	 * Generates new coordinates based on the current coordinates (in a boring way)
 	 * @param currentX the current X-coordinate
 	 * @param currentY the current Y-coordinate
 	 * @return the new coordiantes
 	 */
-	public String[] generateCoordinates(String currentX, String currentY) {
-		return new String[] {"X", "Y"};
+	public String[] generateBoringCoordinates(String currentX, String currentY) {
+		
+		int min = 1000;
+		int max = 9000;
+		
+		String x = currentX.substring(0, currentX.length() - 4);
+		String y = currentY.substring(0, currentY.length() - 4);
+		
+		int xR = min + (int)(Math.random() * max);
+		int yR = min + (int)(Math.random() * max);
+		
+		x += Integer.toString(xR);
+		y += Integer.toString(yR);
+		
+		return new String[] {x, y};
 	}
 	
 }
@@ -73,6 +86,7 @@ class Update extends TimerTask {
 	public void run() {
 		// Sheep update
 		pinger.newSheepCoordinates();
+		String [] ost = pinger.generateBoringCoordinates("63.415884", "10.403452");
 		
 		printTimeUpdate();
 		count ++;

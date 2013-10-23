@@ -84,5 +84,5 @@ public class Main {
 	private String findProjectPath() {
 		return new String((new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath())).getParentFile().getPath());
 	}
-        
+	
 }
