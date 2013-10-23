@@ -1,7 +1,7 @@
 package it1901g21;
 
 import java.io.File;
-import it1901g21.SQL;
+import java.util.Date;
 
 /**
  * Main Class.
@@ -14,6 +14,9 @@ public class Main {
 	
 	private SQL dao;
 	private Farmers pst;
+	private Pinger pinger;
+	
+	private Date date;
 	
 	/* Entry point, only used to initiate Main */
 	public static void main(String[] args) throws Exception {
@@ -29,7 +32,10 @@ public class Main {
 		
 		dao = new SQL();
 		pst = new Farmers();
-				
+		pinger = new Pinger(this);
+		
+		date = new Date();
+		
 		/* Tests the database */
 		try {
 			
@@ -37,7 +43,7 @@ public class Main {
 			//pst.addSheep(1, 102012, 45, 50.34234, 53.51233, "Frisk");
 			//pst.deleteSheep(1);
 			dao.setDatabaseURL("jdbc:mysql://mysql.stud.ntnu.no/kennew_IT1901G21");
-			dao.logIn("kennew_IT1901", "imsdal");
+			//dao.logIn("kennew_IT1901", "imsdal");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -45,6 +51,15 @@ public class Main {
 		
 		System.out.println(getProjectPath());
 		
+	}
+	
+	/**
+	 * Updates and gets the current time
+	 * @return current time
+	 */
+	public Date getCurrentTime() {
+		date = new Date();
+		return date;
 	}
 	
     /**

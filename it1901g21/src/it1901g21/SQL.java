@@ -37,17 +37,24 @@ public class SQL {
 	 * @param password the password
 	 * @throws Exception
 	 */
-	public void logIn(String user, String password) throws Exception {
+	public void logIn(String user, String password) {
 		
 		this.user = user;
 		this.password = password;
 		
+		/* Checks if url is set */
 		if (url == null) {
 			System.out.println("URL to database missing!");
 			return;
 		}
-		Class.forName("com.mysql.jdbc.Driver");
-		connect = DriverManager.getConnection(url, this.user, this.password);
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			connect = DriverManager.getConnection(url, this.user, this.password);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -67,6 +74,10 @@ public class SQL {
 		this.url = url;
 	}
 	
+	/**
+	 * Read from the database
+	 * @throws Exception
+	 */
 	public void readDataBase() throws Exception{
 		try {			
 			
