@@ -43,7 +43,7 @@ public class SQL {
 		
 		/* Checks if url is set */
 		if (url == null) {
-			System.out.println("Set URL to the database first!");
+			System.out.println("URL to database not set yet!");
 			return;
 		}
 		
