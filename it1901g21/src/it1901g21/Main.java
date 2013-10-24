@@ -25,9 +25,11 @@ public class Main {
 	private final String PROJECTPATH;
 	private String bondeid;
 	
+	private Login login;
 	/* Entry point, only used to initiate Main */
 	public static void main(String[] args) throws Exception {
 		Main main = new Main();
+		
 	}
 	
 	/**
@@ -46,6 +48,7 @@ public class Main {
 		frame = new JFrame();
 		bondeid = "0001";
 		
+		Login login = new Login();
 		
 		databaseTest();
 		map();
