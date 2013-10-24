@@ -17,7 +17,7 @@ public class Zoomable_map extends JFrame{
 	try {
 			jep.setPage(".../map.html");
 		}catch (IOException e) {
-		  jep.setContentType("text/html");
+		  jep.setContentType("text/html/javascript");
 		  jep.setText("Could not load map.");
 		} 
   
