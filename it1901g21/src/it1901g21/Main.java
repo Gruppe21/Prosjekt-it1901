@@ -19,14 +19,15 @@ public class Main {
 	private Farmers pst;
 	private Pinger pinger;
 	
+	private JFrame frame;
 	private Date date;
 	
 	private final String PROJECTPATH;
+	private String bondeid;
 	
 	/* Entry point, only used to initiate Main */
 	public static void main(String[] args) throws Exception {
 		Main main = new Main();
-		map();
 	}
 	
 	/**
@@ -42,8 +43,12 @@ public class Main {
 		pinger = new Pinger(this);
 		
 		date = new Date();
-				
+		frame = new JFrame();
+		bondeid = "0001";
+		
+		
 		databaseTest();
+		map();
 		
 	}
 	
@@ -92,10 +97,7 @@ public class Main {
 		return new String((new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath())).getParentFile().getPath());
 	}
 	
-	static JFrame frame = new JFrame();
-	public static String bondeid = "0001";
-	
-	private static void map() {
+	private void map() {
 		
 		JLabel text = Map.setUpText(bondeid);
 		Image image = Map.setUpMap(bondeid);
@@ -107,5 +109,4 @@ public class Main {
 		frame.setSize(900, 600);
 		frame.setVisible(true);
 	}
-        
 }
