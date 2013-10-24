@@ -38,11 +38,11 @@ public class Login extends JFrame {
 		contentPane.add(passwordField);
 		
 		JLabel lblEmail = new JLabel("E-mail");
-		lblEmail.setBounds(58, 84, 46, 14);
+		lblEmail.setBounds(40, 84, 46, 14);
 		contentPane.add(lblEmail);
 		
 		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setBounds(58, 115, 46, 14);
+		lblPassword.setBounds(40, 115, 70, 14);
 		contentPane.add(lblPassword);
 		
 		JButton btnLogin = new JButton("Login");
