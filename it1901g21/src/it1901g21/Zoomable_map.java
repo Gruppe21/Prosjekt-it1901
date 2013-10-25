@@ -2,32 +2,20 @@
 
 package it1901g21;
 
-import java.awt.Dimension;
-import java.io.IOException;
+import java.net.*;
+import java.applet.*;
 
-import javax.swing.JEditorPane;
-import javax.swing.JFrame;
+public class Zoomable_map extends Applet{
 
-public class Zoomable_map extends JFrame{
+    public void openURL(String inputURL) {
+        try {            
+            AppletContext applet = getAppletContext();    
+            URL url = new URL(inputURL);    
+            applet.showDocument(url, "file:///c:/Users/Wien/git/Prosjekt-it1901/it1901g21/src/it1901g21/map.html");    
+        }
 
-	public static void main(String[] args) {
-		JEditorPane jep = new JEditorPane();
-		jep.setEditable(false);   
-
-	try {
-			jep.setPage(".../map.html");
-		}catch (IOException e) {
-		  jep.setContentType("text/html/javascript");
-		  jep.setText("Could not load map.");
-		} 
-  
-		JFrame f = new JFrame("where those sheep at");
-		f.setSize(600,450);
-		f.setLocationRelativeTo(null);
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setPreferredSize(new Dimension(600,450));
-		f.setVisible(true);
-		
-		}
-
+        catch (MalformedURLException e){
+            System.out.println(e.getMessage());
+        }
+    }
 }
