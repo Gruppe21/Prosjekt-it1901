@@ -26,7 +26,7 @@ public class Main {
 	private String bondeid;
 	
 	private Login login;
-	/* Entry point, only used to initiate Main */
+	/* Entry point, only used to initiate Main  test*/
 	public static void main(String[] args) throws Exception {
 		Main main = new Main();
 		
