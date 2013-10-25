@@ -10,17 +10,15 @@
          #map-canvas { height: 100% }
       </style>
 
-	<?PHP
-	$user_name = "kennew_IT1901";
-	$password = "imsdal";
-	$database = "kennew_IT1901G21";
-	$server = "jdbc:mysql://mysql.stud.ntnu.no";
-	mysql_connect($server, $user_name, $password);
-	?>
-	
 	<?php
-		$xCo = 63.432338;
-		$yCo = 10.355423;
+	$db = mysql_connect("mysql.stud.ntnu.no", "kennew_IT1901", "imsdal");
+	
+	mysql_select_db("kennew_IT1901G21", $db);
+	$result = mysql_query("SELECT * FROM Sheep", $db);
+	?><?php
+	$xCo = mysql_result($result, 0, "Xpos");
+	$yCo = mysql_result($result, 0, "Ypos");
+
 	?>
       
       <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt6UzO_jH4YBZC1gvCfYJM5jI_a0h-W8M&sensor=false"></script>
@@ -28,6 +26,8 @@
       	 
       	 var xCoordinate = "<?php echo $xCo; ?>";
       	 var yCoordinate = "<?php echo $yCo; ?>";
+      	 
+      	 console.log("12345");
       	 
       	 var centr = new google.maps.LatLng(xCoordinate,yCoordinate);
       	 

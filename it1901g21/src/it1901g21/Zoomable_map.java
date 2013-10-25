@@ -11,7 +11,7 @@ public class Zoomable_map extends Applet{
         try {            
             AppletContext applet = getAppletContext();    
             URL url = new URL(inputURL);    
-            applet.showDocument(url, "file:///c:/Users/Wien/git/Prosjekt-it1901/it1901g21/src/it1901g21/map.html");    
+            applet.showDocument(url, "http://localhost:8888/map.php");    
         }
 
         catch (MalformedURLException e){
