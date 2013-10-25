@@ -89,14 +89,15 @@ public class Pinger {
 		double xR = min + (Math.random() * (max - min));
 		double yR = min + (Math.random() * (max - min));
 		
-		/* Only used for debugging 
-		String xRtest = df.format(xR);
-		String yRtest = df.format(yR);
-		System.out.println(xRtest + ", " + yRtest); */
-		
 		/* Adds distance to current coordinates */
 		xInt += xR;
 		yInt += yR;
+		
+		/* Only used for debugging.
+		 * Sets number of decimals for a double. Still not working correctly, last 0 is omitted. 
+		double xInt2 = Math.floor(xInt * 1000000) / 1000000;
+		double yInt2 = Math.floor(yInt * 1000000) / 1000000;
+		System.out.println("X: " + xInt2 + ",  Y: " + yInt2); */
 		
 		/* Converts the new coordinates to String and formats */  
 		String x = df.format(xInt);
