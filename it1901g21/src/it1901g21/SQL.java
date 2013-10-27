@@ -13,14 +13,14 @@ import java.util.Date;
  */
 public class SQL {
 	
-	private Connection connect;
-	private Statement statement;
-	private PreparedStatement preparedStatement;
-	private ResultSet resultSet;
+	protected Connection connect;
+	protected Statement statement;
+	protected PreparedStatement preparedStatement;
+	protected ResultSet resultSet;
 	
-	private String url;
-	private String user;
-	private String password;
+	protected String url;
+	protected String user;
+	protected String password;
 	
 	public SQL() {
 		

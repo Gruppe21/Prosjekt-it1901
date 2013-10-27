@@ -7,18 +7,18 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Farmers extends SQL{
+public class Farmers extends SQL {
 	
-	private PreparedStatement preparedStatement = null;
-	private Connection connect = null;
+	public Farmers() {
+		super();
+	}
 	
 	/**
 	 * Register user with relevant information as input.
 	 */
 	public void register(String mail, String navn, String pass, String tlf, String resmail, String restlf){
-		try{
-			connect = DriverManager.getConnection("jdbc:mysql://mysql.stud.ntnu.no/kennew_IT1901G21", "kennew_IT1901", "imsdal");
-			
+		
+		try {
 			preparedStatement = connect.prepareStatement("INSERT INTO Farmers (Mail, Name, Password, Phone, ReserveMail, ReservePhone) VALUES(?, ?, ?, ?, ?, ?)");
 			preparedStatement.setString(1, mail);
 			preparedStatement.setString(2, navn);
@@ -27,19 +27,19 @@ public class Farmers extends SQL{
 			preparedStatement.setString(5, resmail);
 			preparedStatement.setString(6, restlf);
 			preparedStatement.executeUpdate();
-		}catch (SQLException ex){
+		} catch (SQLException ex){
 			Logger lgr = Logger.getLogger(Farmers.class.getName());
 			lgr.log(Level.SEVERE, ex.getMessage(), ex);
-		}finally{
+		} finally {
 			
-			try{
-				if(preparedStatement != null){
+			try {
+				if (preparedStatement != null){
 					preparedStatement.close();
 				}
 				if (connect != null){
 					connect.close();
 				}
-			}catch(SQLException ex){
+			} catch (SQLException ex){
 				Logger lgr = Logger.getLogger(Farmers.class.getName());
 				lgr.log(Level.SEVERE, ex.getMessage(), ex);
 			}
@@ -51,9 +51,8 @@ public class Farmers extends SQL{
 	 * Add sheep to chosen farmer's herd.
 	 */
 	public void addSheep(int FarmerId, int Id, String Eartag, int BirthMonth, int Weight, String Health, double xPos, double yPos){
-		try{
-			connect = DriverManager.getConnection("jdbc:mysql://mysql.stud.ntnu.no/kennew_IT1901G21", "kennew_IT1901", "imsdal");
-			
+		
+		try {	
 			preparedStatement = connect.prepareStatement("INSERT INTO Sheep (FarmerId, Id, Eartag, BirthMonth, Weight, Health, Xpos, Ypos) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
 			preparedStatement.setInt(1, FarmerId);
 			preparedStatement.setInt(2, Id);
@@ -64,19 +63,19 @@ public class Farmers extends SQL{
 			preparedStatement.setDouble(7, xPos);
 			preparedStatement.setDouble(8, yPos);
 			preparedStatement.executeUpdate();
-		}catch (SQLException ex){
+		} catch (SQLException ex){
 			Logger lgr = Logger.getLogger(Farmers.class.getName());
 			lgr.log(Level.SEVERE, ex.getMessage(), ex);
-		}finally{
+		} finally {
 			
-			try{
-				if(preparedStatement != null){
+			try {
+				if (preparedStatement != null){
 					preparedStatement.close();
 				}
 				if (connect != null){
 					connect.close();
 				}
-			}catch(SQLException ex){
+			} catch (SQLException ex){
 				Logger lgr = Logger.getLogger(Farmers.class.getName());
 				lgr.log(Level.SEVERE, ex.getMessage(), ex);
 			}
@@ -84,26 +83,29 @@ public class Farmers extends SQL{
 		
 	}
 	
+	/**
+	 * Removes sheep from chosen farmer's herd.
+	 */
 	public void deleteSheep(int Id){
-		try{
-			connect = DriverManager.getConnection("jdbc:mysql://mysql.stud.ntnu.no/kennew_IT1901G21", "kennew_IT1901", "imsdal");
-	
+		
+		try {
 			preparedStatement = connect.prepareStatement("DELETE FROM Sheep WHERE Id = ?");
 			preparedStatement.setInt(1, Id);
 			preparedStatement.executeUpdate();
-		}catch (SQLException ex){
+			
+		} catch (SQLException ex) {
 			Logger lgr = Logger.getLogger(Farmers.class.getName());
 			lgr.log(Level.SEVERE, ex.getMessage(), ex);
-		}finally{
+		} finally {
 			
-			try{
+			try {
 				if(preparedStatement != null){
 					preparedStatement.close();
 				}
 				if (connect != null){
 					connect.close();
 				}
-			}catch(SQLException ex){
+			} catch (SQLException ex){
 				Logger lgr = Logger.getLogger(Farmers.class.getName());
 				lgr.log(Level.SEVERE, ex.getMessage(), ex);
 			}
