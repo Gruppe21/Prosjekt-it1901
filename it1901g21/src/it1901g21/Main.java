@@ -18,6 +18,7 @@ public class Main {
 	private Farmers pst;
 	private Pinger pinger;
 	private Login login;
+	private Registration registration;
 	
 	private JFrame frame;
 	private Date date;
@@ -29,6 +30,10 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		Main main = new Main();
 		
+	}
+	
+	public void setRegistrationTrue(){
+		Registration registration = new Registration();
 	}
 	
 	/**
@@ -46,7 +51,7 @@ public class Main {
 		frame = new JFrame();
 		bondeid = "0001";
 		
-		Login login = new Login();
+		Login login = new Login(this);
 		
 		databaseTest();
 		map();
@@ -110,4 +115,6 @@ public class Main {
 		frame.setSize(900, 600);
 		frame.setVisible(true);
 	}
+	
+	
 }
