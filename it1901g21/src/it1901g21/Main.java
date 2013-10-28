@@ -18,6 +18,7 @@ public class Main {
 	private Farmers pst;
 	private Pinger pinger;
 	private Login login;
+	private Registration registration;
 	
 	private JFrame frame;
 	private Date date;
@@ -40,12 +41,11 @@ public class Main {
 		
 		pst = new Farmers();
 		pinger = new Pinger(this);
+		login = new Login(this);
 		
 		date = new Date();
 		frame = new JFrame();
 		bondeid = "0001";
-		
-		Login login = new Login();
 		
 		databaseTest();
 		map();
@@ -70,6 +70,10 @@ public class Main {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void setRegistrationTrue(){
+		Registration registration = new Registration();
 	}
 	
 	/**
@@ -110,4 +114,6 @@ public class Main {
 		frame.setSize(900, 600);
 		frame.setVisible(true);
 	}
+	
+	
 }
