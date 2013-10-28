@@ -11,11 +11,13 @@
       </style>
 
 	<?php
+	$FarmerID = $_GET['farmerid'];
+	
 	$db = mysql_connect("mysql.stud.ntnu.no", "kennew_IT1901", "imsdal");
 	
 	mysql_select_db("kennew_IT1901G21", $db);
-	$result = mysql_query("SELECT * FROM Sheep", $db);
-	?><?php
+	$result = mysql_query("SELECT * FROM Sheep WHERE FarmerId IN(1)", $db);
+	
 	$xCo = mysql_result($result, 0, "Xpos");
 	$yCo = mysql_result($result, 0, "Ypos");
 
@@ -26,8 +28,9 @@
       	 
       	 var xCoordinate = "<?php echo $xCo; ?>";
       	 var yCoordinate = "<?php echo $yCo; ?>";
-      	 
-      	 console.log("12345");
+      	 var farmerid = "<?php echo $FarmerID; ?>";
+
+      	 console.log(farmerid);
       	 
       	 var centr = new google.maps.LatLng(xCoordinate,yCoordinate);
       	 
