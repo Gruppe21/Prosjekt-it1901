@@ -18,11 +18,15 @@ public class Login extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JPasswordField passwordField;
+	private Main main;
+	private Registration registration;
 
 	/**
 	 * Create the frame.
 	 */
-	public Login() {
+	public Login(final Main main) {
+		
+		this.main = main;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -68,7 +72,7 @@ public class Login extends JFrame {
 		
 		btnNewUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				Registration registration = new Registration();
 			}
 		});
 		
