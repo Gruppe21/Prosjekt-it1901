@@ -72,7 +72,7 @@ public class Login extends JFrame {
 			}
 		});
 		
-		// Forgot pass button
+		// Forgot passs button 
 		JButton btnForgotPass = new JButton("Forgot Pass");
 		btnForgotPass.setBounds(240, 177, 112, 23);
 		contentPane.add(btnForgotPass);
