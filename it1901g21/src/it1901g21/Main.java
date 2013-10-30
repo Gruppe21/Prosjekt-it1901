@@ -1,8 +1,10 @@
 package it1901g21;
 
 import java.awt.BorderLayout;
+import java.awt.Desktop;
 import java.awt.Image;
 import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 
 import javax.swing.ImageIcon;
@@ -49,6 +51,7 @@ public class Main {
 		
 		databaseTest();
 		map();
+		//openFile("/src/it1901g21/js_test.html");
 		
 	}
 	
@@ -58,7 +61,7 @@ public class Main {
 	private void databaseTest() {
 		
 		try {
-			pst.logIn();
+			//pst.logIn();
 			//pst.register("kennew@stud.ntnu.no", "Kenneth Westli", "lomper", "99118822", "ken_wes@hotmail.com", "11223344");
 			//pst.deleteFarmer("Kenneth Westli");
 			//pst.addSheep(1, 20, "ABC1234", 102012, 45, "Frisk", 63.430803, 10.352805);
@@ -98,6 +101,24 @@ public class Main {
 	 */
 	private String findProjectPath() {
 		return new String((new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath())).getParentFile().getPath());
+	}
+	
+	/**
+	 * Opens a given file in the default application associated with its file type.
+	 * @param filename the filename (include all folders from the project main directory)
+	 */
+	public void openFile(String filename) {
+		try {
+			File file = new File(getProjectPath() + filename);
+			//System.out.println(file.getAbsolutePath());
+			Desktop.getDesktop().open(file);
+		}
+		catch (IOException e) {
+			System.out.println("\nWarning: Unable to open file! Check your default application!\n");
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void map() {
