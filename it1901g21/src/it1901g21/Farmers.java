@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Class specifically designed for communicating with the farmers mySQl database
+ */
 public class Farmers extends SQL {
 	
 	public Farmers() {
@@ -48,14 +51,14 @@ public class Farmers extends SQL {
 	
 	/**
 	 * Removes farmer from database,
-	 * currently deleting all instances if more instances of the same farmer is present.
+	 * currently deleting all farmers if more farmer of the same name is present.
 	 */
 	public void deleteFarmer(String name) {
 		
 		try {
 			preparedStatement = connect.prepareStatement("DELETE FROM Farmers WHERE Name = ?");
 			preparedStatement.setString(1, name);
-			preparedStatement.executeUpdate();	
+			preparedStatement.executeUpdate();
 		} 
 		catch (SQLException ex) {
 			Logger lgr = Logger.getLogger(Farmers.class.getName());

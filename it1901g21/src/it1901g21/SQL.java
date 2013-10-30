@@ -1,5 +1,7 @@
 package it1901g21;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,9 +9,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
+import java.util.Properties;
 
 /**
- * Class for communicating with the mySQl database
+ * Class for communicating with a mySQl database
  */
 public class SQL {
 	
@@ -17,6 +20,9 @@ public class SQL {
 	protected Statement statement;
 	protected PreparedStatement preparedStatement;
 	protected ResultSet resultSet;
+	
+	protected Properties properties;
+    protected FileInputStream in;
 	
 	protected String url;
 	protected String user;
@@ -28,28 +34,44 @@ public class SQL {
 		statement = null;
 		preparedStatement = null;
 		resultSet = null;
+		properties = new Properties();
+		
+		try {
+			in = new FileInputStream("database.properties");
+			properties.load(in);
+			
+			url = properties.getProperty("db.url");
+			user = properties.getProperty("db.user");
+			password = properties.getProperty("db.password");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
 	/**
 	 * Logs in to the SQL database
-	 * @param user the username
-	 * @param password the password
 	 */
-	public void logIn(String user, String password) {
+	public void logIn() {
 		
-		this.user = user;
-		this.password = password;
-		
-		/* Checks if url is set */
+		/* Checks for valid database properties */
 		if (url == null) {
-			System.out.println("URL to database not set yet!");
+			System.out.println("URL to database missing!");
+		}
+		if (user == null) {
+			System.out.println("Database user missing!");
+		}
+		if (password == null) {
+			System.out.println("Database password missing!");
+		}
+		if (url == null || user == null || password == null) {
 			return;
 		}
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			connect = DriverManager.getConnection(url, this.user, this.password);
+			connect = DriverManager.getConnection(url, user, password);
 			System.out.println("Log in complete");
 		}
 		catch (Exception e) {
@@ -64,14 +86,6 @@ public class SQL {
 	 */
 	public void logOut() throws Exception {
 		
-	}
-	
-	/**
-	 * Sets the url to the SQL database
-	 * @param url the database to access
-	 */
-	public void setDatabaseURL(String url) {
-		this.url = url;
 	}
 	
 	/**
