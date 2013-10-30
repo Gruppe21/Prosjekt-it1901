@@ -58,10 +58,8 @@ public class Main {
 	private void databaseTest() {
 		
 		try {
-			pst.setDatabaseURL("jdbc:mysql://mysql.stud.ntnu.no/kennew_IT1901G21");
-			pst.logIn("kennew_IT1901", "imsdal");
-			
-			pst.register("kennew@stud.ntnu.no", "Kenneth Westli", "lomper", "99118822", "ken_wes@hotmail.com", "11223344");
+			pst.logIn();
+			//pst.register("kennew@stud.ntnu.no", "Kenneth Westli", "lomper", "99118822", "ken_wes@hotmail.com", "11223344");
 			//pst.deleteFarmer("Kenneth Westli");
 			//pst.addSheep(1, 20, "ABC1234", 102012, 45, "Frisk", 63.430803, 10.352805);
 			//pst.deleteSheep(1);
