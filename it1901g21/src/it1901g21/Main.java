@@ -68,7 +68,7 @@ public class Main {
 			pst.logIn("kennew_IT1901", "imsdal");
 			
 			//pst.register("kennew@stud.ntnu.no", "Kenneth Westli", "lomper", "99118822", "ken_wes@hotmail.com", "11223344");
-			//pst.addSheep(1, 20, "ABC1234", 102012, 45, "Frisk", 63.430803, 10.352805);
+			//pst.addSheep(2, 31, "ABC1234", 102012, 45, "Frisk", 63.415289,10.410183);
 			//pst.deleteSheep(1);
 
 		} catch (Exception e) {
