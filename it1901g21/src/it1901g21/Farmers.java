@@ -43,8 +43,37 @@ public class Farmers extends SQL {
 				Logger lgr = Logger.getLogger(Farmers.class.getName());
 				lgr.log(Level.SEVERE, ex.getMessage(), ex);
 			}
-		}
+		}	
+	}
+	
+	/**
+	 * Removes farmer from database,
+	 * currently deleting all instances if more instances of the same farmer is present.
+	 */
+	public void deleteFarmer(String name) {
 		
+		try {
+			preparedStatement = connect.prepareStatement("DELETE FROM Farmers WHERE Name = ?");
+			preparedStatement.setString(1, name);
+			preparedStatement.executeUpdate();	
+		} 
+		catch (SQLException ex) {
+			Logger lgr = Logger.getLogger(Farmers.class.getName());
+			lgr.log(Level.SEVERE, ex.getMessage(), ex);
+		} finally {
+			
+			try {
+				if(preparedStatement != null){
+					preparedStatement.close();
+				}
+				if (connect != null){
+					connect.close();
+				}
+			} catch (SQLException ex){
+				Logger lgr = Logger.getLogger(Farmers.class.getName());
+				lgr.log(Level.SEVERE, ex.getMessage(), ex);
+			}
+		}	
 	}
 	
 	/**
@@ -63,7 +92,7 @@ public class Farmers extends SQL {
 			preparedStatement.setDouble(7, xPos);
 			preparedStatement.setDouble(8, yPos);
 			preparedStatement.executeUpdate();
-		} catch (SQLException ex){
+		} catch (SQLException ex) {
 			Logger lgr = Logger.getLogger(Farmers.class.getName());
 			lgr.log(Level.SEVERE, ex.getMessage(), ex);
 		} finally {

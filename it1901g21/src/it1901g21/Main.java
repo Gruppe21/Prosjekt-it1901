@@ -28,12 +28,7 @@ public class Main {
 	
 	/* Entry point, only used to initiate Main*/
 	public static void main(String[] args) throws Exception {
-		Main main = new Main();
-		
-	}
-	
-	public void setRegistrationTrue(){
-		Registration registration = new Registration();
+		Main main = new Main();		
 	}
 	
 	/**
@@ -46,12 +41,11 @@ public class Main {
 		
 		pst = new Farmers();
 		pinger = new Pinger(this);
+		login = new Login(this);
 		
 		date = new Date();
 		frame = new JFrame();
 		bondeid = "0001";
-		
-		Login login = new Login(this);
 		
 		databaseTest();
 		map();
@@ -67,14 +61,19 @@ public class Main {
 			pst.setDatabaseURL("jdbc:mysql://mysql.stud.ntnu.no/kennew_IT1901G21");
 			pst.logIn("kennew_IT1901", "imsdal");
 			
-			//pst.register("kennew@stud.ntnu.no", "Kenneth Westli", "lomper", "99118822", "ken_wes@hotmail.com", "11223344");
-			//pst.addSheep(2, 31, "ABC1234", 102012, 45, "Frisk", 63.415289,10.410183);
+			pst.register("kennew@stud.ntnu.no", "Kenneth Westli", "lomper", "99118822", "ken_wes@hotmail.com", "11223344");
+			//pst.deleteFarmer("Kenneth Westli");
+			//pst.addSheep(1, 20, "ABC1234", 102012, 45, "Frisk", 63.430803, 10.352805);
 			//pst.deleteSheep(1);
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
+	}
+	
+	public void setRegistrationTrue(){
+		Registration registration = new Registration();
 	}
 	
 	/**
