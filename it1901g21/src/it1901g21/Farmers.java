@@ -12,10 +12,6 @@ import java.util.logging.Logger;
  */
 public class Farmers extends SQL {
 	
-	public Farmers() {
-		super();
-	}
-	
 	/**
 	 * Register user with relevant information as input.
 	 */

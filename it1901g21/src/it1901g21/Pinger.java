@@ -19,7 +19,7 @@ public class Pinger {
 		this.main = main; 
 		update = new Update(main, this);
 		timer = new Timer("Update");
-		updateFrequency = 3000; // 1 hour is 3600000 ms
+		updateFrequency = 10000; // 1 hour is 3600000 ms
 		
 		startPinger();
 		

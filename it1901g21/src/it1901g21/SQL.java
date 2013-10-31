@@ -51,9 +51,9 @@ public class SQL {
 	}
 	
 	/**
-	 * Logs in to the SQL database
+	 * Connects to the SQL database
 	 */
-	public void logIn() {
+	public void connect() {
 		
 		/* Checks for valid database properties */
 		if (url == null) {
@@ -72,19 +72,11 @@ public class SQL {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			connect = DriverManager.getConnection(url, user, password);
-			System.out.println("Log in complete");
+			System.out.println("Connected to database");
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-	}
-	
-	/**
-	 * Logs out of the SQL database
-	 * @throws Exception
-	 */
-	public void logOut() throws Exception {
 		
 	}
 	
