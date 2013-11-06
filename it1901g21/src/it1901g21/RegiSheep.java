@@ -19,14 +19,13 @@ public class RegiSheep extends JFrame {
 	private JTextField textField_3;
 	private JButton btnNewButton;
 	private JButton btnAvbryt;
-	private JTextField textField_4;
 
 	/**
 	 * Create the frame.
 	 */
 	public RegiSheep() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 278);
+		setBounds(100, 100, 450, 243);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -52,38 +51,29 @@ public class RegiSheep extends JFrame {
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("Sauenummer:");
+		JLabel lblNewLabel = new JLabel("Sheep number");
 		lblNewLabel.setBounds(57, 34, 124, 14);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblHelse = new JLabel("Helse:");
+		JLabel lblHelse = new JLabel("Birth month:");
 		lblHelse.setBounds(57, 65, 124, 14);
 		contentPane.add(lblHelse);
 		
-		JLabel lblAlder = new JLabel("Alder:");
+		JLabel lblAlder = new JLabel("Health:");
 		lblAlder.setBounds(57, 96, 124, 14);
 		contentPane.add(lblAlder);
 		
-		JLabel lblNvarendePosision = new JLabel("N\u00E5varende Posision:");
-		lblNvarendePosision.setBounds(57, 127, 124, 14);
-		contentPane.add(lblNvarendePosision);
-		
-		btnNewButton = new JButton("Ferdig");
-		btnNewButton.setBounds(300, 206, 124, 23);
+		btnNewButton = new JButton("Done");
+		btnNewButton.setBounds(300, 171, 124, 23);
 		contentPane.add(btnNewButton);
 		
-		btnAvbryt = new JButton("Avbryt");
-		btnAvbryt.setBounds(10, 206, 124, 23);
+		btnAvbryt = new JButton("Cancel");
+		btnAvbryt.setBounds(10, 171, 124, 23);
 		contentPane.add(btnAvbryt);
 		
-		JLabel lblVekt = new JLabel("Vekt:");
-		lblVekt.setBounds(57, 158, 124, 14);
+		JLabel lblVekt = new JLabel("Weight:");
+		lblVekt.setBounds(57, 127, 124, 14);
 		contentPane.add(lblVekt);
-		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(191, 155, 209, 20);
-		contentPane.add(textField_4);
 		
 		this.setVisible(true);
 		
