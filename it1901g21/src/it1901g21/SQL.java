@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.Properties;
 
 /**
- * Class for communicating with a mySQl database
+ * General class for communicating with a mySQl database
  */
 public class SQL {
 	
@@ -56,16 +56,20 @@ public class SQL {
 	public void connect() {
 		
 		/* Checks for valid database properties */
+		Boolean missing = false;
 		if (url == null) {
 			System.out.println("URL to database missing!");
+			missing = true;
 		}
 		if (user == null) {
 			System.out.println("Database user missing!");
+			missing = true;
 		}
 		if (password == null) {
 			System.out.println("Database password missing!");
+			missing = true;
 		}
-		if (url == null || user == null || password == null) {
+		if (missing) {
 			return;
 		}
 		
@@ -90,7 +94,7 @@ public class SQL {
 		} catch (Exception e){
 			throw e;
 		} finally {
-			close();
+			disconnect();
 		}
 	}
 	
@@ -102,19 +106,23 @@ public class SQL {
 		//mangler kode
 	}
 	
-	private void close() {
+	/**
+	 * Closes connection to the database
+	 */
+	private void disconnect() {
 		try {
-			if (resultSet != null){
+			if (resultSet != null)
 				resultSet.close();
-			}
 
-			if (statement != null){
+			if (statement != null)
 				statement.close();
-			}
+			
+			if (preparedStatement != null)
+				preparedStatement.close();
 
-			if (connect != null){
+			if (connect != null)
 				connect.close();
-			}
+			
 		}catch (Exception e){
 			System.out.println("Error encountered!");
 			e.printStackTrace();

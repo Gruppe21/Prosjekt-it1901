@@ -29,7 +29,7 @@ public class Main {
 	private String bondeid;
 	
 	/* Entry point, only used to initiate Main*/
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		Main main = new Main();		
 	}
 	
@@ -62,7 +62,8 @@ public class Main {
 		
 		try {
 			pst.connect();
-			//pst.register("kennew@stud.ntnu.no", "Kenneth Westli", "lomper", "99118822", "ken_wes@hotmail.com", "11223344");
+			Farmer kenneth = new Farmer("kennew@stud.ntnu.no", "Kenneth Westli", "lomper", "99118822", "ken_wes@hotmail.com", "11223344");
+			pst.register(kenneth);
 			//pst.deleteFarmer("Kenneth Westli");
 			//pst.addSheep(1, 20, "ABC1234", 102012, 45, "Frisk", 63.430803, 10.352805);
 			//pst.deleteSheep(1);
