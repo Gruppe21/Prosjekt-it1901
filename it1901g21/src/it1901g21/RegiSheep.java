@@ -55,7 +55,7 @@ public class RegiSheep extends JFrame {
 		lblNewLabel.setBounds(57, 34, 124, 14);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblHelse = new JLabel("Birth month:");
+		JLabel lblHelse = new JLabel("Birth Date yyyy.mm.dd:");
 		lblHelse.setBounds(57, 65, 124, 14);
 		contentPane.add(lblHelse);
 		
