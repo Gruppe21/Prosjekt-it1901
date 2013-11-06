@@ -19,13 +19,14 @@ public class RegiSheep extends JFrame {
 	private JTextField textField_3;
 	private JButton btnNewButton;
 	private JButton btnAvbryt;
+	private JTextField textField_4;
 
 	/**
 	 * Create the frame.
 	 */
 	public RegiSheep() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 237);
+		setBounds(100, 100, 450, 278);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -68,12 +69,21 @@ public class RegiSheep extends JFrame {
 		contentPane.add(lblNvarendePosision);
 		
 		btnNewButton = new JButton("Ferdig");
-		btnNewButton.setBounds(300, 165, 124, 23);
+		btnNewButton.setBounds(300, 206, 124, 23);
 		contentPane.add(btnNewButton);
 		
 		btnAvbryt = new JButton("Avbryt");
-		btnAvbryt.setBounds(10, 165, 124, 23);
+		btnAvbryt.setBounds(10, 206, 124, 23);
 		contentPane.add(btnAvbryt);
+		
+		JLabel lblVekt = new JLabel("Vekt:");
+		lblVekt.setBounds(57, 158, 124, 14);
+		contentPane.add(lblVekt);
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		textField_4.setBounds(191, 155, 209, 20);
+		contentPane.add(textField_4);
 		
 		this.setVisible(true);
 		
