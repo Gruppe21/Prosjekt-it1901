@@ -1,5 +1,7 @@
 package it1901g21;
 
+import java.util.ArrayList;
+
 /**
  * The Farmer class.
  * Holds a farmer.
@@ -12,6 +14,7 @@ public class Farmer {
 	private String tlf;
 	private String resMail;
 	private String resTlf;
+	private ArrayList<Sheep> sheep;
 	
 	/**
 	 * Standard farmer constructor
@@ -29,13 +32,14 @@ public class Farmer {
 		this.tlf = tlf;
 		this.resMail = resMail;
 		this.resTlf = resTlf;
+		sheep = new ArrayList<Sheep>();
 	}
 	
 	/**
 	 * Alternative farmer constructor with no parameters
 	 */
 	public Farmer() {
-		
+		sheep = new ArrayList<Sheep>();
 	}
 	
 	public String getMail() {

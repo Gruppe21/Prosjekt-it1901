@@ -88,6 +88,10 @@ public class Sheep {
 		this.earTag = earTag;
 	}
 	
+	public void setBirthMonth(int birthMonth) {
+		this.birthMonth = birthMonth;
+	}
+	
 	public void setWeight(int weight) {
 		this.weight = weight;
 	}
