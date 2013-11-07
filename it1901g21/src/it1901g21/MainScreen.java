@@ -9,6 +9,7 @@ import javax.swing.JList;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Color;
+import javax.swing.JScrollPane;
 
 
 public class MainScreen extends JFrame {
@@ -26,10 +27,6 @@ public class MainScreen extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JList list = new JList();
-		list.setBounds(297, 55, 368, 349);
-		contentPane.add(list);
-		
 		JButton btnNewButton = new JButton("Add Sheep");
 		btnNewButton.setBounds(38, 99, 89, 45);
 		contentPane.add(btnNewButton);
@@ -46,6 +43,13 @@ public class MainScreen extends JFrame {
 		btnAlarm.setBackground(Color.RED);
 		btnAlarm.setBounds(152, 155, 89, 45);
 		contentPane.add(btnAlarm);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(331, 74, 306, 358);
+		contentPane.add(scrollPane);
+		
+		JList list = new JList();
+		scrollPane.setViewportView(list);
 		
 		this.setVisible(true);
 	}

@@ -138,7 +138,7 @@ public class Main {
 		frame.getContentPane().add(lblimage, BorderLayout.AFTER_LAST_LINE);
 		frame.getContentPane().add(text);
 		frame.setSize(900, 600);
-		frame.setVisible(true);
+		frame.setVisible(false);
 	}
 	
 	
