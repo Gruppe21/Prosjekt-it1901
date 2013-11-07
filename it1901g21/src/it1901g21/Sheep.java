@@ -105,7 +105,7 @@ public class Sheep {
 	}
 	
 	public void setYPos(String yPos) {
-		this.yPos = xPos;
+		this.yPos = yPos;
 	}
 	
 }
