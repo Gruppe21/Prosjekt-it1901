@@ -1,12 +1,15 @@
-package it1901g21;
+package database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import it1901g21.Farmer;
+import it1901g21.Sheep;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import database.SQL;
+
 
 /**
  * Class specifically designed for communicating with the farmers mySQl database
@@ -89,6 +92,7 @@ public class Farmers extends SQL {
 	
 	/**
 	 * Loads all the farmers from the database
+	 * @return an array of all the farmers 
 	 */
 	public ArrayList<Farmer> getFarmers() {
 		

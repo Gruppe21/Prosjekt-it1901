@@ -1,4 +1,4 @@
-package it1901g21;
+package database;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

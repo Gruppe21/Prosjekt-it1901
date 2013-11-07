@@ -11,6 +11,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import database.Farmers;
+
 import GUI.Login;
 import GUI.Registration;
 
