@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -48,7 +49,39 @@ public class MainScreen extends JFrame {
 		scrollPane.setBounds(331, 74, 306, 358);
 		contentPane.add(scrollPane);
 		
-		JList list = new JList();
+		DefaultListModel listmodel = new DefaultListModel();
+		listmodel.addElement("herp");
+		listmodel.addElement("derp");
+		listmodel.addElement("bla");
+		listmodel.addElement("bla");
+		listmodel.addElement("bla");
+		listmodel.addElement("bla");
+		listmodel.addElement("herp");
+		listmodel.addElement("derp");
+		listmodel.addElement("bla");
+		listmodel.addElement("bla");
+		listmodel.addElement("bla");
+		listmodel.addElement("bla");
+		listmodel.addElement("herp");
+		listmodel.addElement("derp");
+		listmodel.addElement("bla");
+		listmodel.addElement("bla");
+		listmodel.addElement("bla");
+		listmodel.addElement("bla");
+		listmodel.addElement("herp");
+		listmodel.addElement("derp");
+		listmodel.addElement("bla");
+		listmodel.addElement("bla");
+		listmodel.addElement("bla");
+		listmodel.addElement("bla");
+		listmodel.addElement("herp");
+		listmodel.addElement("derp");
+		listmodel.addElement("bla");
+		listmodel.addElement("bla");
+		listmodel.addElement("bla");
+		listmodel.addElement("bla");
+		
+		JList list = new JList(listmodel);
 		scrollPane.setViewportView(list);
 		
 		this.setVisible(true);
