@@ -14,7 +14,7 @@ public class Farmer {
 	private String resTlf;
 	
 	/**
-	 * Standard constructor
+	 * Standard farmer constructor
 	 * @param mail the farmer's mail
 	 * @param name the farmer's name
 	 * @param password the farmer's password
@@ -32,7 +32,7 @@ public class Farmer {
 	}
 	
 	/**
-	 * Alternative constructor with no parameters
+	 * Alternative farmer constructor with no parameters
 	 */
 	public Farmer() {
 		

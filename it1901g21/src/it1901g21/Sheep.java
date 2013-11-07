@@ -15,6 +15,35 @@ public class Sheep {
 	private String xPos;
 	private String yPos;
 	
+	/**
+	 * Stardand sheep constructor
+	 * @param farmerId the farmer's ID
+	 * @param id the sheep's ID
+	 * @param earTag the sheep's ear tag
+	 * @param birthMonth the sheep's month of birth
+	 * @param weight the sheep's weight in kg
+	 * @param health the sheep's health status
+	 * @param xPos the x-position of the sheep
+	 * @param yPos the y-position of the sheep
+	 */
+	public Sheep(int farmerId, int id, String earTag, int birthMonth, int weight, String health, String xPos, String yPos) {
+		this.farmerId = farmerId;
+		this.id = id;
+		this.earTag = earTag;
+		this.birthMonth = birthMonth;
+		this.weight = weight;
+		this.health = health;
+		this.xPos = xPos;
+		this.yPos = yPos;
+	}
+	
+	/**
+	 * Alternative sheep constructor with no parameters
+	 */
+	public Sheep() {
+		
+	}
+	
 	public int getFarmerId() {
 		return farmerId;
 	}
