@@ -29,20 +29,20 @@ public class MainScreen extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnNewButton = new JButton("Add Sheep");
-		btnNewButton.setBounds(38, 99, 89, 45);
+		btnNewButton.setBounds(38, 99, 120, 45);
 		contentPane.add(btnNewButton);
 		
 		JButton btnDelSheep = new JButton("Del Sheep");
-		btnDelSheep.setBounds(152, 99, 89, 45);
+		btnDelSheep.setBounds(168, 99, 113, 45);
 		contentPane.add(btnDelSheep);
 		
 		JButton btnProfile = new JButton("Profile");
-		btnProfile.setBounds(38, 155, 89, 45);
+		btnProfile.setBounds(38, 155, 120, 45);
 		contentPane.add(btnProfile);
 		
 		JButton btnAlarm = new JButton("Alarm");
 		btnAlarm.setBackground(Color.RED);
-		btnAlarm.setBounds(152, 155, 89, 45);
+		btnAlarm.setBounds(168, 155, 113, 45);
 		contentPane.add(btnAlarm);
 		
 		JScrollPane scrollPane = new JScrollPane();
