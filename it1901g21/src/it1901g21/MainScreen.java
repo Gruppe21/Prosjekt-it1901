@@ -46,5 +46,7 @@ public class MainScreen extends JFrame {
 		btnAlarm.setBackground(Color.RED);
 		btnAlarm.setBounds(152, 155, 89, 45);
 		contentPane.add(btnAlarm);
+		
+		this.setVisible(true);
 	}
 }

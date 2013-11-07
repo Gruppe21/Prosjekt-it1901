@@ -79,6 +79,11 @@ public class Main {
 		Registration registration = new Registration();
 	}
 	
+	public void closeLogin(){
+		
+		login.setVisible(false);
+		
+	}
 	/**
 	 * Updates and gets the current time
 	 * @return current time

@@ -20,7 +20,8 @@ public class Login extends JFrame {
 	private JPasswordField passwordField;
 	private Main main;
 	private Registration registration;
-
+	private MainScreen mainscreen;
+	
 	/**
 	 * Create the frame.
 	 */
@@ -61,6 +62,17 @@ public class Login extends JFrame {
 		
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				 
+				/**
+				 * manglende kode:
+				 * if usrname+password in db == true
+				 * 		open registration
+				 * else
+				 * 		error message
+				 */
+				
+				MainScreen mainscreen = new MainScreen();
+				main.closeLogin();
 				
 			}
 		});
@@ -73,10 +85,11 @@ public class Login extends JFrame {
 		btnNewUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Registration registration = new Registration();
+				
 			}
 		});
 		
-		// Forgot passs button 
+		// Forgot pass button 
 		JButton btnForgotPass = new JButton("Forgot Pass");
 		btnForgotPass.setBounds(240, 177, 112, 23);
 		contentPane.add(btnForgotPass);
