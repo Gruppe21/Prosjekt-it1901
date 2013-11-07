@@ -1,4 +1,4 @@
-package it1901g21;
+package GUI;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 

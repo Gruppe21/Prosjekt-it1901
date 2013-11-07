@@ -1,4 +1,4 @@
-package it1901g21;
+package GUI;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 

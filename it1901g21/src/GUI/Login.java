@@ -1,4 +1,6 @@
-package it1901g21;
+package GUI;
+import it1901g21.Main;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -11,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+
 
 
 public class Login extends JFrame {

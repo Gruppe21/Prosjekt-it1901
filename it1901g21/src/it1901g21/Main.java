@@ -11,6 +11,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import GUI.Login;
+import GUI.Registration;
+
 /**
  * Main Class.
  * Program entry point. 
@@ -65,8 +68,8 @@ public class Main {
 			Farmer kenneth = new Farmer("kennew@stud.ntnu.no", "Kenneth Westli", "lomper", "99118822", "ken_wes@hotmail.com", "11223344");
 			pst.register(kenneth);
 			//pst.deleteFarmer("Kenneth Westli");
-			Sheep sheep = new Sheep(1, 20, "ABC1234", 102012, 45, "Frisk", "63.430803", "10.352805");
-			pst.addSheep(sheep);
+//			Sheep sheep = new Sheep(1, 20, "ABC1234", 102012, 45, "Frisk", "63.430803", "10.352805");
+//			pst.addSheep(sheep);
 			//pst.deleteSheep(1);
 			
 		} catch (Exception e) {
