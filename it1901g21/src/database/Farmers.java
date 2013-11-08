@@ -159,8 +159,7 @@ public class Farmers extends SQL {
 		ArrayList<Sheep> sheeplist = new ArrayList<Sheep>();
 
 		try {
-			preparedStatement = connect
-					.prepareStatement("SELECT * FROM Sheep WHERE FarmerId = "+ farmerId + "");
+			preparedStatement = connect.prepareStatement("SELECT * FROM Sheep WHERE FarmerId = "+ farmerId + "");
 			resultSet = preparedStatement.executeQuery();
 
 			while (resultSet.next()) {
