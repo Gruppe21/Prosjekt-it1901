@@ -117,4 +117,72 @@ public class Farmers extends SQL {
 		return null;
 	}
 	
+		public boolean userExists(String inputUsername) {
+		try {
+			preparedStatement = connect.prepareStatement("SELECT Mail FROM Farmers WHERE Mail = " + inputUsername + "");
+			resultSet = preparedStatement.executeQuery();
+
+			if (resultSet.next()) {
+				return true;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+		
+	}
+
+	public String getPassword(String inputUsername) {
+		String password = null;
+		
+		try {
+			preparedStatement = connect.prepareStatement("SELECT Password FROM Farmers WHERE Mail = "+ inputUsername + "");
+			resultSet = preparedStatement.executeQuery();
+			password = resultSet.getString("Password");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return password;
+	}
+
+	public boolean checkLogin(String username, String password) {
+		if (userExists(username) && getPassword(username) == password) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public ArrayList<Sheep> farmersSheep(String farmerId) {
+
+		ArrayList<Sheep> sheeplist = new ArrayList<Sheep>();
+
+		try {
+			preparedStatement = connect
+					.prepareStatement("SELECT * FROM Sheep WHERE FarmerId = "+ farmerId + "");
+			resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+
+				Sheep sheep = new Sheep();
+
+				sheep.setEarTag(resultSet.getString(3));
+				sheep.setBirthMonth(resultSet.getInt(4));
+				sheep.setWeight(resultSet.getInt(5));
+				sheep.setHealth(resultSet.getString(6));
+				sheep.setXPos(resultSet.getString(7));
+				sheep.setYPos(resultSet.getString(8));
+
+				sheeplist.add(sheep);
+				
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return sheeplist;
+	}
+	
 }
