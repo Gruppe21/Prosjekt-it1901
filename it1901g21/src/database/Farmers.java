@@ -12,22 +12,23 @@ import database.SQL;
 
 
 /**
- * Class specifically designed for communicating with the farmers mySQl database
+ * Class specifically designed for communicating with the farmers mySQl-database
  */
 public class Farmers extends SQL {
 	
 	/**
-	 * Register user with relevant information as input.
+	 * Register farmer to the database.
 	 */
 	public void register(Farmer farmer){
 		try {
-			preparedStatement = connect.prepareStatement("INSERT INTO Farmers (Mail, Name, Password, Phone, ReserveMail, ReservePhone) VALUES(?, ?, ?, ?, ?, ?)");
+			preparedStatement = connect.prepareStatement("INSERT INTO Farmers (Mail, Name, Phone, ReserveMail, ReservePhone, PasswordHash, Salt) VALUES(?, ?, ?, ?, ?, ?, ?)");
 			preparedStatement.setString(1, farmer.getMail());
 			preparedStatement.setString(2, farmer.getName());
-			preparedStatement.setString(3, "placeholder");
-			preparedStatement.setString(4, farmer.getTlf());
-			preparedStatement.setString(5, farmer.getResMail());
-			preparedStatement.setString(6, farmer.getResTlf());
+			preparedStatement.setString(3, farmer.getTlf());
+			preparedStatement.setString(4, farmer.getResMail());
+			preparedStatement.setString(5, farmer.getResTlf());
+			preparedStatement.setString(6, "placeholder Password");
+			preparedStatement.setString(7, "placeholder Salt");
 			preparedStatement.executeUpdate();
 		} 
 		catch (SQLException ex){
@@ -54,7 +55,7 @@ public class Farmers extends SQL {
 	}
 	
 	/**
-	 * Add sheep to chosen farmer's herd.
+	 * Add sheep to database.
 	 */
 	public void addSheep(Sheep sheep){		
 		try {	
@@ -92,14 +93,14 @@ public class Farmers extends SQL {
 	
 	/**
 	 * Loads the farmer from the database 
+	 * @param passwordHash the farmers passwordHash
 	 * @return the farmer 
 	 */
-	public Farmer getFarmer(String mail) {
+	public Farmer getFarmer(String passwordHash) {
 		
 		try {
-			// Fix the user / password stuff
-			preparedStatement = connect.prepareStatement("SELECT * FROM Farmers WHERE Mail = ?");
-			preparedStatement.setString(1, mail);
+			preparedStatement = connect.prepareStatement("SELECT * FROM Farmers WHERE PasswordHash = ?");
+			preparedStatement.setString(1, passwordHash);
 			resultSet = preparedStatement.executeQuery();
 			
 			if (!resultSet.next()) {
@@ -124,7 +125,7 @@ public class Farmers extends SQL {
 	}
 	/**
 	 * Takes email as arguemnt
-	 * Checks wheter the user (email) exists in the database
+	 * Checks wether the user (email) exists in the database
 	 */
 		public boolean userExists(String inputUser) {
 		try {
@@ -188,12 +189,12 @@ public class Farmers extends SQL {
 
 				Sheep sheep = new Sheep();
 
-				sheep.setEarTag(resultSet.getString(3));
-				sheep.setBirthMonth(resultSet.getInt(4));
-				sheep.setWeight(resultSet.getInt(5));
-				sheep.setHealth(resultSet.getString(6));
-				sheep.setXPos(resultSet.getString(7));
-				sheep.setYPos(resultSet.getString(8));
+				sheep.setEarTag(resultSet.getString("EarTag"));
+				sheep.setBirthMonth(resultSet.getInt("BirthMonth"));
+				sheep.setWeight(resultSet.getInt("Weight"));
+				sheep.setHealth(resultSet.getString("Health"));
+				sheep.setXPos(resultSet.getString("Xpos"));
+				sheep.setYPos(resultSet.getString("Ypos"));
 
 				sheeplist.add(sheep);
 				
