@@ -1,6 +1,8 @@
 package GUI;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -71,11 +73,25 @@ public class RegiSheep extends JFrame {
 		btnAvbryt.setBounds(10, 171, 124, 23);
 		contentPane.add(btnAvbryt);
 		
+		btnAvbryt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				closeRegiSheep();
+			}
+		});
+		
 		JLabel lblVekt = new JLabel("Weight:");
 		lblVekt.setBounds(57, 127, 124, 14);
 		contentPane.add(lblVekt);
 		
-		this.setVisible(true);
+		this.setVisible(true);	
 		
 	}
+	
+	/**
+	 * Method to close window
+	 */
+	public void closeRegiSheep(){
+		this.setVisible(false);
+	}
+	
 }
