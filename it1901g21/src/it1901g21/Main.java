@@ -65,12 +65,17 @@ public class Main {
 		
 		try {
 			pst.connect();
+			
 			//Farmer farmer = new Farmer("heihei@stud.ntnu.no", "Klara ku", "98636864", "neimen@gmail.com", "9348546");
 			//pst.register(farmer);
 			//pst.deleteFarmer("Kenneth Westli");
+			
 			//Sheep sheep = new Sheep(2, 55, "JKL8654", 102009, 39, "Frisk", "63.432473","10.349329");
 			//pst.addSheep(sheep);
 			//pst.deleteSheep(1);
+
+			String name = "martheoy@stud.ntnu.no";
+			pst.userExists(name);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
