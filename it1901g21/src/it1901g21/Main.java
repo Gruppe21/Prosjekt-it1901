@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import database.Farmers;
+import database.PasswordHash;
 
 import GUI.Login;
 import GUI.Registration;
@@ -55,7 +56,7 @@ public class Main {
 		bondeid = "0001";
 		
 		databaseTest();
-		
+		//hashTest();
 	}
 	
 	/**
@@ -134,6 +135,25 @@ public class Main {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * A test to check if password hashing works, which it seems to do.
+	 */
+	public void hashTest() {		
+		PasswordHash ph = new PasswordHash();
+		String[] round1 = ph.createHash("littlengrepassord");
+		System.out.println("Round 1, Hash: " + round1[0]);
+		System.out.println("Round 1, Salt: " + round1[1]);
+		
+		System.out.println(ph.isValidated("littlengrepassord", round1[1], round1[0]));
+		System.out.println(ph.isValidated("littlengrepassore", round1[1], round1[0]));
+
+		/*
+		String[] round2 = ph.isValidatedDebug("littlengrepassord", round1[1], round1[0]);
+		System.out.println("Round 2, Hash: " + round2[0]);
+		System.out.println("Round 2, Salt: " + round2[1]);
+		*/
 	}
 	
 }

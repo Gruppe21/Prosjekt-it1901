@@ -40,11 +40,11 @@ public class Farmers extends SQL {
 	 * Removes farmer from database,
 	 * currently deleting all farmers if more farmer of the same name is present.
 	 */
-	public void deleteFarmer(String name) {
+	public void deleteFarmer(Farmer farmer) {
 		
 		try {
-			preparedStatement = connect.prepareStatement("DELETE FROM Farmers WHERE Name = ?");
-			preparedStatement.setString(1, name);
+			preparedStatement = connect.prepareStatement("DELETE FROM Farmers WHERE Mail = ?");
+			preparedStatement.setString(1, farmer.getMail());
 			preparedStatement.executeUpdate();
 		} 
 		catch (SQLException ex) {
@@ -77,11 +77,11 @@ public class Farmers extends SQL {
 	/**
 	 * Removes sheep from chosen farmer's herd.
 	 */
-	public void deleteSheep(int Id){
+	public void deleteSheep(Sheep sheep){
 		
 		try {
 			preparedStatement = connect.prepareStatement("DELETE FROM Sheep WHERE Id = ?");
-			preparedStatement.setInt(1, Id);
+			preparedStatement.setInt(1, sheep.getId());
 			preparedStatement.executeUpdate();
 			
 		} catch (SQLException ex) {
@@ -94,12 +94,18 @@ public class Farmers extends SQL {
 	 * Loads the farmer from the database 
 	 * @return the farmer 
 	 */
-	public Farmer getFarmer() {
+	public Farmer getFarmer(String mail) {
 		
 		try {
 			// Fix the user / password stuff
-			preparedStatement = connect.prepareStatement("SELECT * FROM Farmers");
+			preparedStatement = connect.prepareStatement("SELECT * FROM Farmers WHERE Mail = ?");
+			preparedStatement.setString(1, mail);
 			resultSet = preparedStatement.executeQuery();
+			
+			if (!resultSet.next()) {
+				System.out.println("No farmer found!");
+				return null;
+			}
 			
 			Farmer farmer = new Farmer();
 			

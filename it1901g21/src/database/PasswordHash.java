@@ -9,6 +9,8 @@ public class PasswordHash {
 	
 	public final int SALT_BYTE_SIZE = 8;
 	
+	/* PUBLIC METHODS */
+	
 	/**
 	 * Creates a hash for given password. Also returns the used salt.
 	 * @param password the password to hash
@@ -33,15 +35,31 @@ public class PasswordHash {
 	public boolean isValidated(String password, String usedSalt, String correctHash) {
 		
 		// Generates the password hash with the chosen salt
-		byte[] salt = usedSalt.getBytes();
+		byte[] salt = convertFromHex(usedSalt);
 		String[] hashAndSalt = generateHash(password, salt);
 		
 		// Checks if the password hashes are the same
-		if (hashAndSalt[0].equals(correctHash))
-			return true;
-		else
-			return false;
+		return hashAndSalt[0].equals(correctHash); 
 	}
+	
+	/**
+	 * isValidated (DEBUG VERSION), return the hash and salt instead of a boolean
+	 * Only used for debugging!
+	 */
+	public String[] isValidatedDebug(String password, String usedSalt, String correctHash) {
+		
+		byte[] salt = convertFromHex(usedSalt);
+		String[] hashAndSalt = generateHash(password, salt);
+		
+		if (hashAndSalt[0].equals(correctHash))
+			System.out.println("They are equal!");
+		else
+			System.out.println("Nooo, they aren't equal...");
+		
+		return hashAndSalt;
+	}
+	
+	/* INTERNAL PRIVATE METHODS */
 	
 	/**
 	 * Creates a password hash from given password and salt.
@@ -53,7 +71,7 @@ public class PasswordHash {
 		
 		try {
 			PBEKeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 1000, SALT_BYTE_SIZE * 8);
-			SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+			SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1"); 
 			byte[] hash = skf.generateSecret(spec).getEncoded();
 			
 			return new String[] { convertToHex(hash), convertToHex(salt) };
@@ -63,7 +81,6 @@ public class PasswordHash {
 		}
 		
 		return null;
-		
 	}
 	
 	/**
@@ -83,4 +100,18 @@ public class PasswordHash {
             return hex;
 	}
 	
+	/**
+	 * Converts from string to byte[] array
+	 * @param the string to convert
+	 * @return the byte[] array
+	 */
+	private byte[] convertFromHex(String hex) {
+		
+		byte[] binary = new byte[hex.length() / 2];
+        for(int i = 0; i < binary.length; i++)
+        {
+            binary[i] = (byte)Integer.parseInt(hex.substring(2*i, 2*i+2), 16);
+        }
+        return binary;
+	}
 }
