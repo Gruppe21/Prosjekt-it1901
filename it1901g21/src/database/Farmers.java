@@ -116,7 +116,10 @@ public class Farmers extends SQL {
 		}
 		return null;
 	}
-	
+	/**
+	 * Takes email as arguemnt
+	 * Checks wheter the user (email)exists in the database
+	 */
 		public boolean userExists(String inputUsername) {
 		try {
 			preparedStatement = connect.prepareStatement("SELECT Mail FROM Farmers WHERE Mail = " + inputUsername + "");
@@ -132,7 +135,11 @@ public class Farmers extends SQL {
 		return false;
 		
 	}
-
+		
+	/**
+	 * Takes email as argument, and fetches password from database
+	 * @return the password
+	 */
 	public String getPassword(String inputUsername) {
 		String password = null;
 		
@@ -145,7 +152,11 @@ public class Farmers extends SQL {
 		}
 		return password;
 	}
-
+	
+	/**
+	 * Takes email and password as argument
+	 * Checks wheter the given email/password matches the email/password in the database
+	 */
 	public boolean checkLogin(String username, String password) {
 		if (userExists(username) && getPassword(username) == password) {
 			return true;
@@ -154,6 +165,10 @@ public class Farmers extends SQL {
 		}
 	}
 
+	/**
+	 * Loads all sheep of a given farmer into a ArrayList
+	 * @return the list of all sheep
+	 */
 	public ArrayList<Sheep> farmersSheep(String farmerId) {
 
 		ArrayList<Sheep> sheeplist = new ArrayList<Sheep>();
