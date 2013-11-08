@@ -98,7 +98,7 @@ public class Farmers extends SQL {
 		
 		try {
 			// Fix the user / password stuff
-			preparedStatement = connect.prepareStatement("SELECT * FROM Farmers WHERE username ");
+			preparedStatement = connect.prepareStatement("SELECT * FROM Farmers");
 			resultSet = preparedStatement.executeQuery();
 			
 			Farmer farmer = new Farmer();
