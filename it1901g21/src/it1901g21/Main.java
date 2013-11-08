@@ -67,7 +67,7 @@ public class Main {
 		
 		try {
 			pst.connect();
-			Farmer kenneth = new Farmer("kennew@stud.ntnu.no", "Kenneth Westli", "lomper", "99118822", "ken_wes@hotmail.com", "11223344");
+			Farmer kenneth = new Farmer("kennew@stud.ntnu.no", "Kenneth Westli", "99118822", "ken_wes@hotmail.com", "11223344");
 			pst.register(kenneth);
 			//pst.deleteFarmer("Kenneth Westli");
 //			Sheep sheep = new Sheep(1, 20, "ABC1234", 102012, 45, "Frisk", "63.430803", "10.352805");
