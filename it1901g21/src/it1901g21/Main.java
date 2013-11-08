@@ -55,8 +55,6 @@ public class Main {
 		bondeid = "0001";
 		
 		databaseTest();
-		map();
-		//openFile("/src/it1901g21/js_test.html");
 		
 	}
 	
@@ -132,19 +130,5 @@ public class Main {
 			e.printStackTrace();
 		}
 	}
-	
-	private void map() {
-		
-		JLabel text = Map.setUpText(bondeid);
-		Image image = Map.setUpMap(bondeid);
-		
-		// denne måten å skrive bilde til applikasjonen må naturligvis endres til valgt GUI
-		JLabel lblimage = new JLabel(new ImageIcon(image));
-		frame.getContentPane().add(lblimage, BorderLayout.AFTER_LAST_LINE);
-		frame.getContentPane().add(text);
-		frame.setSize(900, 600);
-		frame.setVisible(false);
-	}
-	
 	
 }
