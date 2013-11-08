@@ -65,10 +65,10 @@ public class Main {
 		
 		try {
 			pst.connect();
-			//Farmer kenneth = new Farmer("kennew@stud.ntnu.no", "Kenneth Westli", "99118822", "ken_wes@hotmail.com", "11223344");
-			//pst.register(kenneth);
+			//Farmer farmer = new Farmer("heihei@stud.ntnu.no", "Klara ku", "98636864", "neimen@gmail.com", "9348546");
+			//pst.register(farmer);
 			//pst.deleteFarmer("Kenneth Westli");
-			//Sheep sheep = new Sheep(1, 20, "ABC1234", 102012, 45, "Frisk", "63.430803", "10.352805");
+			//Sheep sheep = new Sheep(2, 55, "JKL8654", 102009, 39, "Frisk", "63.432473","10.349329");
 			//pst.addSheep(sheep);
 			//pst.deleteSheep(1);
 			
