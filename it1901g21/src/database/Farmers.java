@@ -118,22 +118,23 @@ public class Farmers extends SQL {
 	}
 	/**
 	 * Takes email as arguemnt
-	 * Checks wheter the user (email)exists in the database
+	 * Checks wheter the user (email) exists in the database
 	 */
-		public boolean userExists(String inputUsername) {
+		public boolean userExists(String inputUser) {
 		try {
-			preparedStatement = connect.prepareStatement("SELECT Mail FROM Farmers WHERE Mail = " + inputUsername + "");
+			preparedStatement = connect.prepareStatement("SELECT Mail FROM Farmers WHERE Mail ='" + inputUser + "'");
+			
+			// når argument endres til String og "Id" til "Name", kjøres ikke de 4 neste linjene:
 			resultSet = preparedStatement.executeQuery();
-
 			if (resultSet.next()) {
+				System.out.println("Brukeren " + inputUser + " finnes i databasen.");
 				return true;
 			}
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			return false;
 		}
 		return false;
-		
 	}
 		
 	/**
@@ -157,13 +158,13 @@ public class Farmers extends SQL {
 	 * Takes email and password as argument
 	 * Checks wheter the given email/password matches the email/password in the database
 	 */
-	public boolean checkLogin(String username, String password) {
+/*	public boolean checkLogin(String username, String password) {
 		if (userExists(username) && getPassword(username) == password) {
 			return true;
 		} else {
 			return false;
 		}
-	}
+	}*/
 
 	/**
 	 * Loads all sheep of a given farmer into a ArrayList
