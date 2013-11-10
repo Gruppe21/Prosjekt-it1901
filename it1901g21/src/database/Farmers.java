@@ -19,7 +19,7 @@ public class Farmers extends SQL {
 	/**
 	 * Register farmer to the database.
 	 */
-	public void register(Farmer farmer){
+	public void register(Farmer farmer, String passwordHash, String salt){
 		try {
 			preparedStatement = connect.prepareStatement("INSERT INTO Farmers (Mail, Name, Phone, ReserveMail, ReservePhone, PasswordHash, Salt) VALUES(?, ?, ?, ?, ?, ?, ?)");
 			preparedStatement.setString(1, farmer.getMail());
@@ -27,8 +27,8 @@ public class Farmers extends SQL {
 			preparedStatement.setString(3, farmer.getTlf());
 			preparedStatement.setString(4, farmer.getResMail());
 			preparedStatement.setString(5, farmer.getResTlf());
-			preparedStatement.setString(6, "placeholder Password");
-			preparedStatement.setString(7, "placeholder Salt");
+			preparedStatement.setString(6, passwordHash);
+			preparedStatement.setString(7, salt);
 			preparedStatement.executeUpdate();
 		} 
 		catch (SQLException ex){
@@ -93,7 +93,7 @@ public class Farmers extends SQL {
 	
 	/**
 	 * Loads the farmer from the database 
-	 * @param passwordHash the farmers passwordHash
+	 * @param passwordHash the farmers hashed password
 	 * @return the farmer 
 	 */
 	public Farmer getFarmer(String passwordHash) {
@@ -112,6 +112,8 @@ public class Farmers extends SQL {
 			
 			farmer.setMail(resultSet.getString("Mail"));
 			farmer.setName(resultSet.getString("Name"));
+			farmer.setPasswordHash(resultSet.getString("PasswordHash"));
+			farmer.setSalt(resultSet.getString("Salt"));
 			farmer.setTlf(resultSet.getString("Tlf"));
 			farmer.setResMail(resultSet.getString("ResMail"));
 			farmer.setResTlf(resultSet.getString("ResTlf"));
@@ -125,7 +127,7 @@ public class Farmers extends SQL {
 	}
 	/**
 	 * Takes email as arguemnt
-	 * Checks wether the user (email) exists in the database
+	 * Checks whether the user (email) exists in the database
 	 */
 		public boolean userExists(String inputUser) {
 		try {
@@ -184,26 +186,26 @@ public class Farmers extends SQL {
 		try {
 			preparedStatement = connect.prepareStatement("SELECT * FROM Sheep WHERE FarmerId = "+ farmerId + "");
 			resultSet = preparedStatement.executeQuery();
-
+			
 			while (resultSet.next()) {
-
+				
 				Sheep sheep = new Sheep();
-
+				
 				sheep.setEarTag(resultSet.getString("EarTag"));
 				sheep.setBirthMonth(resultSet.getInt("BirthMonth"));
 				sheep.setWeight(resultSet.getInt("Weight"));
 				sheep.setHealth(resultSet.getString("Health"));
 				sheep.setXPos(resultSet.getString("Xpos"));
 				sheep.setYPos(resultSet.getString("Ypos"));
-
+				
 				sheeplist.add(sheep);
 				
 			}
-
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		
 		return sheeplist;
 	}
 	

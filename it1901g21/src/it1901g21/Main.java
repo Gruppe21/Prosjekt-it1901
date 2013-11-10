@@ -148,7 +148,7 @@ public class Main {
 		
 		System.out.println(ph.isValidated("littlengrepassord", round1[1], round1[0]));
 		System.out.println(ph.isValidated("littlengrepassore", round1[1], round1[0]));
-
+		
 		/*
 		String[] round2 = ph.isValidatedDebug("littlengrepassord", round1[1], round1[0]);
 		System.out.println("Round 2, Hash: " + round2[0]);

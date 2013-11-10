@@ -10,6 +10,8 @@ public class Farmer {
 	
 	private String mail;
 	private String name;
+	private String passwordHash;
+	private String salt;
 	private String tlf;
 	private String resMail;
 	private String resTlf;
@@ -47,6 +49,14 @@ public class Farmer {
 		return name;
 	}
 	
+	public String getPasswordHash() {
+		return passwordHash;
+	}
+	
+	public String getSalt() {
+		return salt;
+	}
+	
 	public String getTlf() {
 		return tlf;
 	}
@@ -69,6 +79,14 @@ public class Farmer {
 	
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public void setPasswordHash(String passwordHash) {
+		this.passwordHash = passwordHash;
+	}
+	
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 	
 	public void setTlf(String tlf) {
