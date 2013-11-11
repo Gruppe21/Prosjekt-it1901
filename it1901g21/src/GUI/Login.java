@@ -72,21 +72,12 @@ public class Login extends JFrame {
 		
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				
 				@SuppressWarnings("deprecation")
 				String pw = passwordField.getText();
 				String li = textField.getText();
 				
-				if (pst.checkLogin(li, pw)){
-					System.out.println("Successfully logged in.");
-					MainScreen mainscreen = new MainScreen();
-					returnMail(li);
-					main.closeLogin();
-				} else if (pw.equals("") || li.equals("")) {
-					ErrorMessage errormsg = new ErrorMessage("","Please enter your email and password.");
-				} else {
-					ErrorMessage errormsg = new ErrorMessage("Login failed","Your email or password were incorrect. Please try again.");
-				}
+				sendLogIn(new String[] {li, pw});
 			}
 		});
 		
@@ -115,7 +106,12 @@ public class Login extends JFrame {
 		
 		this.setVisible(true);
 	}
-	public String returnMail(String mail){
-		return mail;
+	
+	/**
+	 * Tells the Main class to log in.
+	 */
+	public void sendLogIn(String[] info) {
+		main.logIn(info);
 	}
+	
 }

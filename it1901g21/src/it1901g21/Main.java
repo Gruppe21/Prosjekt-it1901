@@ -14,7 +14,9 @@ import javax.swing.JLabel;
 import database.Farmers;
 import database.PasswordHash;
 
+import GUI.ErrorMessage;
 import GUI.Login;
+import GUI.MainScreen;
 import GUI.Registration;
 
 /**
@@ -33,7 +35,7 @@ public class Main {
 	private Date date;
 	
 	private final String PROJECTPATH;
-	private String bondeid;
+	private Farmer farmer;
 	
 	/* Entry point, only used to initiate Main*/
 	public static void main(String[] args) {
@@ -56,7 +58,6 @@ public class Main {
 		
 		date = new Date();
 		frame = new JFrame();
-		bondeid = "0001";
 		
 		databaseTest();
 		//hashTest();
@@ -98,6 +99,23 @@ public class Main {
 		
 	}
 	
+	public void logIn(String[] info) {
+		
+		String li = info[0];
+		String pw = info[1];
+		
+		if (pst.checkLogin(li, pw)){
+			System.out.println("Successfully logged in.");
+			MainScreen mainscreen = new MainScreen();
+			this.closeLogin();
+		} else if (pw.equals("") || li.equals("")) {
+			ErrorMessage errormsg = new ErrorMessage("","Please enter your email and password.");
+		} else {
+			ErrorMessage errormsg = new ErrorMessage("Login failed","Your email or password were incorrect. Please try again.");
+		}
+		
+	}
+	
 	/**
 	 * Registers a new farmer, and saves it in the database.
 	 * Works with password hashing.
@@ -108,6 +126,14 @@ public class Main {
 		String[] passwordHash = ph.createHash(password);
 		Farmer farmer = new Farmer(mail, firstName + " " + lastName, tlf, resMail, resTlf, passwordHash[0], passwordHash[1]);
 		pst.register(farmer);
+	}
+	
+	/**
+	 * Loads the farmer into the program
+	 * @param farmer
+	 */
+	public void loadFarmer(Farmer farmer) {
+		this.farmer = farmer;
 	}
 	
 	/**
