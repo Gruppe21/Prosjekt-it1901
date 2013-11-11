@@ -50,7 +50,7 @@ public class Profile {
 		springLayout.putConstraint(SpringLayout.WEST, lblPhoneNumber, 0, SpringLayout.WEST, lblFirstName);
 		frame.getContentPane().add(lblPhoneNumber);
 		
-		JLabel lblContactPersonName = new JLabel("Contact person name:");
+		JLabel lblContactPersonName = new JLabel("Contact mail:");
 		springLayout.putConstraint(SpringLayout.NORTH, lblContactPersonName, 6, SpringLayout.SOUTH, lblPhoneNumber);
 		springLayout.putConstraint(SpringLayout.WEST, lblContactPersonName, 0, SpringLayout.WEST, lblFirstName);
 		frame.getContentPane().add(lblContactPersonName);
@@ -75,7 +75,6 @@ public class Profile {
 		springLayout.putConstraint(SpringLayout.NORTH, lblname, 0, SpringLayout.NORTH, lblFirstName);
 		springLayout.putConstraint(SpringLayout.WEST, lblname, 6, SpringLayout.EAST, lblFirstName);
 		springLayout.putConstraint(SpringLayout.SOUTH, lblname, 0, SpringLayout.SOUTH, lblFirstName);
-		springLayout.putConstraint(SpringLayout.EAST, lblname, 40, SpringLayout.EAST, lblContactPersonName);
 		frame.getContentPane().add(lblname);
 		
 		JLabel lblGetLastName = new JLabel();
@@ -88,10 +87,21 @@ public class Profile {
 		springLayout.putConstraint(SpringLayout.SOUTH, lvlGetEmail, 0, SpringLayout.SOUTH, lblEmail);
 		frame.getContentPane().add(lvlGetEmail);
 		
-		JLabel lblGetTlf = new JLabel("tlf");
+		JLabel lblGetTlf = new JLabel(farmer.getTlf());
+		springLayout.putConstraint(SpringLayout.EAST, lblname, 120, SpringLayout.EAST, lblGetTlf);
 		springLayout.putConstraint(SpringLayout.WEST, lblGetTlf, 6, SpringLayout.EAST, lblPhoneNumber);
 		springLayout.putConstraint(SpringLayout.SOUTH, lblGetTlf, 0, SpringLayout.SOUTH, lblPhoneNumber);
 		frame.getContentPane().add(lblGetTlf);
+		
+		JLabel lblgetContactname = new JLabel(farmer.getResMail());
+		springLayout.putConstraint(SpringLayout.NORTH, lblgetContactname, 0, SpringLayout.NORTH, lblContactPersonName);
+		springLayout.putConstraint(SpringLayout.WEST, lblgetContactname, 6, SpringLayout.EAST, lblContactPersonName);
+		frame.getContentPane().add(lblgetContactname);
+		
+		JLabel lblgetContactPhone = new JLabel(farmer.getResTlf());
+		springLayout.putConstraint(SpringLayout.WEST, lblgetContactPhone, 6, SpringLayout.EAST, lblContactPhone);
+		springLayout.putConstraint(SpringLayout.SOUTH, lblgetContactPhone, 0, SpringLayout.SOUTH, lblContactPhone);
+		frame.getContentPane().add(lblgetContactPhone);
 		
 		
 		
