@@ -106,7 +106,7 @@ public class Main {
 		
 		if (pst.checkLogin(li, pw)){
 			System.out.println("Successfully logged in.");
-			
+			mainscreen.setVisible();
 			this.closeLogin();
 		} else if (pw.equals("") || li.equals("")) {
 			ErrorMessage errormsg = new ErrorMessage("","Please enter your email and password.");
