@@ -142,13 +142,13 @@ public class Registration extends JFrame {
 
 				String rFirstName = firstName.getText();
 				String rLastName = lastName.getText();
-				String rMail = lblEmail.getText();
+				String rMail = emailTextField.getText();
 				String rphoneNumber = phoneNumber.getText();
 				char rpasswordField[] = passwordField.getPassword();
 				char rpasswordFieldconfirm[] = passwordField_confirm.getPassword();
 				String  rcontactName = contactName.getText();
 				String rcontactTlf = contactTlf.getText();
-				
+				System.out.println(rMail);
 				sendNewFarmer(rFirstName, rLastName, rMail, rphoneNumber, rcontactName, rcontactTlf, rpasswordField, rpasswordFieldconfirm);
 			}
 			
