@@ -144,24 +144,36 @@ public class Farmers extends SQL {
 		return false;
 	}
 		
-	/**
-	 * Takes email as argument, and fetches password from database
-	 * @return the password
-	 */
-	public String getPassword(String inputUsername) {
-		String password = null;
+	public String getHash(String inputUsername) {
+		String pwhash = null;
 		try {
 			preparedStatement = connect.prepareStatement("SELECT * FROM Farmers WHERE Mail = '"+ inputUsername + "'");
 			resultSet = preparedStatement.executeQuery();
 			
 			if (resultSet.next()){
-				password = resultSet.getString("Password");
+				pwhash = resultSet.getString("PasswordHash");
 			}
 			
 		} catch (Exception e) {
-			System.out.println("Exception getPassword");
+			System.out.println("Exception getHash");
 		}
-		return password;
+		return pwhash;
+	}
+	
+	public String getSalt(String inputUsername) {
+		String pwsalt = null;
+		try {
+			preparedStatement = connect.prepareStatement("SELECT * FROM Farmers WHERE Mail = '"+ inputUsername + "'");
+			resultSet = preparedStatement.executeQuery();
+			
+			if (resultSet.next()){
+				pwsalt = resultSet.getString("Salt");
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Exception getSalt");
+		}
+		return pwsalt;
 	}
 	
 	/**
@@ -169,7 +181,9 @@ public class Farmers extends SQL {
 	 * Checks wheter the given email/password matches the email/password in the database
 	 */
 	public boolean checkLogin(String username, String password) {
-		if (userExists(username) && password.equals(getPassword(username))) {
+		PasswordHash ph = new PasswordHash();
+		
+		if (userExists(username) && ph.isValidated(password, getHash(username), getSalt(username))) {
 			return true;
 		} else {
 			return false;
