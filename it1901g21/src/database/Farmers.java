@@ -133,10 +133,8 @@ public class Farmers extends SQL {
 		try {
 			preparedStatement = connect.prepareStatement("SELECT Mail FROM Farmers WHERE Mail ='" + inputUser + "'");
 			
-			// når argument endres til String og "Id" til "Name", kjøres ikke de 4 neste linjene:
 			resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()) {
-				System.out.println("Brukeren " + inputUser + " finnes i databasen.");
 				return true;
 			}
 			
@@ -153,10 +151,12 @@ public class Farmers extends SQL {
 	public String getPassword(String inputUsername) {
 		String password = null;
 		try {
-			preparedStatement = connect.prepareStatement("SELECT Password FROM Farmers WHERE Mail = '"+ inputUsername + "'");
+			preparedStatement = connect.prepareStatement("SELECT * FROM Farmers WHERE Mail = '"+ inputUsername + "'");
 			resultSet = preparedStatement.executeQuery();
 			
-			password = resultSet.getString("Password");
+			if (resultSet.next()){
+				password = resultSet.getString("Password");
+			}
 			
 		} catch (Exception e) {
 			System.out.println("Exception getPassword");
@@ -170,8 +170,10 @@ public class Farmers extends SQL {
 	 */
 	public boolean checkLogin(String username, String password) {
 		if (userExists(username) && getPassword(username) == password) {
+			System.out.println("Brukeren " + username + " er nå logget inn.");
 			return true;
 		} else {
+			System.out.println("Oppgitt brukernavn: "+ username +"\nOppgitt passord: \""+ password +"\", riktig passord: \""+ getPassword(username) +"\"");
 			return false;
 		}
 	}

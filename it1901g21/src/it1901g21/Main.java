@@ -75,9 +75,9 @@ public class Main {
 			//pst.addSheep(sheep);
 			//pst.deleteSheep(1);
 
-			//String mail = "kennew@stud.ntnu.no";
-			//String pw = "lomper";
-			//pst.checkLogin(mail, pw);
+			String mail = "kennew@stud.ntnu.no";
+			String pw = "lomper";
+			pst.checkLogin(mail, pw);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
