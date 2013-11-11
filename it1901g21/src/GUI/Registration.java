@@ -148,7 +148,7 @@ public class Registration extends JFrame {
 				char rpasswordFieldconfirm[] = passwordField_confirm.getPassword();
 				String  rcontactName = contactName.getText();
 				String rcontactTlf = contactTlf.getText();
-				System.out.println(rMail);
+				
 				sendNewFarmer(rFirstName, rLastName, rMail, rphoneNumber, rcontactName, rcontactTlf, rpasswordField, rpasswordFieldconfirm);
 			}
 			

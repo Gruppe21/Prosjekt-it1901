@@ -73,8 +73,7 @@ public class Login extends JFrame {
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				@SuppressWarnings("deprecation")
-				String pw = passwordField.getText();
+				String pw = new String(passwordField.getPassword());
 				String li = textField.getText();
 				
 				sendLogIn(new String[] {li, pw});

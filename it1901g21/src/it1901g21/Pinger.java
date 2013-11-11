@@ -141,6 +141,12 @@ class Update extends TimerTask {
 	private void printTimeUpdate() {
 		
 		System.out.println("Ping number " + count + ".  Date: " + main.getCurrentTime());
-		System.out.println("X: " + coordinateTest[0] + "  Y: " + coordinateTest[1]);
+		//System.out.println("X: " + coordinateTest[0] + "  Y: " + coordinateTest[1]);
+		
+		Farmer farmer = main.getFarmer();
+		if(farmer != null)
+			System.out.println("Farmer currently logged in: " + farmer.getName());
+		else
+			System.out.println("The farmer is not availible at the moment. Please re-farm later!");
 	}
 }

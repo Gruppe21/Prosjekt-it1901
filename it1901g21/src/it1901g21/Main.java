@@ -53,7 +53,7 @@ public class Main {
 		pst = new Farmers();
 		pinger = new Pinger(this);
 		ph = new PasswordHash();
-
+		
 		login = new Login(this, pst);
 		mainscreen = new MainScreen(this);
 		
@@ -106,11 +106,11 @@ public class Main {
 		
 		if (pst.checkLogin(li, pw)){
 			
-			System.out.println("Successfully logged in.");
 			mainscreen.setVisible();
 			this.closeLogin();
 			
 			this.loadFarmer(pst.getFarmer(li));
+			System.out.println("Successfully logged in as " + this.getFarmer().getName());
 			
 		} else if (pw.equals("") || li.equals("")) {
 			ErrorMessage errormsg = new ErrorMessage("","Please enter your email and password.");
@@ -129,7 +129,6 @@ public class Main {
 		
 		String[] passwordHash = ph.createHash(password);
 		Farmer farmer = new Farmer(mail, firstName + " " + lastName, tlf, resMail, resTlf, passwordHash[0], passwordHash[1]);
-		loadFarmer(farmer);
 		pst.register(farmer);
 	}
 	
