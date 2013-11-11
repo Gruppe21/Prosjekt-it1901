@@ -51,7 +51,7 @@ public class Main {
 		pst = new Farmers();
 		pinger = new Pinger(this);
 		ph = new PasswordHash();
-		login = new Login(this);
+		login = new Login(this, pst);
 		
 		date = new Date();
 		frame = new JFrame();
@@ -69,20 +69,27 @@ public class Main {
 		try {
 		pst.connect();
 			
-			//Farmer farmer = new Farmer("heihei@stud.ntnu.no", "Klara ku", "98636864", "neimen@gmail.com", "9348546");
-			//System.out.println(farmer.getName());
-			//pst.deleteFarmer("Kenneth Westli");
-			
-			//Sheep sheep = new Sheep(2, 55, "JKL8654", 102009, 39, "Frisk", "63.432473","10.349329");
-			//pst.addSheep(sheep);
-			//pst.deleteSheep(1);
-		
-			String name = "martheoy@stud.ntnu.no";
-			pst.userExists(name);
-			
-			String mail = "kennew@stud.ntnu.no";
-			String pw = "lomper";
-			pst.checkLogin(mail, pw);
+			/**
+			 * Oppretter ny bruker, legger den til i db
+			 */
+			// Farmer farmer = new Farmer("heihei@stud.ntnu.no", "Klara ku",
+			// "98636864", "neimen@gmail.com", "9348546");
+			// pst.deleteFarmer("Kenneth Westli");
+
+			/**
+			 * Oppretter ny sau, legger den til i db
+			 */
+			// Sheep sheep = new Sheep(2, 55, "JKL8654", 102009, 39, "Frisk",
+			// "63.432473","10.349329");
+			// pst.addSheep(sheep);
+			// pst.deleteSheep(1);
+
+			/**
+			 * Sjekker om oppgitt brukernavn og passord er riktig.
+			 */
+			// String mail = "kennew@stud.ntnu.no";
+			// String pw = "lomper";
+			// pst.checkLogin(mail, pw);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
