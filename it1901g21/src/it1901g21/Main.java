@@ -65,18 +65,19 @@ public class Main {
 	private void databaseTest() {
 		
 		try {
-			pst.connect();
+		pst.connect();
 			
-			//Farmer farmer = new Farmer("heihei@stud.ntnu.no", "Klara ku", "98636864", "neimen@gmail.com", "9348546");
-			//pst.register(farmer);
+			Farmer farmer = new Farmer("heihei@stud.ntnu.no", "Klara ku", "98636864", "neimen@gmail.com", "9348546");
+			System.out.println(farmer.getName());
 			//pst.deleteFarmer("Kenneth Westli");
 			
 			//Sheep sheep = new Sheep(2, 55, "JKL8654", 102009, 39, "Frisk", "63.432473","10.349329");
 			//pst.addSheep(sheep);
 			//pst.deleteSheep(1);
 
-			String name = "martheoy@stud.ntnu.no";
-			pst.userExists(name);
+			//String mail = "kennew@stud.ntnu.no";
+			//String pw = "lomper";
+			//pst.checkLogin(mail, pw);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
