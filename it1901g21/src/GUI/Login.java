@@ -80,6 +80,7 @@ public class Login extends JFrame {
 				if (pst.checkLogin(li, pw)){
 					System.out.println("Successfully logged in.");
 					MainScreen mainscreen = new MainScreen();
+					returnMail(li);
 					main.closeLogin();
 				} else if (pw.equals("") || li.equals("")) {
 					ErrorMessage errormsg = new ErrorMessage("","Please enter your email and password.");
@@ -113,5 +114,8 @@ public class Login extends JFrame {
 		});
 		
 		this.setVisible(true);
+	}
+	public String returnMail(String mail){
+		return mail;
 	}
 }
