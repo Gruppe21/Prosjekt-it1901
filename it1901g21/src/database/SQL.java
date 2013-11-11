@@ -76,7 +76,7 @@ public class SQL {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			connect = DriverManager.getConnection(url, user, password);
-			System.out.println("Connected to database");
+			System.out.println("Connection to database has been established.");
 		}
 		catch (Exception e) {
 			e.printStackTrace();

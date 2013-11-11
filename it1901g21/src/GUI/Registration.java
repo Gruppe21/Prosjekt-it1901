@@ -171,9 +171,13 @@ public class Registration extends JFrame {
 		String password = new String(passwordField);
 		String confirmPassword = new String(confirmPasswordField);
 		
-		// Checks if passwords are the same, and not empty
-		if (!password.equals(confirmPassword) || password.equals("")) {
-			System.out.println("Passwords are not equal, please re-enter!");
+		// Checks if passwords are the same, and then checks password lenght.
+		if (!password.equals(confirmPassword)) {
+			ErrorMessage errorMsg = new ErrorMessage("", "The passwords do not match. Please try again.");
+			return;
+		}
+		if (password.length() < 3 || confirmPassword.length() < 3) {
+			ErrorMessage errorMsg = new ErrorMessage("", "Your password must be of minimum 3 symbols!");
 			return;
 		}
 		
