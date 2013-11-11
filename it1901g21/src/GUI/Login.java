@@ -31,6 +31,7 @@ public class Login extends JFrame {
 	public Login(final Main main) {
 		
 		this.main = main;
+		registration = new Registration(main);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -88,7 +89,7 @@ public class Login extends JFrame {
 		
 		btnNewUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Registration registration = new Registration();
+				registration.openRegistration();
 				
 			}
 		});

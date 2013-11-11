@@ -1,4 +1,6 @@
 package GUI;
+import it1901g21.Main;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -14,7 +16,9 @@ import javax.swing.JButton;
 
 
 public class Registration extends JFrame {
-
+	
+	private Main main;
+	
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField firstName;
@@ -38,7 +42,10 @@ public class Registration extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Registration() {
+	public Registration(Main main) {
+		
+		this.main = main;
+		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 444, 374);
 		contentPane = new JPanel();
@@ -132,25 +139,23 @@ public class Registration extends JFrame {
 		
 		btnDone.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				String rFirstName = firstName.getText();
 				String rLastName = lastName.getText();
+				String rMail = lblEmail.getText();
 				String rphoneNumber = phoneNumber.getText();
 				char rpasswordField[] = passwordField.getPassword();
 				char rpasswordFieldconfirm[] = passwordField_confirm.getPassword();
 				String  rcontactName = contactName.getText();
 				String rcontactTlf = contactTlf.getText();
 				
-				retFirstName(rFirstName);
-				retLastName(rLastName);
-				retPhone(rphoneNumber);
-				retpassword(rpasswordField);
-				retpasswordConfirm(rpasswordFieldconfirm);
-				retContactName(rcontactName);
-				retContactPhone(rcontactTlf);
+				sendNewFarmer(rFirstName, rLastName, rMail, rphoneNumber, rcontactName, rcontactTlf, rpasswordField, rpasswordFieldconfirm);
 			}
 			
 		});
-		
+	}
+	
+	public void openRegistration() {
 		this.setVisible(true);
 	}
 	
@@ -158,25 +163,22 @@ public class Registration extends JFrame {
 		this.setVisible(false);
 	}
 	
-	public String retFirstName(String name){
-		return name;
+	/**
+	 * Takes the user-input and sends it to main to create a new farmer
+	 */
+	private void sendNewFarmer(String firstName, String lastName, String mail, String tlf, String resMail, String resTlf, char[] passwordField, char[] confirmPasswordField) {
+		
+		String password = new String(passwordField);
+		String confirmPassword = new String(confirmPasswordField);
+		
+		// Checks if passwords are the same, and not empty
+		if (!password.equals(confirmPassword) || password.equals("")) {
+			System.out.println("Passwords are not equal, please re-enter!");
+			return;
+		}
+		
+		closeRegistration();
+		main.newFarmer(firstName, lastName, mail, tlf, resMail, resTlf, password);
 	}
-	public String retLastName(String lastname) {
-		return lastname;
-	}
-	public String retPhone(String phoneNumber){
-		return phoneNumber;
-	}
-	public String retContactName(String contactName){
-		return contactName;
-	}
-	public String retContactPhone(String contactPhone){
-		return contactPhone;
-	}
-	public char[] retpassword(char[] rpasswordField){
-		return rpasswordField;
-	}
-	public char[] retpasswordConfirm(char[] passConfirm){
-		return passConfirm;
-	}
+	
 }

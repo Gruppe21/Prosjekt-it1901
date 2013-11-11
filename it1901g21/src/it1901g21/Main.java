@@ -52,6 +52,7 @@ public class Main {
 		pinger = new Pinger(this);
 		ph = new PasswordHash();
 		login = new Login(this);
+		registration = new Registration(this);
 		
 		date = new Date();
 		frame = new JFrame();
@@ -77,12 +78,9 @@ public class Main {
 			//pst.addSheep(sheep);
 			//pst.deleteSheep(1);
 		
-			String name = "martheoy@stud.ntnu.no";
-			pst.userExists(name);
-			
-			String mail = "kennew@stud.ntnu.no";
-			String pw = "lomper";
-			pst.checkLogin(mail, pw);
+			//String mail = "kennew@stud.ntnu.no";
+			//String pw = "lomper";
+			//pst.checkLogin(mail, pw);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,24 +89,32 @@ public class Main {
 	}
 	
 	/**
-	 * Registers a new farmer
+	 * Registers a new farmer, and saves it in the database.
+	 * Works with password hashing.
 	 * @param password the chosen password
 	 */
-	public void newFarmer(String mail, String name, String tlf, String resMail, String resTlf, String password) {
+	public void newFarmer(String firstName, String lastName, String mail, String tlf, String resMail, String resTlf, String password) {
+		
+		registration.closeRegistration();
 		String[] passwordHash = ph.createHash(password);
-		Farmer farmer = new Farmer("ost@stud.ntnu.no", "Kake Hermansen", "68347612", "itworks@gmail.com", "65823470", passwordHash[0], passwordHash[1]);
+		Farmer farmer = new Farmer(mail, firstName + " " + lastName, tlf, resMail, resTlf, passwordHash[0], passwordHash[1]);
 		pst.register(farmer);
 	}
 	
+	/**
+	 * Opens the registration window
+	 */
 	public void setRegistrationTrue(){
-		registration = new Registration();
+		registration.openRegistration();
 	}
 	
+	/**
+	 * Closes the loging window
+	 */
 	public void closeLogin(){
-		
 		login.setVisible(false);
-		
 	}
+	
 	/**
 	 * Updates and gets the current time
 	 * @return current time
