@@ -75,12 +75,12 @@ public class Profile {
 		springLayout.putConstraint(SpringLayout.EAST, lblname, 40, SpringLayout.EAST, lblContactPersonName);
 		frame.getContentPane().add(lblname);
 		
-		JLabel lblGetLastName = new JLabel("");
+		JLabel lblGetLastName = new JLabel();
 		springLayout.putConstraint(SpringLayout.NORTH, lblGetLastName, 0, SpringLayout.NORTH, lblLastName);
 		springLayout.putConstraint(SpringLayout.EAST, lblGetLastName, 0, SpringLayout.EAST, lblContactPersonName);
 		frame.getContentPane().add(lblGetLastName);
 		
-		JLabel lvlGetEmail = new JLabel();
+		JLabel lvlGetEmail = new JLabel(farmer.getMail());
 		springLayout.putConstraint(SpringLayout.WEST, lvlGetEmail, 6, SpringLayout.EAST, lblEmail);
 		springLayout.putConstraint(SpringLayout.SOUTH, lvlGetEmail, 0, SpringLayout.SOUTH, lblEmail);
 		frame.getContentPane().add(lvlGetEmail);

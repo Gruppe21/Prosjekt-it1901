@@ -16,7 +16,7 @@ import javax.swing.JButton;
 public class Registration extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField emailTextField;
 	private JTextField firstName;
 	private JLabel lblEmail;
 	private JLabel lblPassword;
@@ -46,10 +46,10 @@ public class Registration extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(199, 47, 219, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		emailTextField = new JTextField();
+		emailTextField.setBounds(199, 47, 219, 20);
+		contentPane.add(emailTextField);
+		emailTextField.setColumns(10);
 		
 		firstName = new JTextField();
 		firstName.setBounds(199, 140, 219, 20);
@@ -132,6 +132,7 @@ public class Registration extends JFrame {
 		
 		btnDone.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String rEmail = emailTextField.getText();
 				String rFirstName = firstName.getText();
 				String rLastName = lastName.getText();
 				String rphoneNumber = phoneNumber.getText();
@@ -140,6 +141,7 @@ public class Registration extends JFrame {
 				String  rcontactName = contactName.getText();
 				String rcontactTlf = contactTlf.getText();
 				
+				retEmail(rEmail);
 				retFirstName(rFirstName);
 				retLastName(rLastName);
 				retPhone(rphoneNumber);
@@ -158,6 +160,9 @@ public class Registration extends JFrame {
 		this.setVisible(false);
 	}
 	
+	public String retEmail(String email){
+		return email;
+	}
 	public String retFirstName(String name){
 		return name;
 	}
