@@ -121,7 +121,7 @@ public class Main {
 	
 	/**
 	 * Opens a given file in the default application associated with its file type.
-	 * @param filename the filename (include all folders from the project main directory)
+	 * @param filename the filename (include all sub-folders from the project's main directory)
 	 */
 	public void openFile(String filename) {
 		try {
@@ -146,8 +146,8 @@ public class Main {
 		System.out.println("Round 1, Hash: " + round1[0]);
 		System.out.println("Round 1, Salt: " + round1[1]);
 		
-		System.out.println(ph.isValidated("littlengrepassord", round1[1], round1[0]));
-		System.out.println(ph.isValidated("littlengrepassore", round1[1], round1[0]));
+		System.out.println(ph.isValidated("littlengrepassord", round1[0], round1[1]));
+		System.out.println(ph.isValidated("littlengrepassore", round1[0], round1[1]));
 		
 		/*
 		String[] round2 = ph.isValidatedDebug("littlengrepassord", round1[1], round1[0]);

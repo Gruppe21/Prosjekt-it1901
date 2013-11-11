@@ -5,6 +5,9 @@ import java.security.SecureRandom;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
+/**
+ * Class used for password hashing.
+ */
 public class PasswordHash {
 	
 	public final int SALT_BYTE_SIZE = 8;
@@ -28,17 +31,17 @@ public class PasswordHash {
 	/**
 	 * Checks if given password is correct.
 	 * @param password the given password.
-	 * @param usedSalt the salt used for the correct password hash.
 	 * @param correctHash the correct password hash to compare.
+	 * @param usedSalt the salt used for the correct password hash.
 	 * @return true if correct
 	 */
-	public boolean isValidated(String password, String usedSalt, String correctHash) {
+	public boolean isValidated(String password, String correctHash, String usedSalt) {
 		
 		// Generates the password hash with the chosen salt
 		byte[] salt = convertFromHex(usedSalt);
 		String[] hashAndSalt = generateHash(password, salt);
 		
-		// Checks if the password hashes are the same
+		// Returns whether the password hashes are the same or not
 		return hashAndSalt[0].equals(correctHash); 
 	}
 	
@@ -46,7 +49,7 @@ public class PasswordHash {
 	 * isValidated (DEBUG VERSION), return the hash and salt instead of a boolean
 	 * Only used for debugging!
 	 */
-	public String[] isValidatedDebug(String password, String usedSalt, String correctHash) {
+	public String[] isValidatedDebug(String password, String correctHash, String usedSalt) {
 		
 		byte[] salt = convertFromHex(usedSalt);
 		String[] hashAndSalt = generateHash(password, salt);
