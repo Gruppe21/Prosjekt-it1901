@@ -15,7 +15,7 @@ import javax.mail.internet.MimeMessage;
 
 public class SendMail {
 
-    public SendMail(String farmer_mail, String farmer_name, String timestamp, String sheepId, float sheepX, float sheepY) {
+    public static void sendMail(String farmer_mail, String farmer_name, String timestamp, String sheepId, String sheepX, String sheepY) {
 
         final String username = "g21.sheepalert@gmail.com";
         final String password = "imsdallomper";
@@ -42,7 +42,7 @@ public class SendMail {
             message.setSubject("ALARM! Your sheep is under attack!!!");			
             message.setText(farmer_name									//innhold i mailen
                 + "\n\n Din sau "+sheepId+" er angrepet "+timestamp+"!"
-                + "\n\n https://maps.google.com/maps/api/staticmap?size=300x300&maptype=roadmap&sensor=false&markers=color:red%7C"+sheepX+","+sheepY+"&client=google-maps-sharing&signature=0eifYVbuBJ0yQSt2ZW9PHjaf4S0=");
+                + "\n\n https://maps.google.com/maps/api/staticmap?size=300x300&maptype=roadmap&sensor=false&markers=color:red%7C"+sheepX+","+sheepY);
 
             Transport.send(message);
 
