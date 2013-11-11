@@ -17,19 +17,19 @@ public class Registration extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField_3;
+	private JTextField firstName;
 	private JLabel lblEmail;
 	private JLabel lblPassword;
 	private JLabel lblConfirmPassword;
-	private JTextField textField_4;
+	private JTextField lastName;
 	private JLabel lblFirstName;
 	private JLabel lblLastName;
-	private JTextField textField_5;
+	private JTextField phoneNumber;
 	private JLabel lblPhoneNumber;
 	private JPasswordField passwordField;
-	private JPasswordField passwordField_1;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JPasswordField passwordField_confirm;
+	private JTextField contactName;
+	private JTextField contactTlf;
 	private JLabel lblContactPersonName;
 	private JLabel lblContactPersonNumber;
 
@@ -51,10 +51,10 @@ public class Registration extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(199, 140, 219, 20);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		firstName = new JTextField();
+		firstName.setBounds(199, 140, 219, 20);
+		contentPane.add(firstName);
+		firstName.setColumns(10);
 		
 		lblEmail = new JLabel("E-mail");
 		lblEmail.setBounds(21, 50, 168, 14);
@@ -68,10 +68,10 @@ public class Registration extends JFrame {
 		lblConfirmPassword.setBounds(21, 112, 168, 14);
 		contentPane.add(lblConfirmPassword);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(199, 171, 219, 20);
-		contentPane.add(textField_4);
-		textField_4.setColumns(10);
+		lastName = new JTextField();
+		lastName.setBounds(199, 171, 219, 20);
+		contentPane.add(lastName);
+		lastName.setColumns(10);
 		
 		lblFirstName = new JLabel("First Name");
 		lblFirstName.setBounds(21, 143, 168, 14);
@@ -81,10 +81,10 @@ public class Registration extends JFrame {
 		lblLastName.setBounds(21, 174, 168, 14);
 		contentPane.add(lblLastName);
 		
-		textField_5 = new JTextField();
-		textField_5.setBounds(199, 202, 219, 20);
-		contentPane.add(textField_5);
-		textField_5.setColumns(10);
+		phoneNumber = new JTextField();
+		phoneNumber.setBounds(199, 202, 219, 20);
+		contentPane.add(phoneNumber);
+		phoneNumber.setColumns(10);
 		
 		lblPhoneNumber = new JLabel("Phone number");
 		lblPhoneNumber.setBounds(21, 205, 168, 14);
@@ -94,19 +94,19 @@ public class Registration extends JFrame {
 		passwordField.setBounds(199, 78, 219, 20);
 		contentPane.add(passwordField);
 		
-		passwordField_1 = new JPasswordField();
-		passwordField_1.setBounds(199, 109, 219, 20);
-		contentPane.add(passwordField_1);
+		passwordField_confirm = new JPasswordField();
+		passwordField_confirm.setBounds(199, 109, 219, 20);
+		contentPane.add(passwordField_confirm);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(199, 233, 219, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		contactName = new JTextField();
+		contactName.setBounds(199, 233, 219, 20);
+		contentPane.add(contactName);
+		contactName.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(199, 264, 219, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		contactTlf = new JTextField();
+		contactTlf.setBounds(199, 264, 219, 20);
+		contentPane.add(contactTlf);
+		contactTlf.setColumns(10);
 		
 		lblContactPersonName = new JLabel("Contact person Name");
 		lblContactPersonName.setBounds(21, 236, 168, 14);
@@ -130,10 +130,53 @@ public class Registration extends JFrame {
 		btnDone.setBounds(285, 295, 133, 23);
 		contentPane.add(btnDone);
 		
+		btnDone.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String rFirstName = firstName.getText();
+				String rLastName = lastName.getText();
+				String rphoneNumber = phoneNumber.getText();
+				char rpasswordField[] = passwordField.getPassword();
+				char rpasswordFieldconfirm[] = passwordField_confirm.getPassword();
+				String  rcontactName = contactName.getText();
+				String rcontactTlf = contactTlf.getText();
+				
+				retFirstName(rFirstName);
+				retLastName(rLastName);
+				retPhone(rphoneNumber);
+				retpassword(rpasswordField);
+				retpasswordConfirm(rpasswordFieldconfirm);
+				retContactName(rcontactName);
+				retContactPhone(rcontactTlf);
+			}
+			
+		});
+		
 		this.setVisible(true);
 	}
 	
 	public void closeRegistration(){
 		this.setVisible(false);
+	}
+	
+	public String retFirstName(String name){
+		return name;
+	}
+	public String retLastName(String lastname) {
+		return lastname;
+	}
+	public String retPhone(String phoneNumber){
+		return phoneNumber;
+	}
+	public String retContactName(String contactName){
+		return contactName;
+	}
+	public String retContactPhone(String contactPhone){
+		return contactPhone;
+	}
+	public char[] retpassword(char[] rpasswordField){
+		return rpasswordField;
+	}
+	public char[] retpasswordConfirm(char[] passConfirm){
+		return passConfirm;
 	}
 }
