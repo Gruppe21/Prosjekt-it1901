@@ -14,6 +14,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
+import database.Farmers;
+
 
 
 public class Login extends JFrame {
@@ -24,14 +26,17 @@ public class Login extends JFrame {
 	private Main main;
 	private Registration registration;
 	private MainScreen mainscreen;
+	private Farmers pst;
 	
 	/**
 	 * Create the frame.
 	 */
-	public Login(final Main main) {
+	public Login(final Main main, final Farmers pst) {
 		
 		this.main = main;
+		this.pst = pst;
 		registration = new Registration(main);
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -67,18 +72,16 @@ public class Login extends JFrame {
 		
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 
-				/**
-				 * manglende kode:
-				 * if usrname+password in db == true
-				 * 		open registration
-				 * else
-				 * 		error message
-				 */
+
+				@SuppressWarnings("deprecation")
+				String pw = passwordField.getText();
+				String li = textField.getText();
 				
-				MainScreen mainscreen = new MainScreen();
-				main.closeLogin();
-				
+				if (pst.checkLogin(li, pw)){
+					System.out.println("Successfully logged in.");
+					MainScreen mainscreen = new MainScreen();
+					main.closeLogin();
+				}
 			}
 		});
 		

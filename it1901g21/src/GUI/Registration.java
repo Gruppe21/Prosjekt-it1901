@@ -20,7 +20,7 @@ public class Registration extends JFrame {
 	private Main main;
 	
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField emailTextField;
 	private JTextField firstName;
 	private JLabel lblEmail;
 	private JLabel lblPassword;
@@ -53,10 +53,10 @@ public class Registration extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(199, 47, 219, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		emailTextField = new JTextField();
+		emailTextField.setBounds(199, 47, 219, 20);
+		contentPane.add(emailTextField);
+		emailTextField.setColumns(10);
 		
 		firstName = new JTextField();
 		firstName.setBounds(199, 140, 219, 20);
@@ -139,7 +139,7 @@ public class Registration extends JFrame {
 		
 		btnDone.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				String rFirstName = firstName.getText();
 				String rLastName = lastName.getText();
 				String rMail = lblEmail.getText();
