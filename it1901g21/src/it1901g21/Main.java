@@ -118,7 +118,7 @@ public class Main {
 	}
 	
 	/**
-	 * Closes the loging window
+	 * Closes the login window
 	 */
 	public void closeLogin(){
 		login.setVisible(false);
