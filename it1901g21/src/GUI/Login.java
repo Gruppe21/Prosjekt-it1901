@@ -14,6 +14,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
+import database.Farmers;
+
 
 
 public class Login extends JFrame {
