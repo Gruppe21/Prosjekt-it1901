@@ -42,7 +42,7 @@ public class SendMail {
             message.setSubject("ALARM! Your sheep is under attack!!!");			
             message.setText(farmer_name									//innhold i mailen
                 + "\n\n Din sau "+sheepId+" er angrepet "+timestamp+"!"
-                + "\n\n https://maps.google.com/maps/api/staticmap?size=600x600&maptype=roadmap&sensor=false&markers=color:red%7C"+sheepX+","+sheepY+"&client=google-maps-sharing&signature=0eifYVbuBJ0yQSt2ZW9PHjaf4S0=");
+                + "\n\n https://maps.google.com/maps/api/staticmap?size=300x300&maptype=roadmap&sensor=false&markers=color:red%7C"+sheepX+","+sheepY+"&client=google-maps-sharing&signature=0eifYVbuBJ0yQSt2ZW9PHjaf4S0=");
 
             Transport.send(message);
 
