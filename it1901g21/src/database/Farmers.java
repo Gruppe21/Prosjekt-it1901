@@ -152,13 +152,14 @@ public class Farmers extends SQL {
 	 */
 	public String getPassword(String inputUsername) {
 		String password = null;
-		
 		try {
-			preparedStatement = connect.prepareStatement("SELECT Password FROM Farmers WHERE Mail = "+ inputUsername + "");
+			preparedStatement = connect.prepareStatement("SELECT Password FROM Farmers WHERE Mail = '"+ inputUsername + "'");
 			resultSet = preparedStatement.executeQuery();
+			
 			password = resultSet.getString("Password");
+			
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Exception getPassword");
 		}
 		return password;
 	}
@@ -167,13 +168,13 @@ public class Farmers extends SQL {
 	 * Takes email and password as argument
 	 * Checks wheter the given email/password matches the email/password in the database
 	 */
-/*	public boolean checkLogin(String username, String password) {
+	public boolean checkLogin(String username, String password) {
 		if (userExists(username) && getPassword(username) == password) {
 			return true;
 		} else {
 			return false;
 		}
-	}*/
+	}
 
 	/**
 	 * Loads all sheep of a given farmer into a ArrayList
