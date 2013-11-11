@@ -95,20 +95,20 @@ public class Farmers extends SQL {
 	
 	/**
 	 * Loads the farmer from the database 
-	 * @param passwordHash the farmers hashed password
+	 * @param mail the farmer's mail
 	 * @return the farmer 
 	 */
-	public Farmer getFarmer(String passwordHash) {
+	public Farmer getFarmer(String mail) {
 		
 		try {
-			preparedStatement = connect.prepareStatement("SELECT * FROM Farmers WHERE PasswordHash = ?");
-			preparedStatement.setString(1, passwordHash);
+			preparedStatement = connect.prepareStatement("SELECT * FROM Farmers WHERE Mail = ?");
+			preparedStatement.setString(1, mail);
 			resultSet = preparedStatement.executeQuery();
 			
 			if (!resultSet.next()) {
 				System.out.println("No farmer found!");
 				return null;
-			}
+			} 
 			
 			Farmer farmer = new Farmer();
 			
@@ -116,9 +116,9 @@ public class Farmers extends SQL {
 			farmer.setName(resultSet.getString("Name"));
 			farmer.setPasswordHash(resultSet.getString("PasswordHash"));
 			farmer.setSalt(resultSet.getString("Salt"));
-			farmer.setTlf(resultSet.getString("Tlf"));
-			farmer.setResMail(resultSet.getString("ResMail"));
-			farmer.setResTlf(resultSet.getString("ResTlf"));
+			farmer.setTlf(resultSet.getString("Phone"));
+			farmer.setResMail(resultSet.getString("ReserveMail"));
+			farmer.setResTlf(resultSet.getString("ReservePhone"));
 			
 			return farmer;
 		}
