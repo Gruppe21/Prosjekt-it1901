@@ -19,7 +19,7 @@ public class Farmers extends SQL {
 	/**
 	 * Register farmer to the database.
 	 */
-	public void register(Farmer farmer, String passwordHash, String salt){
+	public void register(Farmer farmer){
 		try {
 			preparedStatement = connect.prepareStatement("INSERT INTO Farmers (Mail, Name, Phone, ReserveMail, ReservePhone, PasswordHash, Salt) VALUES(?, ?, ?, ?, ?, ?, ?)");
 			preparedStatement.setString(1, farmer.getMail());
@@ -27,8 +27,8 @@ public class Farmers extends SQL {
 			preparedStatement.setString(3, farmer.getTlf());
 			preparedStatement.setString(4, farmer.getResMail());
 			preparedStatement.setString(5, farmer.getResTlf());
-			preparedStatement.setString(6, passwordHash);
-			preparedStatement.setString(7, salt);
+			preparedStatement.setString(6, farmer.getPasswordHash());
+			preparedStatement.setString(7, farmer.getSalt());
 			preparedStatement.executeUpdate();
 		} 
 		catch (SQLException ex){

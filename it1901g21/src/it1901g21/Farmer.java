@@ -25,12 +25,14 @@ public class Farmer {
 	 * @param resMail the farmer's reserve mail
 	 * @param resTlf the farmer's reserve phone
 	 */
-	public Farmer(String mail, String name, String tlf, String resMail, String resTlf) {
+	public Farmer(String mail, String name, String tlf, String resMail, String resTlf, String passwordHash, String salt) {
 		this.mail = mail;
 		this.name = name;
 		this.tlf = tlf;
 		this.resMail = resMail;
 		this.resTlf = resTlf;
+		this.passwordHash = passwordHash;
+		this.salt = salt;
 		sheep = new ArrayList<Sheep>();
 	}
 	

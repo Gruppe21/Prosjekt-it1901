@@ -25,6 +25,7 @@ public class Main {
 	
 	private Farmers pst;
 	private Pinger pinger;
+	private PasswordHash ph;
 	private Login login;
 	private Registration registration;
 	
@@ -49,6 +50,7 @@ public class Main {
 		
 		pst = new Farmers();
 		pinger = new Pinger(this);
+		ph = new PasswordHash();
 		login = new Login(this);
 		
 		date = new Date();
@@ -74,7 +76,7 @@ public class Main {
 			//Sheep sheep = new Sheep(2, 55, "JKL8654", 102009, 39, "Frisk", "63.432473","10.349329");
 			//pst.addSheep(sheep);
 			//pst.deleteSheep(1);
-
+			
 			String name = "martheoy@stud.ntnu.no";
 			pst.userExists(name);
 			
@@ -84,8 +86,18 @@ public class Main {
 		
 	}
 	
+	/**
+	 * Registers a new farmer
+	 * @param password the chosen password
+	 */
+	public void newFarmer(String mail, String name, String tlf, String resMail, String resTlf, String password) {
+		String[] passwordHash = ph.createHash(password);
+		Farmer farmer = new Farmer("ost@stud.ntnu.no", "Kake Hermansen", "68347612", "itworks@gmail.com", "65823470", passwordHash[0], passwordHash[1]);
+		pst.register(farmer);
+	}
+	
 	public void setRegistrationTrue(){
-		Registration registration = new Registration();
+		registration = new Registration();
 	}
 	
 	public void closeLogin(){
