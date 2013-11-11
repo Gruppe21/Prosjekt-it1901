@@ -44,8 +44,17 @@ public class MainScreen extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		String xtestlist[]={"63.430510","63.42671"};
+		String ytestlist[]={"10.395050","10.39744"};
+		
+		String waypoints = "";
+		
+		for (int i = 0; i < xtestlist.length; i++) {
+			waypoints = waypoints + "&markers=color:blue%7Clabel:S%7C" + xtestlist[i] + "," + ytestlist[i];
+		}
+		
 		try {
-            String imageUrl = "http://maps.google.com/maps/api/staticmap?center=Trondheim&zoom=13&size=243x221&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Ccolor:red%7Clabel:C%7C40.718217,-73.998284&sensor=false";
+            String imageUrl = "http://maps.google.com/maps/api/staticmap?center=Trondheim&zoom=13&size=243x221&maptype=satellite"+ waypoints +"&sensor=false";
             String destinationFile = "image.jpg";
             String str = destinationFile;
             URL url = new URL(imageUrl);
