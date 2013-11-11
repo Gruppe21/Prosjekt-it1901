@@ -169,11 +169,9 @@ public class Farmers extends SQL {
 	 * Checks wheter the given email/password matches the email/password in the database
 	 */
 	public boolean checkLogin(String username, String password) {
-		if (userExists(username) && getPassword(username) == password) {
-			System.out.println("Brukeren " + username + " er nå logget inn.");
+		if (userExists(username) && password.equals(getPassword(username))) {
 			return true;
 		} else {
-			System.out.println("Oppgitt brukernavn: "+ username +"\nOppgitt passord: \""+ password +"\", riktig passord: \""+ getPassword(username) +"\"");
 			return false;
 		}
 	}
