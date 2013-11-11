@@ -1,6 +1,7 @@
 package GUI;
 
 import it1901g21.Farmer;
+import it1901g21.Main;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -12,14 +13,16 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 
 public class Profile {
-
+	
+	private Main main;
 	private JFrame frame;
 
 	/**
 	 * Create the application.
 	 */
-	public Profile() {
-		Farmer farmer = new Farmer();
+	public Profile(Main main) {
+		this.main = main;
+		Farmer farmer = this.main.getFarmer();
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 300, 259);

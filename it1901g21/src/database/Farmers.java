@@ -30,6 +30,8 @@ public class Farmers extends SQL {
 			preparedStatement.setString(6, farmer.getPasswordHash());
 			preparedStatement.setString(7, farmer.getSalt());
 			preparedStatement.executeUpdate();
+			
+			//statement.executeQuery("INSERT INTO Farmers (Mail, Name, Phone, ReserveMail, ReservePhone, PasswordHash, Salt) VALUES(" + farmer.getMail() + "," + farmer.getName() + "," + farmer.getTlf() + "," + farmer.getResMail() + "," + farmer.getResTlf() + "," + farmer.getPasswordHash() + "," + farmer.getSalt() + ")");
 		} 
 		catch (SQLException ex){
 			Logger lgr = Logger.getLogger(Farmers.class.getName());

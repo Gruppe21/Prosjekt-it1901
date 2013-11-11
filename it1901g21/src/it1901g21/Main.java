@@ -30,8 +30,8 @@ public class Main {
 	private PasswordHash ph;
 	private Login login;
 	private Registration registration;
+	private MainScreen mainscreen;
 	
-	private JFrame frame;
 	private Date date;
 	
 	private final String PROJECTPATH;
@@ -55,9 +55,9 @@ public class Main {
 		ph = new PasswordHash();
 
 		login = new Login(this, pst);
+		mainscreen = new MainScreen(this);
 		
 		date = new Date();
-		frame = new JFrame();
 		
 		databaseTest();
 		//hashTest();
@@ -106,7 +106,7 @@ public class Main {
 		
 		if (pst.checkLogin(li, pw)){
 			System.out.println("Successfully logged in.");
-			MainScreen mainscreen = new MainScreen();
+			
 			this.closeLogin();
 		} else if (pw.equals("") || li.equals("")) {
 			ErrorMessage errormsg = new ErrorMessage("","Please enter your email and password.");
@@ -134,6 +134,13 @@ public class Main {
 	 */
 	public void loadFarmer(Farmer farmer) {
 		this.farmer = farmer;
+	}
+	
+	/**
+	 * Returns the farmer.
+	 */
+	public Farmer getFarmer() {
+		return farmer;
 	}
 	
 	/**

@@ -1,4 +1,6 @@
 package GUI;
+import it1901g21.Main;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -24,13 +26,17 @@ import javax.swing.JScrollPane;
 
 
 public class MainScreen extends JFrame {
-
+	
+	private Main main;
 	private JPanel contentPane;
 	
 	/**
 	 * Create the frame.
 	 */
-	public MainScreen() {
+	public MainScreen(Main main) {
+		
+		this.main = main;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 691, 529);
 		contentPane = new JPanel();
@@ -100,7 +106,7 @@ public class MainScreen extends JFrame {
 		
 		btnProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Profile profile = new Profile();
+				Profile profile = new Profile(getMain());
 			}
 		});
 		
@@ -135,7 +141,13 @@ public class MainScreen extends JFrame {
 		
 		JList list = new JList(listmodel);
 		scrollPane.setViewportView(list);
-		
+	}
+	
+	public void setVisible() {
 		this.setVisible(true);
+	}
+	
+	private Main getMain() {
+		return main;
 	}
 }
