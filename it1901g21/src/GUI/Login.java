@@ -81,6 +81,10 @@ public class Login extends JFrame {
 					System.out.println("Successfully logged in.");
 					MainScreen mainscreen = new MainScreen();
 					main.closeLogin();
+				} else if (pw.equals("") || li.equals("")) {
+					ErrorMessage errormsg = new ErrorMessage("","Please enter your email and password.");
+				} else {
+					ErrorMessage errormsg = new ErrorMessage("Login failed","Your email or password were incorrect. Please try again.");
 				}
 			}
 		});
