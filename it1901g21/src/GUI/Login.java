@@ -31,11 +31,11 @@ public class Login extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Login(final Main main, final Farmers pst) {
+	public Login(Main main, Farmers pst, Registration registration) {
 		
 		this.main = main;
 		this.pst = pst;
-		registration = new Registration(main);
+		this.registration = registration;
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -74,9 +74,9 @@ public class Login extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				String pw = new String(passwordField.getPassword());
-				String li = textField.getText();
+				String em = textField.getText();
 				
-				sendLogIn(new String[] {li, pw});
+				sendLogIn(new String[] {em, pw});
 			}
 		});
 		
@@ -87,7 +87,7 @@ public class Login extends JFrame {
 		
 		btnNewUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				registration.openRegistration();
+				openRegistrationWindow();
 				
 			}
 		});
@@ -111,6 +111,10 @@ public class Login extends JFrame {
 	 */
 	public void sendLogIn(String[] info) {
 		main.logIn(info);
+	}
+	
+	private void openRegistrationWindow() {
+		registration.openRegistration();
 	}
 	
 }

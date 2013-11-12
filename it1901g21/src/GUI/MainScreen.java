@@ -28,14 +28,17 @@ import javax.swing.JScrollPane;
 public class MainScreen extends JFrame {
 	
 	private Main main;
+	private RegiSheep regiSheep;
+	
 	private JPanel contentPane;
 	
 	/**
 	 * Create the frame.
 	 */
-	public MainScreen(Main main) {
+	public MainScreen(Main main, RegiSheep regiSheep) {
 		
 		this.main = main;
+		this.regiSheep = regiSheep;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 691, 529);
@@ -45,9 +48,8 @@ public class MainScreen extends JFrame {
 		contentPane.setLayout(null);
 		
 		/*
-		 * creates static img of map
+		 * Creates static img of map
 		 */
-		
 		String xlist[]={};
 		String ylist[]={};
 		
@@ -93,7 +95,7 @@ public class MainScreen extends JFrame {
 		
 		btnAddSheep.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RegiSheep addSheep = new RegiSheep();
+				openRegiSheepWindow();
 			}
 		});
 		
@@ -156,8 +158,15 @@ public class MainScreen extends JFrame {
 		scrollPane.setViewportView(list);
 	}
 	
-	public void setVisible() {
+	/**
+	 * Opens the main-screen window
+	 */
+	public void openMainScreen() {
 		this.setVisible(true);
+	}
+	
+	private void openRegiSheepWindow() {
+		regiSheep.openRegiSheep();
 	}
 	
 	private Main getMain() {

@@ -81,10 +81,15 @@ public class RegiSheep extends JFrame {
 		
 		JLabel lblVekt = new JLabel("Weight:");
 		lblVekt.setBounds(57, 127, 124, 14);
-		contentPane.add(lblVekt);
+		contentPane.add(lblVekt);	
 		
-		this.setVisible(true);	
-		
+	}
+	
+	/**
+	 * Method to open window
+	 */
+	public void openRegiSheep() {
+		this.setVisible(true);
 	}
 	
 	/**

@@ -17,6 +17,7 @@ import database.PasswordHash;
 import GUI.ErrorMessage;
 import GUI.Login;
 import GUI.MainScreen;
+import GUI.RegiSheep;
 import GUI.Registration;
 
 /**
@@ -28,9 +29,12 @@ public class Main {
 	private Farmers pst;
 	private Pinger pinger;
 	private PasswordHash ph;
+	
+	/* GUI classes */
+	private MainScreen mainscreen;
 	private Login login;
 	private Registration registration;
-	private MainScreen mainscreen;
+	private RegiSheep regiSheep;
 	
 	private Date date;
 	
@@ -54,51 +58,36 @@ public class Main {
 		pinger = new Pinger(this);
 		ph = new PasswordHash();
 		
-		login = new Login(this, pst);
-		mainscreen = new MainScreen(this);
+		regiSheep = new RegiSheep();
+		mainscreen = new MainScreen(this, regiSheep);
+		registration = new Registration(this);
+		login = new Login(this, pst, registration);
 		
 		date = new Date();
 		
-		databaseTest();
-		//hashTest();
-	}
-	
-	/**
-	 * For testing the database
-	 */
-	private void databaseTest() {
-		
 		try {
-		pst.connect();
-		
-		/**
-		 * Oppretter ny sau, legger den til i db
-		 */
-		// Sheep sheep = new Sheep(2, 55, "JKL8654", 102009, 39, "Frisk",
-		// "63.432473","10.349329");
-		// pst.addSheep(sheep);
-		// pst.deleteSheep(1);
-			
-		} catch (Exception e) {
+			pst.connect();
+		}
+		catch(Exception e) {
+			System.out.println("Cannot connect to database!");
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public void logIn(String[] info) {
 		
-		String li = info[0];
+		String em = info[0];
 		String pw = info[1];
 		
-		if (pst.checkLogin(li, pw)){
+		if (pst.checkLogin(em, pw)){
 			
-			mainscreen.setVisible();
+			mainscreen.openMainScreen();
 			this.closeLogin();
 			
-			this.loadFarmer(pst.getFarmer(li));
+			this.loadFarmer(pst.getFarmer(em));
 			System.out.println("Successfully logged in as " + this.getFarmer().getName());
 			
-		} else if (pw.equals("") || li.equals("")) {
+		} else if (pw.equals("") || em.equals("")) {
 			ErrorMessage errormsg = new ErrorMessage("","Please enter your email and password.");
 		} else {
 			ErrorMessage errormsg = new ErrorMessage("Login failed","Your email or password were incorrect. Please try again.");
@@ -131,13 +120,6 @@ public class Main {
 	 */
 	public Farmer getFarmer() {
 		return this.farmer;
-	}
-	
-	/**
-	 * Opens the registration window
-	 */
-	public void setRegistrationTrue(){
-		registration.openRegistration();
 	}
 	
 	/**
@@ -189,6 +171,26 @@ public class Main {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * For testing the database
+	 */
+	private void databaseTest() {
+		
+		try {
+			
+			/**
+			 * Oppretter ny sau, legger den til i db
+			 */
+			// Sheep sheep = new Sheep(2, 55, "JKL8654", 102009, 39, "Frisk",
+			// "63.432473","10.349329");
+			// pst.addSheep(sheep);
+			// pst.deleteSheep(1);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
 	}
 	
 	/**
