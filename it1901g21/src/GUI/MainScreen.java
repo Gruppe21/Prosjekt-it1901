@@ -134,33 +134,6 @@ public class MainScreen extends JFrame {
 		btnAlarm.setBounds(168, 155, 113, 45);
 		contentPane.add(btnAlarm);
 		
-		/**
-		 * Create and populate List
-		 */
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(331, 74, 306, 358);
-		contentPane.add(scrollPane);
-		
-		DefaultListModel listmodel = new DefaultListModel();
-		
-		for (int i = 0; i < this.main.getFarmer().getSheepHerd().size(); i++){
-			listmodel.addElement(this.main.getFarmer().getSheepHerd().get(i).getEarTag());
-		}
-		
-		/**
-		 * test code to fill list..
-		 */
-		/*for (int x = 0; x < 10; x += 1) {
-			listmodel.addElement("herp");
-			listmodel.addElement("derp");
-			listmodel.addElement("bla");
-			listmodel.addElement("bla");
-			listmodel.addElement("bla");
-			listmodel.addElement("bla");
-		}
-		*/
-		JList list = new JList(listmodel);
-		scrollPane.setViewportView(list);
 	}
 	
 	/**
@@ -169,7 +142,25 @@ public class MainScreen extends JFrame {
 	public void openMainScreen() {
 		this.setVisible(true);
 	}
-	
+	public void addListSheep() {
+		
+		DefaultListModel listmodel = new DefaultListModel();
+		
+		JList list = new JList(listmodel);
+		
+		/**
+		 * Create and populate List
+		 */
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(331, 74, 306, 358);
+		contentPane.add(scrollPane);
+		
+		scrollPane.setViewportView(list);
+		
+		for (int i = 0; i < this.main.getFarmer().getSheepHerd().size(); i++){
+			listmodel.addElement(this.main.getFarmer().getSheepHerd().get(i).getEarTag());	
+		}
+	}	
 	private void openRegiSheepWindow() {
 		regiSheep.openRegiSheep();
 	}

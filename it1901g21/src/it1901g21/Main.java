@@ -89,6 +89,7 @@ public class Main {
 			
 			//Loads the logged-in farmer's sheep
 			this.getFarmer().setSheepHerd(pst.farmersSheep(this.getFarmer().getId()));
+			this.mainscreen.addListSheep();
 			
 			System.out.println("Successfully logged in as " + this.getFarmer().getName());
 			
