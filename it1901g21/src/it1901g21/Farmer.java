@@ -133,14 +133,6 @@ public class Farmer {
 	}
 	
 	/**
-	 * Adds sheep to farmer's sheep herd
-	 * @param sheep
-	 */
-	public void addSheep(Sheep sheep) {
-		this.sheep.add(sheep);
-	}
-	
-	/**
 	 * Sets the farmer's sheep herd to given herd
 	 * @param sheep ArrayList sheep
 	 */

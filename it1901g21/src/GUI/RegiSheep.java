@@ -26,7 +26,7 @@ public class RegiSheep extends JFrame {
 	private JTextField Weight_textField;
 	private JButton btnNewButton;
 	private JButton btnAvbryt;
-
+	
 	/**
 	 * Create the frame.
 	 */
@@ -90,6 +90,12 @@ public class RegiSheep extends JFrame {
 				String weight = Weight_textField.getText();
 				
 				sendAddSheep(sheepNumber, birthDate, health, weight);
+				
+				// Resets all the text fields
+				EarTag_textField.setText(null);
+				BirthDate_textField.setText(null);
+				Health_textField.setText(null);
+				Weight_textField.setText(null);
 			}
 		});
 		

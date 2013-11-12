@@ -31,6 +31,8 @@ public class MainScreen extends JFrame {
 	private RegiSheep regiSheep;
 	
 	private JPanel contentPane;
+	private JScrollPane scrollPane;
+	private DefaultListModel listmodel;
 	
 	/**
 	 * Create the frame.
@@ -134,6 +136,16 @@ public class MainScreen extends JFrame {
 		btnAlarm.setBounds(168, 155, 113, 45);
 		contentPane.add(btnAlarm);
 		
+		/**
+		 * Create list
+		 */
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(331, 74, 306, 358);
+		contentPane.add(scrollPane);
+		
+		listmodel = new DefaultListModel();
+		JList list = new JList(listmodel);
+		scrollPane.setViewportView(list);
 	}
 	
 	/**
@@ -142,25 +154,18 @@ public class MainScreen extends JFrame {
 	public void openMainScreen() {
 		this.setVisible(true);
 	}
-	public void addListSheep() {
+	
+	/**
+	 * Updates the list of sheep
+	 */
+	public void updateListSheep() {
 		
-		DefaultListModel listmodel = new DefaultListModel();
-		
-		JList list = new JList(listmodel);
-		
-		/**
-		 * Create and populate List
-		 */
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(331, 74, 306, 358);
-		contentPane.add(scrollPane);
-		
-		scrollPane.setViewportView(list);
-		
+		listmodel.clear();
 		for (int i = 0; i < this.main.getFarmer().getSheepHerd().size(); i++){
 			listmodel.addElement(this.main.getFarmer().getSheepHerd().get(i).getEarTag());	
 		}
-	}	
+	}
+	
 	private void openRegiSheepWindow() {
 		regiSheep.openRegiSheep();
 	}

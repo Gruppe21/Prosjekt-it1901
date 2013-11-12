@@ -87,9 +87,11 @@ public class Main {
 			// Loads the logged-in farmer into the program
 			this.loadFarmer(pst.getFarmer(em));
 			
-			//Loads the logged-in farmer's sheep
+			// Loads the logged-in farmer's sheep
 			this.getFarmer().setSheepHerd(pst.farmersSheep(this.getFarmer().getId()));
-			this.mainscreen.addListSheep();
+			
+			// Loads the sheep into the GUI list
+			this.mainscreen.updateListSheep();
 			
 			System.out.println("Successfully logged in as " + this.getFarmer().getName());
 			
@@ -138,8 +140,23 @@ public class Main {
 	public void addSheep(String sheepNumber, String birthDate, String health, int weight) {
 		
 		Sheep sheep = new Sheep(this.getFarmer().getId(), sheepNumber, birthDate, weight, health, "63.415884", "10.403452");
-		farmer.addSheep(sheep);
 		pst.addSheep(sheep);
+		this.update();
+	}
+	
+	/**
+	 * Updates the farmer object in the local program to match the farmer in the database.
+	 * Also updates all GUI stuff.
+	 * ALWAYS USE THIS AFTER SOMETHING CHANGES!
+	 */
+	public void update() {
+		
+		//Updates the farmer's sheep herd
+		this.getFarmer().setSheepHerd(pst.farmersSheep(this.getFarmer().getId()));
+		
+		/* All GUI updates */
+		mainscreen.updateListSheep();
+		
 	}
 	
 	/**
