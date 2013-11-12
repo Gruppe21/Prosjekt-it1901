@@ -58,7 +58,7 @@ public class Main {
 		pinger = new Pinger(this);
 		ph = new PasswordHash();
 		
-		regiSheep = new RegiSheep();
+		regiSheep = new RegiSheep(this);
 		mainscreen = new MainScreen(this, regiSheep);
 		registration = new Registration(this);
 		login = new Login(this, pst, registration);
@@ -127,6 +127,13 @@ public class Main {
 	 */
 	public void closeLogin(){
 		login.setVisible(false);
+	}
+	
+	public void addSheep(String sheepNumber, String birthDate, String health, int weight) {
+		
+		Sheep sheep = new Sheep(this.getFarmer().getId(), sheepNumber, birthDate, weight, health, "63.415884", "10.403452");
+		farmer.addSheep(sheep);
+		pst.addSheep(sheep);
 	}
 	
 	/**

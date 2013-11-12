@@ -1,4 +1,7 @@
 package GUI;
+
+import it1901g21.Main;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -13,7 +16,9 @@ import javax.swing.JButton;
 
 
 public class RegiSheep extends JFrame {
-
+	
+	Main main;
+	
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
@@ -25,7 +30,10 @@ public class RegiSheep extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public RegiSheep() {
+	public RegiSheep(Main main) {
+		
+		this.main = main;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 243);
 		contentPane = new JPanel();
@@ -73,6 +81,18 @@ public class RegiSheep extends JFrame {
 		btnAvbryt.setBounds(10, 171, 124, 23);
 		contentPane.add(btnAvbryt);
 		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String sheepNumber = textField.getText();
+				String birthDate = textField_1.getText();
+				String health = textField_2.getText();
+				String weight = textField_3.getText();
+				
+				sendAddSheep(sheepNumber, birthDate, health, weight);
+			}
+		});
+		
 		btnAvbryt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeRegiSheep();
@@ -83,6 +103,26 @@ public class RegiSheep extends JFrame {
 		lblVekt.setBounds(57, 127, 124, 14);
 		contentPane.add(lblVekt);	
 		
+	}
+	
+	/**
+	 * Sends the prompt to create the new sheep to Main
+	 */
+	private void sendAddSheep(String sheepNumber, String birthDate, String health, String weight) {
+		
+		int weight_int = 0;
+		
+		try {
+			weight_int = Integer.parseInt(weight);
+		}
+		catch (Exception e) {
+			System.out.println("Invalid weight");
+			e.printStackTrace();
+			return;
+		}
+		
+		closeRegiSheep();
+		main.addSheep(sheepNumber, birthDate, health, weight_int);
 	}
 	
 	/**

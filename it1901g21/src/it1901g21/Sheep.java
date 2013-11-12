@@ -9,7 +9,7 @@ public class Sheep {
 	private int farmerId;
 	private int id;
 	private String earTag;
-	private int birthMonth;
+	private String birthDate;
 	private int weight;
 	private String health;
 	private String xPos;
@@ -26,11 +26,10 @@ public class Sheep {
 	 * @param xPos the x-position of the sheep
 	 * @param yPos the y-position of the sheep
 	 */
-	public Sheep(int farmerId, int id, String earTag, int birthMonth, int weight, String health, String xPos, String yPos) {
+	public Sheep(int farmerId, String earTag, String birthDate, int weight, String health, String xPos, String yPos) {
 		this.farmerId = farmerId;
-		this.id = id;
 		this.earTag = earTag;
-		this.birthMonth = birthMonth;
+		this.birthDate = birthDate;
 		this.weight = weight;
 		this.health = health;
 		this.xPos = xPos;
@@ -56,8 +55,8 @@ public class Sheep {
 		return earTag;
 	}
 	
-	public int getBirthMonth() {
-		return birthMonth;
+	public String getBirthDate() {
+		return birthDate;
 	}
 	
 	public int getWeigth() {
@@ -89,7 +88,7 @@ public class Sheep {
 	}
 	
 	public void setBirthMonth(int birthMonth) {
-		this.birthMonth = birthMonth;
+		this.birthDate = birthDate;
 	}
 	
 	public void setWeight(int weight) {

@@ -8,6 +8,7 @@ import java.util.ArrayList;
  */
 public class Farmer {
 	
+	private int id;
 	private String mail;
 	private String name;
 	private String passwordHash;
@@ -19,6 +20,26 @@ public class Farmer {
 	
 	/**
 	 * Standard farmer constructor
+	 * @param mail the farmer's mail
+	 * @param name the farmer's name
+	 * @param tlf the farmers' phone number
+	 * @param resMail the farmer's reserve mail
+	 * @param resTlf the farmer's reserve phone
+	 */
+	public Farmer(int id, String mail, String name, String tlf, String resMail, String resTlf, String passwordHash, String salt) {
+		this.id = id;
+		this.mail = mail;
+		this.name = name;
+		this.tlf = tlf;
+		this.resMail = resMail;
+		this.resTlf = resTlf;
+		this.passwordHash = passwordHash;
+		this.salt = salt;
+		sheep = new ArrayList<Sheep>();
+	}
+	
+	/**
+	 * Alternative farmer constructor without farmerId
 	 * @param mail the farmer's mail
 	 * @param name the farmer's name
 	 * @param tlf the farmers' phone number
@@ -41,6 +62,10 @@ public class Farmer {
 	 */
 	public Farmer() {
 		sheep = new ArrayList<Sheep>();
+	}
+	
+	public int getId() {
+		return id;
 	}
 	
 	public String getMail() {
@@ -75,6 +100,10 @@ public class Farmer {
 		return sheep;
 	}
 	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
@@ -103,6 +132,18 @@ public class Farmer {
 		this.resTlf = resTlf;
 	}
 	
+	/**
+	 * Adds sheep to farmer's sheep herd
+	 * @param sheep
+	 */
+	public void addSheep(Sheep sheep) {
+		this.sheep.add(sheep);
+	}
+	
+	/**
+	 * Sets the farmer's sheep herd to given herd
+	 * @param sheep ArrayList sheep
+	 */
 	public void setSheepHerd(ArrayList<Sheep> sheep) {
 		this.sheep = sheep;
 	}

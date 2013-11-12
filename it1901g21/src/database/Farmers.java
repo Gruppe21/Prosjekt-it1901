@@ -61,11 +61,11 @@ public class Farmers extends SQL {
 	 */
 	public void addSheep(Sheep sheep){		
 		try {	
-			preparedStatement = connect.prepareStatement("INSERT INTO Sheep (FarmerId, Id, Eartag, BirthMonth, Weight, Health, Xpos, Ypos) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
+			preparedStatement = connect.prepareStatement("INSERT INTO Sheep (FarmerId, Id, Eartag, BirthDate, Weight, Health, Xpos, Ypos) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
 			preparedStatement.setInt(1, sheep.getFarmerId());
 			preparedStatement.setInt(2, sheep.getId());
 			preparedStatement.setString(3, sheep.getEarTag());
-			preparedStatement.setInt(4, sheep.getBirthMonth());
+			preparedStatement.setString(4, sheep.getBirthDate());
 			preparedStatement.setInt(5, sheep.getWeigth());
 			preparedStatement.setString(6, sheep.getHealth());
 			preparedStatement.setString(7, sheep.getXPos());
@@ -112,6 +112,7 @@ public class Farmers extends SQL {
 			
 			Farmer farmer = new Farmer();
 			
+			farmer.setId(resultSet.getInt("Id"));
 			farmer.setMail(resultSet.getString("Mail"));
 			farmer.setName(resultSet.getString("Name"));
 			farmer.setPasswordHash(resultSet.getString("PasswordHash"));
@@ -209,7 +210,7 @@ public class Farmers extends SQL {
 				Sheep sheep = new Sheep();
 				
 				sheep.setEarTag(resultSet.getString("EarTag"));
-				sheep.setBirthMonth(resultSet.getInt("BirthMonth"));
+				sheep.setBirthMonth(resultSet.getInt("BirthDate"));
 				sheep.setWeight(resultSet.getInt("Weight"));
 				sheep.setHealth(resultSet.getString("Health"));
 				sheep.setXPos(resultSet.getString("Xpos"));
