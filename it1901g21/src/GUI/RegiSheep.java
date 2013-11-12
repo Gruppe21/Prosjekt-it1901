@@ -20,10 +20,10 @@ public class RegiSheep extends JFrame {
 	Main main;
 	
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField EarTag_textField;
+	private JTextField BirthDate_textField;
+	private JTextField Health_textField;
+	private JTextField Weight_textField;
 	private JButton btnNewButton;
 	private JButton btnAvbryt;
 
@@ -41,32 +41,32 @@ public class RegiSheep extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(191, 31, 209, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		EarTag_textField = new JTextField();
+		EarTag_textField.setBounds(191, 31, 209, 20);
+		contentPane.add(EarTag_textField);
+		EarTag_textField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(191, 62, 209, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		BirthDate_textField = new JTextField();
+		BirthDate_textField.setBounds(191, 62, 209, 20);
+		contentPane.add(BirthDate_textField);
+		BirthDate_textField.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(191, 93, 209, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		Health_textField = new JTextField();
+		Health_textField.setBounds(191, 93, 209, 20);
+		contentPane.add(Health_textField);
+		Health_textField.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(191, 124, 209, 20);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		Weight_textField = new JTextField();
+		Weight_textField.setBounds(191, 124, 209, 20);
+		contentPane.add(Weight_textField);
+		Weight_textField.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("Sheep number");
+		JLabel lblNewLabel = new JLabel("Eartag ID");
 		lblNewLabel.setBounds(57, 34, 124, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblHelse = new JLabel("Birth Date yyyy.mm.dd:");
-		lblHelse.setBounds(57, 65, 124, 14);
+		lblHelse.setBounds(57, 65, 135, 14);
 		contentPane.add(lblHelse);
 		
 		JLabel lblAlder = new JLabel("Health:");
@@ -84,10 +84,10 @@ public class RegiSheep extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String sheepNumber = textField.getText();
-				String birthDate = textField_1.getText();
-				String health = textField_2.getText();
-				String weight = textField_3.getText();
+				String sheepNumber = EarTag_textField.getText();
+				String birthDate = BirthDate_textField.getText();
+				String health = Health_textField.getText();
+				String weight = Weight_textField.getText();
 				
 				sendAddSheep(sheepNumber, birthDate, health, weight);
 			}
