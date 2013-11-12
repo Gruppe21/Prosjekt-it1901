@@ -84,7 +84,12 @@ public class Main {
 			mainscreen.openMainScreen();
 			this.closeLogin();
 			
+			// Loads the logged-in farmer into the program
 			this.loadFarmer(pst.getFarmer(em));
+			
+			//Loads the logged-in farmer's sheep
+			this.getFarmer().setSheepHerd(pst.farmersSheep(this.getFarmer().getId()));
+			
 			System.out.println("Successfully logged in as " + this.getFarmer().getName());
 			
 		} else if (pw.equals("") || em.equals("")) {
