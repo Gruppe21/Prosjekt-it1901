@@ -142,10 +142,15 @@ public class MainScreen extends JFrame {
 		contentPane.add(scrollPane);
 		
 		DefaultListModel listmodel = new DefaultListModel();
+		
+		for (int i = 0; i < this.main.getFarmer().getSheepHerd().size(); i++){
+			listmodel.addElement(this.main.getFarmer().getSheepHerd().get(i).getEarTag());
+		}
+		
 		/**
 		 * test code to fill list..
 		 */
-		for (int x = 0; x < 10; x += 1) {
+		/*for (int x = 0; x < 10; x += 1) {
 			listmodel.addElement("herp");
 			listmodel.addElement("derp");
 			listmodel.addElement("bla");
@@ -153,7 +158,7 @@ public class MainScreen extends JFrame {
 			listmodel.addElement("bla");
 			listmodel.addElement("bla");
 		}
-		
+		*/
 		JList list = new JList(listmodel);
 		scrollPane.setViewportView(list);
 	}
