@@ -87,7 +87,7 @@ public class Sheep {
 		this.earTag = earTag;
 	}
 	
-	public void setBirthMonth(int birthMonth) {
+	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
 	

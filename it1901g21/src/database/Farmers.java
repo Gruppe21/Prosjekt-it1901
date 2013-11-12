@@ -210,7 +210,7 @@ public class Farmers extends SQL {
 				Sheep sheep = new Sheep();
 				
 				sheep.setEarTag(resultSet.getString("EarTag"));
-				sheep.setBirthMonth(resultSet.getInt("BirthDate"));
+				sheep.setBirthDate(resultSet.getString("BirthDate"));
 				sheep.setWeight(resultSet.getInt("Weight"));
 				sheep.setHealth(resultSet.getString("Health"));
 				sheep.setXPos(resultSet.getString("Xpos"));
