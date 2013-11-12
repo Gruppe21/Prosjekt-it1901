@@ -197,7 +197,7 @@ public class Farmers extends SQL {
 	 * Loads all sheep of a given farmer into a ArrayList
 	 * @return the list of all sheep
 	 */
-	public ArrayList<Sheep> farmersSheep(String farmerId) {
+	public ArrayList<Sheep> farmersSheep(int farmerId) {
 
 		ArrayList<Sheep> sheeplist = new ArrayList<Sheep>();
 
