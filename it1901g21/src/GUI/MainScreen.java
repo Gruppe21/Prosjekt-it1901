@@ -52,8 +52,8 @@ public class MainScreen extends JFrame {
 		/*
 		 * Creates static img of map
 		 */
-		String xlist[]={};
-		String ylist[]={};
+		String xlist[]={"63.430570"};
+		String ylist[]={"10.392165"};
 		
 		String waypoints = "";
 		
@@ -62,7 +62,7 @@ public class MainScreen extends JFrame {
 		}
 		
 		try {
-            String imageUrl = "http://maps.google.com/maps/api/staticmap?center=Trondheim&zoom=13&size=243x221&maptype=satellite"+waypoints+"&sensor=false";
+            String imageUrl = "http://maps.google.com/maps/api/staticmap?center="+ xlist[0] +","+ ylist[0] +"&zoom=13&size=243x221&maptype=satellite"+waypoints+"&sensor=false";
             String destinationFile = "image.jpg";
             String str = destinationFile;
             URL url = new URL(imageUrl);
