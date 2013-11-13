@@ -34,6 +34,7 @@ public class MainScreen extends JFrame {
 	
 	private Main main;
 	private RegiSheep regiSheep;
+	private DelSheep delSheep;
 	
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
@@ -42,10 +43,11 @@ public class MainScreen extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MainScreen(Main main, RegiSheep regiSheep, String[] xlist,String[] ylist) {
+	public MainScreen(Main main, RegiSheep regiSheep, DelSheep delSheep, String[] xlist,String[] ylist) {
 		
 		this.main = main;
 		this.regiSheep = regiSheep;
+		this.delSheep = delSheep;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 691, 529);
@@ -95,7 +97,6 @@ public class MainScreen extends JFrame {
 		/**
 		 * Add Sheep button
 		 */
-		
 		JButton btnAddSheep = new JButton("Add Sheep");
 		btnAddSheep.setBounds(38, 99, 120, 45);
 		contentPane.add(btnAddSheep);
@@ -115,7 +116,7 @@ public class MainScreen extends JFrame {
 		
 		btnDelSheep.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DelSheep delsheep = new DelSheep();
+				openDelSheepWindow();
 			}	
 		});
 		
@@ -135,7 +136,6 @@ public class MainScreen extends JFrame {
 		/**
 		 * Alarm button
 		 */
-		
 		JButton btnAlarm = new JButton("Alarm");
 		btnAlarm.setBackground(Color.RED);
 		btnAlarm.setBounds(168, 155, 113, 45);
@@ -199,6 +199,10 @@ public class MainScreen extends JFrame {
 	
 	private void openRegiSheepWindow() {
 		regiSheep.openRegiSheep();
+	}
+	
+	private void openDelSheepWindow() {
+		delSheep.openDelSheep();
 	}
 	
 	private Main getMain() {

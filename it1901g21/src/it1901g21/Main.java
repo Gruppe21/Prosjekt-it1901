@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import database.Farmers;
 import database.PasswordHash;
 
+import GUI.DelSheep;
 import GUI.ErrorMessage;
 import GUI.Login;
 import GUI.MainScreen;
@@ -35,6 +36,7 @@ public class Main {
 	private Login login;
 	private Registration registration;
 	private RegiSheep regiSheep;
+	private DelSheep delSheep;
 	
 	private Date date;
 	
@@ -62,7 +64,8 @@ public class Main {
 		ph = new PasswordHash();
 		
 		regiSheep = new RegiSheep(this);
-		mainscreen = new MainScreen(this, regiSheep, xlist, ylist);
+		delSheep = new DelSheep(this);
+		mainscreen = new MainScreen(this, regiSheep, delSheep, xlist, ylist);
 		registration = new Registration(this);
 		login = new Login(this, pst, registration);
 		
@@ -77,6 +80,10 @@ public class Main {
 		}
 	}
 	
+	/**
+	 * Method run when user logs in to the system
+	 * @param info the mail and the password
+	 */
 	public void logIn(String[] info) {
 		
 		String em = info[0];
@@ -98,10 +105,12 @@ public class Main {
 			
 			System.out.println("Successfully logged in as " + this.getFarmer().getName());
 			
-		} else if (pw.equals("") || em.equals("")) {
-			ErrorMessage errormsg = new ErrorMessage("","Please enter your email and password.");
-		} else {
-			ErrorMessage errormsg = new ErrorMessage("Login failed","Your email or password were incorrect. Please try again.");
+		}
+		else if (pw.equals("") || em.equals("")) {
+			ErrorMessage errormsg = new ErrorMessage("", "Please enter your email and password.");
+		}
+		else {
+			ErrorMessage errormsg = new ErrorMessage("Login failed", "Your email or password were incorrect. Please try again.");
 		}
 		
 	}
@@ -140,10 +149,40 @@ public class Main {
 		login.setVisible(false);
 	}
 	
+	/**
+	 * Adds the sheep to logged-in farmer's herd
+	 * @param sheepNumber
+	 * @param birthDate
+	 * @param health
+	 * @param weight
+	 */
 	public void addSheep(String sheepNumber, String birthDate, String health, int weight) {
 		
 		Sheep sheep = new Sheep(this.getFarmer().getId(), sheepNumber, birthDate, weight, health, "63.415884", "10.403452");
 		pst.addSheep(sheep);
+		this.update();
+	}
+	
+	/**
+	 * Deletes the sheep from logged-in farmer's herd
+	 * @param eartag the sheep's ear tag
+	 */
+	public void deleteSheep(String earTag) {
+		
+		boolean foundSheep = false;
+		for (Sheep sheep : this.getFarmer().getSheepHerd()) {
+			
+			if (sheep.getEarTag().equals(earTag)) {	
+				foundSheep = true;
+				pst.deleteSheep(sheep);
+				break;
+			}
+		}
+		
+		if (!foundSheep) {
+			ErrorMessage error = new ErrorMessage("", "No such sheep found in farmer's herd!");
+		}
+		
 		this.update();
 	}
 	
