@@ -13,6 +13,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JList;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.ListCellRenderer;
+import javax.swing.ListSelectionModel;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -171,6 +173,10 @@ public class MainScreen extends JFrame {
 		listmodel = new DefaultListModel();
 		JList list = new JList(listmodel);
 		scrollPane.setViewportView(list);
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		ListCellRenderer renderer = new MyCellRenderer();
+		list.setCellRenderer(renderer);
+		
 	}
 	
 	/**
@@ -187,7 +193,7 @@ public class MainScreen extends JFrame {
 		
 		listmodel.clear();
 		for (int i = 0; i < this.main.getFarmer().getSheepHerd().size(); i++){
-			listmodel.addElement(this.main.getFarmer().getSheepHerd().get(i).getEarTag());	
+			listmodel.addElement(this.main.getFarmer().getSheepHerd().get(i));	
 		}
 	}
 	
