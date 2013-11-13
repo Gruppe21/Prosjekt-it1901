@@ -1,15 +1,16 @@
 package database;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
 import java.util.Properties;
+
+import GUI.ErrorMessage;
+
 
 /**
  * General class for communicating with a mySQl database
@@ -78,32 +79,14 @@ public class SQL {
 			connect = DriverManager.getConnection(url, user, password);
 			System.out.println("Connection to database has been established.");
 		}
+		catch (SQLException e) {
+			System.out.println("Cannot connect to the database! Check your connection!");
+			ErrorMessage error = new ErrorMessage("Connection timed out", "Cannot connect to database! Check your connection!");
+		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-	}
-	
-	/**
-	 * Read from the database
-	 * @throws Exception
-	 */
-	public void readDataBase() throws Exception{
-		try {			
-			
-		} catch (Exception e){
-			throw e;
-		} finally {
-			disconnect();
-		}
-	}
-	
-	private void writeMetaData(ResultSet resultSet) throws SQLException{
-		//mangler kode
-	}
-	
-	private void writeResultSet(ResultSet resultSet) throws SQLException{
-		//mangler kode
 	}
 	
 	/**

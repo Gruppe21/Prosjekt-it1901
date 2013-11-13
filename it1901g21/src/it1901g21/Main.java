@@ -71,13 +71,8 @@ public class Main {
 		
 		date = new Date();
 		
-		try {
-			pst.connect();
-		}
-		catch(Exception e) {
-			System.out.println("Cannot connect to database!");
-			e.printStackTrace();
-		}
+		// Creates connection to database
+		pst.connect();
 	}
 	
 	/**
