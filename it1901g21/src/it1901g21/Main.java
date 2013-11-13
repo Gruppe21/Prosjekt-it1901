@@ -50,7 +50,10 @@ public class Main {
 	 * Standard Main constructor
 	 */
 	public Main() {
-		
+		//this is for testing{
+		String xlist[]={"63.430570"};
+		String ylist[]={"10.392165"};
+		//}
 		PROJECTPATH = findProjectPath();
 		System.out.println(getProjectPath());
 		
@@ -59,7 +62,7 @@ public class Main {
 		ph = new PasswordHash();
 		
 		regiSheep = new RegiSheep(this);
-		mainscreen = new MainScreen(this, regiSheep);
+		mainscreen = new MainScreen(this, regiSheep, xlist, ylist);
 		registration = new Registration(this);
 		login = new Login(this, pst, registration);
 		
