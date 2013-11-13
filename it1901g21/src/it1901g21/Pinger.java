@@ -12,11 +12,13 @@ public class Pinger {
 	Main main;
 	Update update;
 	Timer timer;
+	Farmer farmer;
 	int updateFrequency;
 	
 	public Pinger(Main main) {
 		
-		this.main = main; 
+		this.main = main;
+		this.farmer = main.getFarmer();
 		update = new Update(main, this);
 		timer = new Timer("Update");
 		updateFrequency = 10000; // 1 hour is 3600000 ms
@@ -36,35 +38,18 @@ public class Pinger {
 	 * Updates the coordinates for all sheep
 	 */
 	public void newSheepCoordinates() {
-	/*	for (each sheep in farmer's database) {
-			generateCoordinates(x, y);
-			write new coordinates to the sheep in the database
+		
+		for (Sheep sheep : farmer.getSheepHerd()) {	
+			// Generate new coordinates based on the old
+			String[] newCoordinates = generateCoordinates(sheep.getXPos(), sheep.getYPos());
+			
+			// Set the sheep at the new coordinates
+			sheep.setXPos(newCoordinates[0]);
+			sheep.setYPos(newCoordinates[1]);
+			
+			// Sends the request to update database further
+			main.updateSheepPos(sheep.getId(), newCoordinates);
 		}
-	*/
-	}
-	
-	/**
-	 * Version 1, there should be a newer version to use.
-	 * Generates new coordinates based on the current coordinates
-	 * @param currentX the current X-coordinate
-	 * @param currentY the current Y-coordinate
-	 * @return the new coordiantes
-	 */
-	public String[] generateCoordinatesOld(String currentX, String currentY) {
-		
-		int min = 1000;
-		int max = 9000;
-		
-		String x = currentX.substring(0, currentX.length() - 4);
-		String y = currentY.substring(0, currentY.length() - 4);
-		
-		int xR = min + (int)(Math.random() * max);
-		int yR = min + (int)(Math.random() * max);
-		
-		x += Integer.toString(xR);
-		y += Integer.toString(yR);
-		
-		return new String[] {x, y};
 	}
 	
 	/**
@@ -93,12 +78,6 @@ public class Pinger {
 		xInt += xR;
 		yInt += yR;
 		
-		/* Only used for debugging.
-		 * Sets number of decimals for a double. Still not working correctly, last 0 is omitted. 
-		double xInt2 = Math.floor(xInt * 1000000) / 1000000;
-		double yInt2 = Math.floor(yInt * 1000000) / 1000000;
-		System.out.println("X: " + xInt2 + ",  Y: " + yInt2); */
-		
 		/* Converts the new coordinates to String and formats */  
 		String x = df.format(xInt);
 		String y = df.format(yInt);
@@ -106,6 +85,29 @@ public class Pinger {
 		return new String[] {x, y};
 	}
 	
+	/**
+	 * Version 1, there should be a newer version to use.
+	 * Generates new coordinates based on the current coordinates
+	 * @param currentX the current X-coordinate
+	 * @param currentY the current Y-coordinate
+	 * @return the new coordiantes
+	 */
+	public String[] generateCoordinatesOld(String currentX, String currentY) {
+		
+		int min = 1000;
+		int max = 9000;
+		
+		String x = currentX.substring(0, currentX.length() - 4);
+		String y = currentY.substring(0, currentY.length() - 4);
+		
+		int xR = min + (int)(Math.random() * max);
+		int yR = min + (int)(Math.random() * max);
+		
+		x += Integer.toString(xR);
+		y += Integer.toString(yR);
+		
+		return new String[] {x, y};
+	}
 }
 
 /**
@@ -126,9 +128,9 @@ class Update extends TimerTask {
 	
 	@Override
 	public void run() {
-		// Sheep update
-		pinger.newSheepCoordinates();
-		coordinateTest = pinger.generateCoordinates("63.415884", "10.403452");
+		
+		// Requests the coordinates of all sheep to be updated
+		//pinger.newSheepCoordinates();
 		
 		printTimeUpdate();
 		count ++;
@@ -141,7 +143,6 @@ class Update extends TimerTask {
 	private void printTimeUpdate() {
 		
 		System.out.println("Ping number " + count + ".  Date: " + main.getCurrentTime());
-		//System.out.println("X: " + coordinateTest[0] + "  Y: " + coordinateTest[1]);
 		
 		Farmer farmer = main.getFarmer();
 		if(farmer != null)

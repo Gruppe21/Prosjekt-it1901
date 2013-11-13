@@ -183,6 +183,14 @@ public class Main {
 	}
 	
 	/**
+	 * Sends the request to update the sheep's position to the database handler
+	 */
+	public void updateSheepPos(int id, String[] coordinates) {
+		pst.updateSheepPos(id, coordinates);
+		this.update();
+	}
+	
+	/**
 	 * Updates the farmer object in the local program to match the farmer in the database.
 	 * Also updates all GUI stuff.
 	 * ALWAYS USE THIS AFTER SOMETHING CHANGES!

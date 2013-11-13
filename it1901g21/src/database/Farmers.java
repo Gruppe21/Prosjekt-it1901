@@ -60,6 +60,7 @@ public class Farmers extends SQL {
 	 * Add sheep to database.
 	 */
 	public void addSheep(Sheep sheep){		
+		
 		try {	
 			preparedStatement = connect.prepareStatement("INSERT INTO Sheep (FarmerId, Id, Eartag, BirthDate, Weight, Health, Xpos, Ypos) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
 			preparedStatement.setInt(1, sheep.getFarmerId());
@@ -91,6 +92,25 @@ public class Farmers extends SQL {
 			Logger lgr = Logger.getLogger(Farmers.class.getName());
 			lgr.log(Level.SEVERE, ex.getMessage(), ex);
 		}
+	}
+	
+	/**
+	 * Updates the x and y position of the sheep 
+	 */
+	public void updateSheepPos(int id, String[] coordinates) {
+		
+		try {
+			preparedStatement = connect.prepareStatement("UPDATE Sheep (Xpos, Ypos) WHERE Id = ? VALUES(?, ?)");
+			preparedStatement.setInt(1, id);
+			preparedStatement.setString(2, coordinates[0]);
+			preparedStatement.setString(3, coordinates[1]);
+			preparedStatement.executeUpdate();
+			
+		} catch (SQLException ex) {
+			Logger lgr = Logger.getLogger(Farmers.class.getName());
+			lgr.log(Level.SEVERE, ex.getMessage(), ex);
+		}
+		
 	}
 	
 	/**
@@ -134,7 +154,8 @@ public class Farmers extends SQL {
 	 */
 		public boolean userExists(String inputUser) {
 		try {
-			preparedStatement = connect.prepareStatement("SELECT Mail FROM Farmers WHERE Mail ='" + inputUser + "'");
+			preparedStatement = connect.prepareStatement("SELECT Mail FROM Farmers WHERE Mail = ?");
+			preparedStatement.setString(1, inputUser);
 			
 			resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()) {
@@ -146,11 +167,15 @@ public class Farmers extends SQL {
 		}
 		return false;
 	}
-		
+	
+	/**
+	 * Gets the user's hashed password
+	 */
 	public String getHash(String inputUsername) {
 		String pwhash = null;
 		try {
-			preparedStatement = connect.prepareStatement("SELECT * FROM Farmers WHERE Mail = '"+ inputUsername + "'");
+			preparedStatement = connect.prepareStatement("SELECT * FROM Farmers WHERE Mail = ?");
+			preparedStatement.setString(1, inputUsername);
 			resultSet = preparedStatement.executeQuery();
 			
 			if (resultSet.next()){
@@ -163,10 +188,14 @@ public class Farmers extends SQL {
 		return pwhash;
 	}
 	
+	/**
+	 * Gets the user's used salt
+	 */
 	public String getSalt(String inputUsername) {
 		String pwsalt = null;
 		try {
-			preparedStatement = connect.prepareStatement("SELECT * FROM Farmers WHERE Mail = '"+ inputUsername + "'");
+			preparedStatement = connect.prepareStatement("SELECT * FROM Farmers WHERE Mail = ?");
+			preparedStatement.setString(1, inputUsername);
 			resultSet = preparedStatement.executeQuery();
 			
 			if (resultSet.next()){
@@ -216,8 +245,7 @@ public class Farmers extends SQL {
 				sheep.setXPos(resultSet.getString("Xpos"));
 				sheep.setYPos(resultSet.getString("Ypos"));
 				
-				sheeplist.add(sheep);
-				
+				sheeplist.add(sheep);				
 			}
 			
 		} catch (SQLException e) {
