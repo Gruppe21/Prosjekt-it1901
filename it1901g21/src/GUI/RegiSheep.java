@@ -61,7 +61,7 @@ public class RegiSheep extends JFrame {
 		contentPane.add(Weight_textField);
 		Weight_textField.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("Eartag ID");
+		JLabel lblNewLabel = new JLabel("Ear tag ID");
 		lblNewLabel.setBounds(57, 34, 124, 14);
 		contentPane.add(lblNewLabel);
 		
@@ -81,8 +81,21 @@ public class RegiSheep extends JFrame {
 		btnAvbryt.setBounds(10, 171, 124, 23);
 		contentPane.add(btnAvbryt);
 		
+		/*
+		 * Action to happen when user click "Done"
+		 */
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				if (EarTag_textField.getText() == null || BirthDate_textField.getText() == null || Health_textField.getText() == null || Weight_textField.getText() == null) {
+					ErrorMessage error = new ErrorMessage("", "Please fill in every field");
+					return;
+				}
+				
+				if (Weight_textField.getText().matches("[0-9]+")) {
+					ErrorMessage error = new ErrorMessage("", "Please only use numbers for the weight");
+					return;
+				}
 				
 				String sheepNumber = EarTag_textField.getText();
 				String birthDate = BirthDate_textField.getText();
@@ -99,6 +112,9 @@ public class RegiSheep extends JFrame {
 			}
 		});
 		
+		/*
+		 * Action to happen when user clicks "Cancel"
+		 */
 		btnAvbryt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeRegiSheep();
