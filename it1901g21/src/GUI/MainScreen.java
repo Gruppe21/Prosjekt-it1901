@@ -2,6 +2,7 @@ package GUI;
 import it1901g21.Main;
 
 import java.awt.BorderLayout;
+import java.awt.Desktop;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -20,6 +21,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 import javax.swing.JScrollPane;
@@ -135,6 +138,28 @@ public class MainScreen extends JFrame {
 		btnAlarm.setBackground(Color.RED);
 		btnAlarm.setBounds(168, 155, 113, 45);
 		contentPane.add(btnAlarm);
+		
+		JButton btnMap = new JButton("Open bigger version of map");
+		btnMap.setBackground(Color.RED);
+		btnMap.setBounds(38, 440, 243, 25);
+		contentPane.add(btnMap);
+		
+		btnMap.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Desktop.isDesktopSupported())
+				{
+				  try {
+					Desktop.getDesktop().browse(new URI("http://localhost:8888/map.php?farmerid=119"));
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (URISyntaxException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				}
+			}
+		});
 		
 		/**
 		 * Create list
