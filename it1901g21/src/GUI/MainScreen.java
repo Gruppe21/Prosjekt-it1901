@@ -37,7 +37,7 @@ public class MainScreen extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MainScreen(Main main, RegiSheep regiSheep) {
+	public MainScreen(Main main, RegiSheep regiSheep, String[] xlist,String[] ylist) {
 		
 		this.main = main;
 		this.regiSheep = regiSheep;
@@ -52,8 +52,8 @@ public class MainScreen extends JFrame {
 		/*
 		 * Creates static img of map
 		 */
-		String xlist[]={"63.430570"};
-		String ylist[]={"10.392165"};
+		//String xlist[]={"63.430570"};
+		//String ylist[]={"10.392165"};
 		
 		String waypoints = "";
 		
