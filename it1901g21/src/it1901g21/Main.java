@@ -124,6 +124,7 @@ public class Main {
 	 */
 	public void loadFarmer(Farmer farmer) {
 		this.farmer = farmer;
+		update();
 	}
 	
 	/**
@@ -159,6 +160,8 @@ public class Main {
 		
 		/* All GUI updates */
 		mainscreen.updateListSheep();
+		
+		mainscreen.updateMap();
 		
 	}
 	

@@ -26,6 +26,7 @@ import java.io.OutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import javax.swing.JScrollPane;
 
@@ -38,7 +39,7 @@ public class MainScreen extends JFrame {
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private DefaultListModel listmodel;
-	
+	private JLabel map;
 	/**
 	 * Create the frame.
 	 */
@@ -54,41 +55,8 @@ public class MainScreen extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		/*
-		 * Creates static img of map
-		 */
-		//String xlist[]={"63.430570"};
-		//String ylist[]={"10.392165"};
 		
-		String waypoints = "";
-		
-		for (int i = 0; i < xlist.length; i++) {
-			waypoints = waypoints + "&markers=color:blue%7Clabel:S%7C" + xlist[i] + "," + ylist[i];
-		}
-		
-		try {
-            String imageUrl = "http://maps.google.com/maps/api/staticmap?center="+ xlist[0] +","+ ylist[0] +"&zoom=13&size=243x221&maptype=satellite"+waypoints+"&sensor=false";
-            String destinationFile = "image.jpg";
-            String str = destinationFile;
-            URL url = new URL(imageUrl);
-            InputStream is = url.openStream();
-            OutputStream os = new FileOutputStream(destinationFile);
-
-            byte[] b = new byte[2048];
-            int length;
-
-            while ((length = is.read(b)) != -1) {
-                os.write(b, 0, length);
-            }
-
-            is.close();
-            os.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(1);
-        }
-
-		JLabel map = new JLabel(new ImageIcon((new ImageIcon("image.jpg")).getImage().getScaledInstance(243, 221,java.awt.Image.SCALE_SMOOTH)));
+		map = new JLabel();
 		map.setBounds(38, 211, 243, 221);
 		contentPane.add(map);
 		
@@ -195,6 +163,61 @@ public class MainScreen extends JFrame {
 		for (int i = 0; i < this.main.getFarmer().getSheepHerd().size(); i++){
 			listmodel.addElement(this.main.getFarmer().getSheepHerd().get(i));	
 		}
+	}
+	
+	/**
+	 * updates map markers
+	 */
+	
+	public void updateMap(){
+		
+		
+		ArrayList<String> xlist = new ArrayList<String>();
+		ArrayList<String> ylist = new ArrayList<String>();
+		
+		for (int i = 0; i < this.main.getFarmer().getSheepHerd().size(); i++){
+			xlist.add(this.main.getFarmer().getSheepHerd().get(i).getXPos());
+			ylist.add(this.main.getFarmer().getSheepHerd().get(i).getYPos());
+		}
+		
+		if (xlist.size()==0){
+			map.setText("No Sheep in data base");
+			return;
+		}
+		
+		String waypoints = "";
+		
+		for (int i = 0; i < xlist.size(); i++) {
+			waypoints = waypoints + "&markers=color:blue%7Clabel:S%7C" + xlist.get(i) + "," + ylist.get(i);
+		}
+		
+		try {
+            String imageUrl = "http://maps.google.com/maps/api/staticmap?center="+ xlist.get(0) +","+ ylist.get(0) +"&zoom=13&size=243x221&maptype=satellite"+waypoints+"&sensor=false";
+            String destinationFile = "image.jpg";
+            String str = destinationFile;
+            URL url = new URL(imageUrl);
+            InputStream is = url.openStream();
+            OutputStream os = new FileOutputStream(destinationFile);
+
+            byte[] b = new byte[2048];
+            int length;
+
+            while ((length = is.read(b)) != -1) {
+                os.write(b, 0, length);
+            }
+
+            is.close();
+            os.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+		
+		
+		
+		map.setIcon(new ImageIcon((new ImageIcon("image.jpg")).getImage().getScaledInstance(243, 221,java.awt.Image.SCALE_SMOOTH)));
+		
+	
 	}
 	
 	private void openRegiSheepWindow() {
