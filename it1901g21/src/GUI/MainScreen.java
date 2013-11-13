@@ -56,6 +56,10 @@ public class MainScreen extends JFrame {
 		contentPane.setLayout(null);
 		
 		
+		/**
+		 * Add Mini-map
+		 */
+		
 		map = new JLabel();
 		map.setBounds(38, 211, 243, 221);
 		contentPane.add(map);
@@ -181,7 +185,7 @@ public class MainScreen extends JFrame {
 		}
 		
 		if (xlist.size()==0){
-			map.setText("No Sheep in data base");
+			map.setText("No Sheep in database!!");
 			return;
 		}
 		
