@@ -215,8 +215,9 @@ public class MainScreen extends JFrame {
             is.close();
             os.close();
         } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(1);
+        	map.setIcon(null);
+			map.setText("Map not available!");
+			return;
         }
 		
 		
