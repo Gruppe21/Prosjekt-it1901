@@ -177,6 +177,7 @@ public class Main {
 		
 		if (!foundSheep) {
 			ErrorMessage error = new ErrorMessage("", "No such sheep found in farmer's herd!");
+			return;
 		}
 		
 		this.update();

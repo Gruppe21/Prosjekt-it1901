@@ -238,6 +238,7 @@ public class Farmers extends SQL {
 				
 				Sheep sheep = new Sheep();
 				
+				sheep.setId(resultSet.getInt("Id"));
 				sheep.setEarTag(resultSet.getString("EarTag"));
 				sheep.setBirthDate(resultSet.getString("BirthDate"));
 				sheep.setWeight(resultSet.getInt("Weight"));
