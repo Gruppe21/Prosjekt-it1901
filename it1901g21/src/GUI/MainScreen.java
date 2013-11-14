@@ -149,6 +149,7 @@ public class MainScreen extends JFrame {
 		ListCellRenderer renderer = new MyCellRenderer();
 		list.setCellRenderer(renderer);
 		
+		
 	}
 	
 	/**
@@ -165,7 +166,7 @@ public class MainScreen extends JFrame {
 		
 		listmodel.clear();
 		for (int i = 0; i < this.main.getFarmer().getSheepHerd().size(); i++){
-			listmodel.addElement(this.main.getFarmer().getSheepHerd().get(i));	
+			listmodel.addElement(this.main.getFarmer().getSheepHerd().get(i).getEarTag());	
 		}
 	}
 	
