@@ -87,13 +87,13 @@ public class RegiSheep extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if (EarTag_textField.getText() == null || BirthDate_textField.getText() == null || Health_textField.getText() == null || Weight_textField.getText() == null) {
+				if (EarTag_textField.getText().equals("") || BirthDate_textField.getText().equals("") || Health_textField.getText().equals("") || Weight_textField.getText().equals("")) {
 					ErrorMessage error = new ErrorMessage("", "Please fill in every field");
 					return;
 				}
 				
-				if (Weight_textField.getText().matches("[0-9]+")) {
-					ErrorMessage error = new ErrorMessage("", "Please only use numbers for the weight");
+				if (!isNumeric(Weight_textField.getText())) {
+					ErrorMessage error = new ErrorMessage("", "Please only use numbers for weight!");
 					return;
 				}
 				
@@ -159,6 +159,19 @@ public class RegiSheep extends JFrame {
 	 */
 	public void closeRegiSheep(){
 		this.setVisible(false);
+	}
+	
+	/**
+	 * Checks if string is numeric
+	 * @param string the string to check
+	 * @return true or false
+	 */
+	private boolean isNumeric(String string) {
+		for (char c : string.toCharArray()) {
+			if (!Character.isDigit(c))
+				return false;
+		}
+		return true;
 	}
 	
 }
