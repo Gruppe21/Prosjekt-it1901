@@ -99,9 +99,21 @@ public class RegiSheep extends JFrame {
 					return;
 				}
 				
-				//Check for too long strings
+				/* Check for too long inputs */
 				if (EarTag_textField.getText().length() > 7) {
 					ErrorMessage error = new ErrorMessage("", "Ear tag is too long, use maximum 7 symbols.");
+					return;
+				}
+				if (BirthDate_textField.getText().length() > 10) {
+					ErrorMessage error = new ErrorMessage("", "Birth date is too long, use maximum 10 symbols.");
+					return;
+				}
+				if (Health_textField.getText().length() > 25) {
+					ErrorMessage error = new ErrorMessage("", "Health description, use maximum 25 symbols.");
+					return;
+				}
+				if (Weight_textField.getText().length() > 7) {
+					ErrorMessage error = new ErrorMessage("", "Too much weight, that must be one fat sheep!");
 					return;
 				}
 				
