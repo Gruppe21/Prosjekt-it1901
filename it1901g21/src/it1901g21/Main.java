@@ -217,6 +217,16 @@ public class Main {
 		return date;
 	}
 	
+	/**
+	 * Checks if farmer has been initialised (logged-in)
+	 * @return true or false
+	 */
+	public boolean isLoggedIn() {
+		if (this.getFarmer() == null)
+			return false;
+		return true;
+	}
+	
     /**
 	 * Gets the project path.
 	 * @return the path of the project.

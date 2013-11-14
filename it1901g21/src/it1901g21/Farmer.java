@@ -16,7 +16,7 @@ public class Farmer {
 	private String tlf;
 	private String resMail;
 	private String resTlf;
-	private ArrayList<Sheep> sheep;
+	private ArrayList<Sheep> sheep = new ArrayList<Sheep>();
 	
 	/**
 	 * Standard farmer constructor

@@ -39,9 +39,14 @@ public class Pinger {
 	 */
 	public void newSheepCoordinates() {
 		
-		for (Sheep sheep : farmer.getSheepHerd()) {	
+		if (main.getFarmer().getSheepHerd().isEmpty()) {
+			return;
+		}
+		
+		for (Sheep sheep : main.getFarmer().getSheepHerd()) {	
+			
 			// Generate new coordinates based on the old
-			String[] newCoordinates = generateCoordinates(sheep.getXPos(), sheep.getYPos());
+			String[] newCoordinates = generateCoordinatesOld(sheep.getXPos(), sheep.getYPos());
 			
 			// Set the sheep at the new coordinates
 			sheep.setXPos(newCoordinates[0]);
@@ -57,7 +62,7 @@ public class Pinger {
 	 * Generates new coordinates based on the current coordinates
 	 * @param currentX the current X-coordinate
 	 * @param currentY the current Y-coordinate
-	 * @return the new coordiantes
+	 * @return the new coordinates
 	 */
 	public String[] generateCoordinates(String currentX, String currentY) {
 		
@@ -90,7 +95,7 @@ public class Pinger {
 	 * Generates new coordinates based on the current coordinates
 	 * @param currentX the current X-coordinate
 	 * @param currentY the current Y-coordinate
-	 * @return the new coordiantes
+	 * @return the new coordinates
 	 */
 	public String[] generateCoordinatesOld(String currentX, String currentY) {
 		
@@ -129,8 +134,12 @@ class Update extends TimerTask {
 	@Override
 	public void run() {
 		
-		// Requests the coordinates of all sheep to be updated
-		//pinger.newSheepCoordinates();
+		// If farmer is logged-in
+		if (main.isLoggedIn()) {
+			
+			// Requests the coordinates of all sheep to be updated
+			pinger.newSheepCoordinates();
+		}
 		
 		printTimeUpdate();
 		count ++;

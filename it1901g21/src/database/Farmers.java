@@ -100,10 +100,10 @@ public class Farmers extends SQL {
 	public void updateSheepPos(int id, String[] coordinates) {
 		
 		try {
-			preparedStatement = connect.prepareStatement("UPDATE Sheep (Xpos, Ypos) WHERE Id = ? VALUES(?, ?)");
-			preparedStatement.setInt(1, id);
-			preparedStatement.setString(2, coordinates[0]);
-			preparedStatement.setString(3, coordinates[1]);
+			preparedStatement = connect.prepareStatement("UPDATE Sheep SET Xpos = ? WHERE Id = ?");
+			preparedStatement.setString(1, coordinates[0]);
+			//paredStatement.setString(2, coordinates[1]);
+			preparedStatement.setInt(2, id);
 			preparedStatement.executeUpdate();
 			
 		} catch (SQLException ex) {
