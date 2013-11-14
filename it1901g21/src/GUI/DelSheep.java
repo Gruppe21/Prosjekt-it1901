@@ -39,23 +39,22 @@ public class DelSheep {
 		
 		textField = new JTextField();
 		springLayout.putConstraint(SpringLayout.NORTH, textField, -3, SpringLayout.NORTH, lblPleaseEnterSheep);
-		springLayout.putConstraint(SpringLayout.WEST, textField, 33, SpringLayout.EAST, lblPleaseEnterSheep);
-		springLayout.putConstraint(SpringLayout.EAST, textField, -56, SpringLayout.EAST, frame.getContentPane());
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		JButton btnConfirm = new JButton("Confirm");
-		springLayout.putConstraint(SpringLayout.NORTH, btnConfirm, 29, SpringLayout.SOUTH, textField);
-		springLayout.putConstraint(SpringLayout.SOUTH, btnConfirm, -30, SpringLayout.SOUTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.NORTH, btnConfirm, 15, SpringLayout.SOUTH, textField);
+		springLayout.putConstraint(SpringLayout.SOUTH, btnConfirm, -27, SpringLayout.SOUTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, textField, 0, SpringLayout.WEST, btnConfirm);
+		springLayout.putConstraint(SpringLayout.EAST, textField, 0, SpringLayout.EAST, btnConfirm);
 		springLayout.putConstraint(SpringLayout.EAST, btnConfirm, -42, SpringLayout.EAST, frame.getContentPane());
 		frame.getContentPane().add(btnConfirm);
 		
 		JButton btnCancel = new JButton("Cancel");
-		springLayout.putConstraint(SpringLayout.NORTH, btnCancel, 32, SpringLayout.SOUTH, lblPleaseEnterSheep);
-		springLayout.putConstraint(SpringLayout.SOUTH, btnCancel, -30, SpringLayout.SOUTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.WEST, btnConfirm, 111, SpringLayout.EAST, btnCancel);
+		springLayout.putConstraint(SpringLayout.WEST, btnConfirm, 87, SpringLayout.EAST, btnCancel);
+		springLayout.putConstraint(SpringLayout.NORTH, btnCancel, 18, SpringLayout.SOUTH, lblPleaseEnterSheep);
 		springLayout.putConstraint(SpringLayout.WEST, btnCancel, 47, SpringLayout.WEST, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, btnCancel, 147, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, btnCancel, 150, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(btnCancel);
 		
 		/*
