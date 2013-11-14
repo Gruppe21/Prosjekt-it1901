@@ -185,7 +185,7 @@ public class MainScreen extends JFrame {
 		}
 		
 		if (xlist.size()==0){
-			map.setText("No Sheep in database!!");
+			map.setText("No Sheep Registered!");
 			return;
 		}
 		
