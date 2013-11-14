@@ -106,6 +106,11 @@ public class Farmers extends SQL {
 			preparedStatement.setInt(2, id);
 			preparedStatement.executeUpdate();
 			
+			preparedStatement = connect.prepareStatement("UPDATE Sheep SET Ypos = ? WHERE Id = ?");
+			preparedStatement.setString(1, coordinates[1]);
+			preparedStatement.setInt(2, id);
+			preparedStatement.executeUpdate();
+			
 		} catch (SQLException ex) {
 			Logger lgr = Logger.getLogger(Farmers.class.getName());
 			lgr.log(Level.SEVERE, ex.getMessage(), ex);
