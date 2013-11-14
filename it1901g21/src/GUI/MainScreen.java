@@ -217,7 +217,7 @@ public class MainScreen extends JFrame {
         } catch (IOException e) {
             e.printStackTrace();
             map.setIcon(null);
-			map.setText("No Sheep Registered!");
+			map.setText("Map not available!");
 			return;
         }
 		
