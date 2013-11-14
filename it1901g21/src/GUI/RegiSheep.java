@@ -87,13 +87,21 @@ public class RegiSheep extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				// Check for empty fields
 				if (EarTag_textField.getText().equals("") || BirthDate_textField.getText().equals("") || Health_textField.getText().equals("") || Weight_textField.getText().equals("")) {
 					ErrorMessage error = new ErrorMessage("", "Please fill in every field");
 					return;
 				}
 				
+				// Check for letters in weight
 				if (!isNumeric(Weight_textField.getText())) {
 					ErrorMessage error = new ErrorMessage("", "Please only use numbers for weight!");
+					return;
+				}
+				
+				//Check for too long strings
+				if (EarTag_textField.getText().length() > 7) {
+					ErrorMessage error = new ErrorMessage("", "Ear tag is too long, use maximum 7 symbols.");
 					return;
 				}
 				
