@@ -17,8 +17,8 @@ public class SendMail {
 
     public static void sendMail(String farmer_mail, String farmer_name, String timestamp, String sheepId, String sheepX, String sheepY) {
 
-        final String username = "g21.sheepalert@gmail.com";
-        final String password = "imsdallomper";
+        final String username = "g21.sheepalert@gmail.com";			//mailadressen som sender mail
+        final String password = "imsdallomper";						//passord
 
         Properties props = new Properties();
         props.put("mail.smtp.starttls.enable", "true");

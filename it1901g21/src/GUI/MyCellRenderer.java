@@ -2,13 +2,15 @@ package GUI;
 
 import java.awt.Color;
 import java.awt.Component;
-
+import it1901g21.Main;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
 public class MyCellRenderer extends JLabel implements ListCellRenderer<Object> {
 
+	public Main main;
+	
 	public MyCellRenderer() {
         setOpaque(true);
     }
@@ -19,8 +21,9 @@ public class MyCellRenderer extends JLabel implements ListCellRenderer<Object> {
                                                   boolean isSelected,
                                                   boolean cellHasFocus) {
 
+    	
         setText(value.toString());
-
+        
         Color background;
         Color foreground;
 
@@ -37,7 +40,7 @@ public class MyCellRenderer extends JLabel implements ListCellRenderer<Object> {
         } else if (isSelected) {
             background = Color.BLACK;
             foreground = Color.YELLOW;
-            
+            getSelectionIndex(index);
         // unselected, and not the DnD drop location
         } else {
             background = Color.WHITE;
@@ -50,4 +53,12 @@ public class MyCellRenderer extends JLabel implements ListCellRenderer<Object> {
         return this;
     }
 
+    /**
+     * return the currently selected index in list.
+     *
+     */
+    public int getSelectionIndex(int index){
+    	System.out.println("Selected index: " + index);
+    	return index;
+    }
 }
