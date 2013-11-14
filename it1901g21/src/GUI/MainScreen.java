@@ -186,6 +186,7 @@ public class MainScreen extends JFrame {
 		}
 		
 		if (xlist.size()==0){
+			map.setIcon(null);
 			map.setText("No Sheep Registered!");
 			return;
 		}
