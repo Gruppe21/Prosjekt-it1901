@@ -63,14 +63,14 @@ public class MainScreen extends JFrame {
 		 */
 		
 		map = new JLabel();
-		map.setBounds(38, 211, 243, 221);
+		map.setBounds(38, 190, 243, 221);
 		contentPane.add(map);
 		
 		/**
 		 * Add Sheep button
 		 */
 		JButton btnAddSheep = new JButton("Add Sheep");
-		btnAddSheep.setBounds(38, 99, 120, 45);
+		btnAddSheep.setBounds(38, 74, 120, 45);
 		contentPane.add(btnAddSheep);
 		
 		btnAddSheep.addActionListener(new ActionListener() {
@@ -83,7 +83,7 @@ public class MainScreen extends JFrame {
 		 * Delete Sheep button
 		 */
 		JButton btnDelSheep = new JButton("Del Sheep");
-		btnDelSheep.setBounds(168, 99, 113, 45);
+		btnDelSheep.setBounds(168, 74, 113, 45);
 		contentPane.add(btnDelSheep);
 		
 		btnDelSheep.addActionListener(new ActionListener() {
@@ -96,7 +96,7 @@ public class MainScreen extends JFrame {
 		 *  Profile button
 		 */
 		JButton btnProfile = new JButton("Profile");
-		btnProfile.setBounds(38, 155, 120, 45);
+		btnProfile.setBounds(38, 132, 120, 45);
 		contentPane.add(btnProfile);
 		
 		btnProfile.addActionListener(new ActionListener() {
@@ -110,12 +110,12 @@ public class MainScreen extends JFrame {
 		 */
 		JButton btnAlarm = new JButton("Alarm");
 		btnAlarm.setBackground(Color.RED);
-		btnAlarm.setBounds(168, 155, 113, 45);
+		btnAlarm.setBounds(168, 132, 113, 45);
 		contentPane.add(btnAlarm);
 		
 		JButton btnMap = new JButton("Open bigger version of map");
 		btnMap.setBackground(Color.RED);
-		btnMap.setBounds(38, 440, 243, 25);
+		btnMap.setBounds(38, 424, 243, 25);
 		contentPane.add(btnMap);
 		
 		btnMap.addActionListener(new ActionListener() {
