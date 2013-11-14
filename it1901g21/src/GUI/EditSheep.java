@@ -45,7 +45,7 @@ public class EditSheep extends JFrame {
 		lblNewLabel.setBounds(57, 34, 124, 14);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblHelse = new JLabel("Birth Date yyyy.mm.dd:");
+		JLabel lblHelse = new JLabel("Birth Date (yyyy.mm.dd):");
 		lblHelse.setBounds(57, 65, 124, 14);
 		contentPane.add(lblHelse);
 		
@@ -61,7 +61,7 @@ public class EditSheep extends JFrame {
 		btnAvbryt.setBounds(10, 171, 124, 23);
 		contentPane.add(btnAvbryt);
 		
-		JLabel lblVekt = new JLabel("Weight:");
+		JLabel lblVekt = new JLabel("Weight (kg):");
 		lblVekt.setBounds(57, 127, 124, 14);
 		contentPane.add(lblVekt);
 		

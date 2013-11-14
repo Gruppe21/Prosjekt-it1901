@@ -65,13 +65,17 @@ public class RegiSheep extends JFrame {
 		lblNewLabel.setBounds(57, 34, 124, 14);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblHelse = new JLabel("Birth Date yyyy.mm.dd:");
+		JLabel lblHelse = new JLabel("Birth Date (yyyy.mm.dd):");
 		lblHelse.setBounds(57, 65, 135, 14);
 		contentPane.add(lblHelse);
 		
 		JLabel lblAlder = new JLabel("Health:");
 		lblAlder.setBounds(57, 96, 124, 14);
 		contentPane.add(lblAlder);
+		
+		JLabel lblVekt = new JLabel("Weight (kg):");
+		lblVekt.setBounds(57, 127, 124, 14);
+		contentPane.add(lblVekt);
 		
 		btnNewButton = new JButton("Done");
 		btnNewButton.setBounds(300, 171, 124, 23);
@@ -109,11 +113,11 @@ public class RegiSheep extends JFrame {
 					return;
 				}
 				if (Health_textField.getText().length() > 25) {
-					ErrorMessage error = new ErrorMessage("", "Health description, use maximum 25 symbols.");
+					ErrorMessage error = new ErrorMessage("", "In health description, use maximum 25 symbols.");
 					return;
 				}
-				if (Weight_textField.getText().length() > 7) {
-					ErrorMessage error = new ErrorMessage("", "Too much weight, that must be one fat sheep!");
+				if (Weight_textField.getText().length() > 4) {
+					ErrorMessage error = new ErrorMessage("-.-", "Come on, not even your mother is that fat...");
 					return;
 				}
 				
@@ -140,10 +144,6 @@ public class RegiSheep extends JFrame {
 				closeRegiSheep();
 			}
 		});
-		
-		JLabel lblVekt = new JLabel("Weight:");
-		lblVekt.setBounds(57, 127, 124, 14);
-		contentPane.add(lblVekt);	
 		
 	}
 	
