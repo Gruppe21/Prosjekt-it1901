@@ -2,6 +2,7 @@ package GUI;
 import it1901g21.Main;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,9 +24,9 @@ public class Login extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JPasswordField passwordField;
+	private JLabel connection;
 	private Main main;
 	private Registration registration;
-	private MainScreen mainscreen;
 	private Farmers pst;
 	
 	/**
@@ -62,6 +63,10 @@ public class Login extends JFrame {
 		JLabel lblPassword = new JLabel("Password");
 		lblPassword.setBounds(40, 115, 70, 14);
 		contentPane.add(lblPassword);
+		
+		connection = new JLabel("Connecting...");
+		connection.setBounds(15, 227, 180, 14);
+		contentPane.add(connection);
 		
 		
 		// Login button
@@ -115,6 +120,22 @@ public class Login extends JFrame {
 	
 	private void openRegistrationWindow() {
 		registration.openRegistration();
+	}
+	
+	/**
+	 * Sets the connection text to connected
+	 */
+	public void setConnected() {
+		connection.setText("Connected");
+		connection.setForeground(new Color(10,150,80));
+	}
+	
+	/**
+	 * Sets the connection text to disconnected
+	 */
+	public void setDisconnected() {
+		connection.setText("No connection availible");
+		connection.setForeground(Color.RED);
 	}
 	
 }

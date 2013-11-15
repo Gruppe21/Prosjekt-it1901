@@ -53,8 +53,9 @@ public class SQL {
 	
 	/**
 	 * Connects to the SQL database
+	 * @return returns true if connection is successful
 	 */
-	public void connect() {
+	public boolean connect() {
 		
 		/* Checks for valid database properties */
 		Boolean missing = false;
@@ -71,7 +72,7 @@ public class SQL {
 			missing = true;
 		}
 		if (missing) {
-			return;
+			return false;
 		}
 		
 		try {
@@ -82,10 +83,14 @@ public class SQL {
 		catch (SQLException e) {
 			System.out.println("Cannot connect to the database! Check your connection!");
 			ErrorMessage error = new ErrorMessage("Connection timed out", "Cannot connect to database! Check your connection!");
+			return false;
 		}
 		catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
+		
+		return true;
 		
 	}
 	

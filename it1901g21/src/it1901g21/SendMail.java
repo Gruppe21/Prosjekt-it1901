@@ -41,7 +41,7 @@ public class SendMail {
                 InternetAddress.parse(farmer_mail));					//mail-addresse til mottaker
             message.setSubject("ALARM! Your sheep is under attack!!!");			
             message.setText(farmer_name									//innhold i mailen
-                + "\n\n Din sau "+sheepId+" er angrepet "+timestamp+"!"
+                + "\n\n Your sheep "+sheepId+" is under attack by something, could be a wolf (or aliens)! \n Attack happened at "+timestamp+"!"
                 + "\n\n https://maps.google.com/maps/api/staticmap?size=300x300&maptype=roadmap&sensor=false&markers=color:red%7C"+sheepX+","+sheepY);
 
             Transport.send(message);

@@ -71,7 +71,13 @@ public class Main {
 		date = new Date();
 		
 		// Creates connection to database
-		pst.connect();
+		if (pst.connect()) {
+			login.setConnected();
+		}
+		else {
+			login.setDisconnected();
+		}
+		
 	}
 	
 	/**
@@ -85,9 +91,6 @@ public class Main {
 		
 		if (pst.checkLogin(em, pw)){
 			
-			mainscreen.openMainScreen();
-			this.closeLogin();
-			
 			// Loads the logged-in farmer into the program
 			this.loadFarmer(pst.getFarmer(em));
 			
@@ -96,6 +99,10 @@ public class Main {
 			
 			// Loads the sheep into the GUI list
 			this.mainscreen.updateListSheep();
+			
+			// Opens GUI window
+			mainscreen.openMainScreen();
+			this.closeLogin();
 			
 			System.out.println("Successfully logged in as " + this.getFarmer().getName());
 			
