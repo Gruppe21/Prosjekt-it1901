@@ -57,7 +57,6 @@ public class Main {
 		String ylist[]={"10.392165"};
 		//}
 		PROJECTPATH = findProjectPath();
-		System.out.println(getProjectPath());
 		
 		pst = new Farmers();
 		pinger = new Pinger(this);
@@ -203,7 +202,6 @@ public class Main {
 		
 		/* All GUI updates */
 		mainscreen.updateListSheep();
-		
 		mainscreen.updateMap();
 		
 	}
