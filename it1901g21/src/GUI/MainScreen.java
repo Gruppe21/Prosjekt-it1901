@@ -185,6 +185,15 @@ public class MainScreen extends JFrame {
 			ylist.add(this.main.getFarmer().getSheepHerd().get(i).getYPos());
 		}
 		
+		//deactivate map
+		
+		if (xlist.size()>=0){
+			map.setIcon(null);
+			map.setText("Map deactivated! more info on console!");
+			System.out.println("Map deactivated, see line 190-195 in MainScreen.java");
+			return;
+		}
+		
 		if (xlist.size()==0){
 			map.setIcon(null);
 			map.setText("No Sheep Registered!");
@@ -215,7 +224,7 @@ public class MainScreen extends JFrame {
             is.close();
             os.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             map.setIcon(null);
 			map.setText("Map not available!");
 			return;
