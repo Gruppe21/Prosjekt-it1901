@@ -41,6 +41,7 @@ public class MainScreen extends JFrame {
 	private JScrollPane scrollPane;
 	private DefaultListModel listmodel;
 	private JLabel map;
+	
 	/**
 	 * Create the frame.
 	 */
@@ -61,7 +62,6 @@ public class MainScreen extends JFrame {
 		/**
 		 * Add Mini-map
 		 */
-		
 		map = new JLabel();
 		map.setBounds(38, 190, 243, 221);
 		contentPane.add(map);
@@ -113,6 +113,9 @@ public class MainScreen extends JFrame {
 		btnAlarm.setBounds(168, 132, 113, 45);
 		contentPane.add(btnAlarm);
 		
+		/**
+		 * Open bigger map button
+		 */
 		JButton btnMap = new JButton("Open bigger version of map");
 		btnMap.setBackground(Color.RED);
 		btnMap.setBounds(38, 424, 243, 25);

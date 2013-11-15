@@ -30,8 +30,6 @@ public class Farmers extends SQL {
 			preparedStatement.setString(6, farmer.getPasswordHash());
 			preparedStatement.setString(7, farmer.getSalt());
 			preparedStatement.executeUpdate();
-			
-			//statement.executeQuery("INSERT INTO Farmers (Mail, Name, Phone, ReserveMail, ReservePhone, PasswordHash, Salt) VALUES(" + farmer.getMail() + "," + farmer.getName() + "," + farmer.getTlf() + "," + farmer.getResMail() + "," + farmer.getResTlf() + "," + farmer.getPasswordHash() + "," + farmer.getSalt() + ")");
 		} 
 		catch (SQLException ex){
 			Logger lgr = Logger.getLogger(Farmers.class.getName());
@@ -100,15 +98,10 @@ public class Farmers extends SQL {
 	public void updateSheepPos(int id, String[] coordinates) {
 		
 		try {
-			preparedStatement = connect.prepareStatement("UPDATE Sheep SET Xpos = ? WHERE Id = ?");
+			preparedStatement = connect.prepareStatement("UPDATE Sheep SET Xpos = ?, Ypos = ? WHERE Id = ?");
 			preparedStatement.setString(1, coordinates[0]);
-			//paredStatement.setString(2, coordinates[1]);
-			preparedStatement.setInt(2, id);
-			preparedStatement.executeUpdate();
-			
-			preparedStatement = connect.prepareStatement("UPDATE Sheep SET Ypos = ? WHERE Id = ?");
-			preparedStatement.setString(1, coordinates[1]);
-			preparedStatement.setInt(2, id);
+			preparedStatement.setString(2, coordinates[1]);
+			preparedStatement.setInt(3, id);
 			preparedStatement.executeUpdate();
 			
 		} catch (SQLException ex) {
@@ -154,7 +147,7 @@ public class Farmers extends SQL {
 		return null;
 	}
 	/**
-	 * Takes email as arguemnt
+	 * Takes email as argument
 	 * Checks whether the user (email) exists in the database
 	 */
 		public boolean userExists(String inputUser) {
@@ -215,7 +208,7 @@ public class Farmers extends SQL {
 	
 	/**
 	 * Takes email and password as argument
-	 * Checks wheter the given email/password matches the email/password in the database
+	 * Checks whether the given email/password matches the email/password in the database
 	 */
 	public boolean checkLogin(String username, String password) {
 		PasswordHash ph = new PasswordHash();

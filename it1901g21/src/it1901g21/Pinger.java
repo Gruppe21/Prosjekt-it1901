@@ -46,7 +46,7 @@ public class Pinger {
 		for (Sheep sheep : main.getFarmer().getSheepHerd()) {	
 			
 			// Generate new coordinates based on the old
-			String[] newCoordinates = generateCoordinatesOld(sheep.getXPos(), sheep.getYPos());
+			String[] newCoordinates = generateCoordinatesV1(sheep.getXPos(), sheep.getYPos());
 			
 			// Set the sheep at the new coordinates
 			sheep.setXPos(newCoordinates[0]);
@@ -64,7 +64,7 @@ public class Pinger {
 	 * @param currentY the current Y-coordinate
 	 * @return the new coordinates
 	 */
-	public String[] generateCoordinates(String currentX, String currentY) {
+	public String[] generateCoordinatesV2(String currentX, String currentY) {
 		
 		/* Sets all prerequisites */
 		DecimalFormat df = new DecimalFormat("##0.000000");
@@ -91,13 +91,13 @@ public class Pinger {
 	}
 	
 	/**
-	 * Version 1, there should be a newer version to use.
+	 * Version 1
 	 * Generates new coordinates based on the current coordinates
 	 * @param currentX the current X-coordinate
 	 * @param currentY the current Y-coordinate
 	 * @return the new coordinates
 	 */
-	public String[] generateCoordinatesOld(String currentX, String currentY) {
+	public String[] generateCoordinatesV1(String currentX, String currentY) {
 		
 		int min = 1000;
 		int max = 9000;
