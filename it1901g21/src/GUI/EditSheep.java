@@ -11,7 +11,7 @@ import javax.swing.JButton;
 
 
 public class EditSheep extends JFrame {
-
+	
 	private JPanel contentPane;
 	private JTextField textField_2;
 	private JTextField textField_3;

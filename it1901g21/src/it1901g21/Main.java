@@ -127,7 +127,7 @@ public class Main {
 	 */
 	public void loadFarmer(Farmer farmer) {
 		this.farmer = farmer;
-		update();
+		update(true);
 	}
 	
 	/**
@@ -155,7 +155,7 @@ public class Main {
 		
 		Sheep sheep = new Sheep(this.getFarmer().getId(), sheepNumber, birthDate, weight, health, "63.415884", "10.403452");
 		pst.addSheep(sheep);
-		this.update();
+		this.update(true);
 	}
 	
 	/**
@@ -179,7 +179,7 @@ public class Main {
 			return;
 		}
 		
-		this.update();
+		this.update(true);
 	}
 	
 	/**
@@ -187,22 +187,26 @@ public class Main {
 	 */
 	public void updateSheepPos(int id, String[] coordinates) {
 		pst.updateSheepPos(id, coordinates);
-		this.update();
+		this.update(false);
 	}
 	
 	/**
 	 * Updates the farmer object in the local program to match the farmer in the database.
 	 * Also updates all GUI stuff.
 	 * ALWAYS USE THIS AFTER SOMETHING CHANGES!
+	 * @param updateList set this to true if the list of sheep should be updated (it should not be updated by a ping)
 	 */
-	public void update() {
+	public void update(boolean updateList) {
 		
-		//Updates the farmer's sheep herd
+		// Updates the farmer's sheep herd
 		this.getFarmer().setSheepHerd(pst.farmersSheep(this.getFarmer().getId()));
 		
-		/* All GUI updates */
-		mainscreen.updateListSheep();
+		// GUI map update
 		mainscreen.updateMap();
+		
+		// List of sheep should not be updated by a single ping
+		if (updateList)
+			mainscreen.updateListSheep();
 		
 	}
 	
