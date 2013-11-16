@@ -1,5 +1,6 @@
 package GUI;
 import it1901g21.Main;
+import it1901g21.Sheep;
 
 import java.awt.BorderLayout;
 import java.awt.Desktop;
@@ -168,8 +169,8 @@ public class MainScreen extends JFrame {
 	public void updateListSheep() {
 		
 		listmodel.clear();
-		for (int i = 0; i < this.main.getFarmer().getSheepHerd().size(); i++){
-			listmodel.addElement(this.main.getFarmer().getSheepHerd().get(i).getEarTag());	
+		for (Sheep sheep : this.main.getFarmer().getSheepHerd()) {
+			listmodel.addElement(sheep.getEarTag());
 		}
 	}
 	

@@ -85,8 +85,20 @@ public class SheepInfo extends JFrame {
 		
 		JList list = new JList();
 		scrollPane.setViewportView(list);
-		
-		this.setVisible(true);
-		
 	}
+	
+	/**
+	 * Opens the sheep info
+	 */
+	public void openSheepInfo() {
+		this.setVisible(true);
+	}
+	
+	/**
+	 * Closes the sheep info
+	 */
+	public void closeSheepInfo() {
+		this.setVisible(false);
+	}
+	
 }
