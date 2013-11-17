@@ -57,7 +57,6 @@ public class Profile {
 		
 		JButton btnDone = new JButton("Done");
 		springLayout.putConstraint(SpringLayout.SOUTH, btnDone, -10, SpringLayout.SOUTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, btnDone, -113, SpringLayout.EAST, frame.getContentPane());
 		frame.getContentPane().add(btnDone);
 		
 		btnDone.addActionListener(new ActionListener() {
@@ -67,6 +66,7 @@ public class Profile {
 		});
 		
 		JLabel lblname = new JLabel(farmer.getName());
+		springLayout.putConstraint(SpringLayout.EAST, btnDone, 0, SpringLayout.EAST, lblname);
 		springLayout.putConstraint(SpringLayout.NORTH, lblname, 0, SpringLayout.NORTH, lblFirstName);
 		springLayout.putConstraint(SpringLayout.WEST, lblname, 6, SpringLayout.EAST, lblFirstName);
 		springLayout.putConstraint(SpringLayout.SOUTH, lblname, 0, SpringLayout.SOUTH, lblFirstName);
@@ -97,6 +97,11 @@ public class Profile {
 		springLayout.putConstraint(SpringLayout.NORTH, lblgetContactPhone, 0, SpringLayout.NORTH, lblContactPhone);
 		springLayout.putConstraint(SpringLayout.WEST, lblgetContactPhone, 6, SpringLayout.EAST, lblContactPhone);
 		frame.getContentPane().add(lblgetContactPhone);
+		
+		JButton btnEdit = new JButton("Edit");
+		springLayout.putConstraint(SpringLayout.NORTH, btnEdit, 0, SpringLayout.NORTH, btnDone);
+		springLayout.putConstraint(SpringLayout.EAST, btnEdit, 0, SpringLayout.EAST, lblContactPersonName);
+		frame.getContentPane().add(btnEdit);
 		
 		
 		
