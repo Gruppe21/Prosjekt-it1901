@@ -92,8 +92,7 @@ public class Login extends JFrame {
 		
 		btnNewUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				openRegistrationWindow();
-				
+				registerNewUser();
 			}
 		});
 		
@@ -118,7 +117,14 @@ public class Login extends JFrame {
 		main.logIn(info);
 	}
 	
-	private void openRegistrationWindow() {
+	/**
+	 * Sends the request to open the registration window
+	 */
+	public void registerNewUser() {
+		if (!main.isConnected()) {
+			ErrorMessage error = new ErrorMessage("", "Cannot register user without connection!");
+			return;
+		}
 		registration.openRegistration();
 	}
 	

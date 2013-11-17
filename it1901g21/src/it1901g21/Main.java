@@ -30,6 +30,7 @@ public class Main {
 	private Farmers pst;
 	private Pinger pinger;
 	private PasswordHash ph;
+	private Farmer farmer;
 	
 	/* GUI classes */
 	private MainScreen mainscreen;
@@ -41,7 +42,8 @@ public class Main {
 	private Date date;
 	
 	private final String PROJECTPATH;
-	private Farmer farmer;
+	private boolean loggedIn;
+	private boolean connected;
 	
 	/* Entry point, only used to initiate Main*/
 	public static void main(String[] args) {
@@ -57,6 +59,8 @@ public class Main {
 		String ylist[]={"10.392165"};
 		//}
 		PROJECTPATH = findProjectPath();
+		loggedIn = false;
+		connected = false;
 		
 		pst = new Farmers();
 		pinger = new Pinger(this);
@@ -72,6 +76,7 @@ public class Main {
 		
 		// Creates connection to database
 		if (pst.connect()) {
+			connected = true;
 			login.setConnected();
 		}
 		else {
@@ -104,6 +109,7 @@ public class Main {
 			mainscreen.openMainScreen();
 			this.closeLogin();
 			
+			loggedIn = true;
 			System.out.println("Successfully logged in as " + this.getFarmer().getName());
 			
 		}
@@ -208,10 +214,10 @@ public class Main {
 		// Updates the farmer's sheep herd
 		this.getFarmer().setSheepHerd(pst.farmersSheep(this.getFarmer().getId()));
 		
-		// GUI map update
+		// GUI: Map update
 		mainscreen.updateMap();
 		
-		// List of sheep should not be updated by a single ping
+		// GUI: Updates the list of sheep if requested
 		if (updateList)
 			mainscreen.updateListSheep();
 		
@@ -227,13 +233,23 @@ public class Main {
 	}
 	
 	/**
-	 * Checks if farmer has been initialised (logged-in)
+	 * Checks if a farmer is logged in
 	 * @return true or false
 	 */
 	public boolean isLoggedIn() {
-		if (this.getFarmer() == null)
-			return false;
-		return true;
+		if (loggedIn)
+			return true;
+		return false;
+	}
+	
+	/**
+	 * Checks if program is connected to database
+	 * @return true or false
+	 */
+	public boolean isConnected() {
+		if (connected)
+			return true;
+		return false;
 	}
 	
     /**
