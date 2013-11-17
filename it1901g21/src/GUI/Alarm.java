@@ -50,7 +50,7 @@ public class Alarm {
 		frame.getContentPane().add(btnCancel);
 		
 		/*
-		 * Action to happen when user clicks "cancel"
+		 * Action to happen when user clicks "no"
 		 */
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -59,7 +59,7 @@ public class Alarm {
 		});
 		
 		/*
-		 * Action to happen when user clicks "confirm"
+		 * Action to happen when user clicks "yes"
 		 */
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -84,11 +84,5 @@ public class Alarm {
 	 */
 	private void closeAlarm(){
 		frame.setVisible(false);
-	}
-	
-	/**
-	 * Sends the prompt to delete the sheep to Main
-	 */
-	private void sendAlarm(String earTag) {
 	}
 }
