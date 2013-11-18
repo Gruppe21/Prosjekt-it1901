@@ -103,7 +103,11 @@ public class Profile {
 		springLayout.putConstraint(SpringLayout.EAST, btnEdit, 0, SpringLayout.EAST, lblContactPersonName);
 		frame.getContentPane().add(btnEdit);
 		
-		
+		btnEdit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EditProfile editprofile = new EditProfile(getMain());
+			}
+		});
 		
 		frame.setVisible(true);
 	}
@@ -114,5 +118,9 @@ public class Profile {
 	 */
 	private void closeProfile(){
 		frame.setVisible(false);
+	}
+	
+	private Main getMain() {
+		return main;
 	}
 }
