@@ -37,6 +37,7 @@ public class MainScreen extends JFrame {
 	private Main main;
 	private RegiSheep regiSheep;
 	private DelSheep delSheep;
+	private Alarm alarm;
 	
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
@@ -109,10 +110,16 @@ public class MainScreen extends JFrame {
 		/**
 		 * Alarm button
 		 */
-		JButton btnAlarm = new JButton("Alarm");
+		JButton btnAlarm = new JButton("Alarm test");
 		btnAlarm.setBackground(Color.RED);
 		btnAlarm.setBounds(168, 132, 113, 45);
 		contentPane.add(btnAlarm);
+		
+		btnAlarm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Alarm alarm = new Alarm(getMain());
+			}
+		});
 		
 		/**
 		 * Open bigger map button
@@ -248,6 +255,7 @@ public class MainScreen extends JFrame {
 	private void openDelSheepWindow() {
 		delSheep.openDelSheep();
 	}
+	
 	
 	private Main getMain() {
 		return main;

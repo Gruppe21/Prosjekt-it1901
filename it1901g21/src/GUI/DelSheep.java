@@ -28,7 +28,7 @@ public class DelSheep {
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 400, 200);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
 		

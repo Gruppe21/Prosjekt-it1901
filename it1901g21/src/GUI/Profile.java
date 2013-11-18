@@ -26,7 +26,7 @@ public class Profile {
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 300, 259);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
 		
