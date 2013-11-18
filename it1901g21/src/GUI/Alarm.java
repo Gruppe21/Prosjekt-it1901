@@ -5,6 +5,7 @@ import it1901g21.Main;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.SpringLayout;
@@ -18,10 +19,13 @@ public class Alarm {
 	
 	private JFrame frame;
 
+	private void mailsender(String farmer_mail, String farmer_name, String timestamp, int sheepId, String sheepX, String sheepY){
+		main.mailAlert(farmer_mail, farmer_name, timestamp, sheepId, sheepX, sheepY);
+	}
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	public Alarm(Main main) {
+	public Alarm(final Main main) {
 		
 		this.main = main;
 		
@@ -57,8 +61,14 @@ public class Alarm {
 		 */
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
+				Random rng = new Random();
+				int rngint = rng.nextInt(5);
+				mailsender(main.getFarmer().getMail(), 
+						main.getFarmer().getName(), 
+						main.getCurrentTime().toString(), 
+						main.getFarmer().getSheepHerd().get(rngint).getId(), 
+						main.getFarmer().getSheepHerd().get(rngint).getXPos(), 
+						main.getFarmer().getSheepHerd().get(rngint).getYPos());
 				
 			}
 		});

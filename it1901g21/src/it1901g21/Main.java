@@ -39,6 +39,7 @@ public class Main {
 	private RegiSheep regiSheep;
 	private DelSheep delSheep;
 	
+	private SendMail sendMail;
 	private Date date;
 	
 	private final String PROJECTPATH;
@@ -71,6 +72,7 @@ public class Main {
 		mainscreen = new MainScreen(this, regiSheep, delSheep, xlist, ylist);
 		registration = new Registration(this);
 		login = new Login(this, pst, registration);
+		
 		
 		date = new Date();
 		
@@ -218,17 +220,7 @@ public class Main {
 	
 	public void updateEditProfile(String name, String Email, String phoneNumber, 
 		String contactEmail, String contactPhone, int id) {
-		
-		// Updates the farmer locally
-		farmer.setName(name);
-		farmer.setMail(Email);
-		farmer.setTlf(phoneNumber);
-		farmer.setResMail(contactEmail);
-		farmer.setResTlf(contactPhone);
-		
-		// Updates the farmer in the database
 		pst.editFarmer(name, Email, phoneNumber, contactEmail, contactPhone, id);
-		
 		this.update(false);
 	}
 	
@@ -353,6 +345,13 @@ public class Main {
 		System.out.println("Round 2, Hash: " + round2[0]);
 		System.out.println("Round 2, Salt: " + round2[1]);
 		*/
+	}
+	
+	public void mailAlert(String farmer_mail, String farmer_name, 
+			String timestamp, int sheepId, String sheepX, String sheepY){
+		
+		sendMail = new SendMail(farmer_mail, farmer_name, timestamp, sheepId, sheepX, sheepY);
+		
 	}
 	
 }
