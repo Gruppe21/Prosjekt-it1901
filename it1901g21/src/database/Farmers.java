@@ -312,7 +312,7 @@ public void editFarmer(String name, String Email, String phoneNumber,
 	}
 	
 	/**
-	 * Loads the localization log from the database
+	 * Loads the complete localisation log of a sheep from the database
 	 * @param sheep the sheep to load data from
 	 * @return
 	 */
@@ -330,6 +330,7 @@ public void editFarmer(String name, String Email, String phoneNumber,
 				Localization pos = new Localization();
 				
 				pos.setSheepId(resultSet.getInt("sheepId"));
+				pos.setLocId(resultSet.getInt("LocId"));
 				pos.setTime(resultSet.getString("Time"));
 				pos.setX(resultSet.getString("xPos"));
 				pos.setY(resultSet.getString("yPos"));
@@ -346,10 +347,10 @@ public void editFarmer(String name, String Email, String phoneNumber,
 	}
 	
 	/**
-	 * Adds localization data to database
+	 * Adds localisation data to database
 	 * @param loc
 	 */
-	public void addLoc(Localization loc){		
+	public void addLoc(Localization loc) {		
 		
 		try {	
 			preparedStatement = connect.prepareStatement("INSERT INTO Localization (SheepId, Time, xPos, yPos) VALUES(?, ?, ?, ?)");
@@ -357,6 +358,22 @@ public void editFarmer(String name, String Email, String phoneNumber,
 			preparedStatement.setString(2, loc.getTime());
 			preparedStatement.setString(3, loc.getX());
 			preparedStatement.setString(4, loc.getY());
+			preparedStatement.executeUpdate();
+		}	
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Deletes localisation data from database
+	 * @param loc
+	 */
+	public void deleteLoc(Localization loc) {		
+		
+		try {	
+			preparedStatement = connect.prepareStatement("DELETE FROM Localization WHERE locId = ?");
+			preparedStatement.setInt(1, loc.getLocId());
 			preparedStatement.executeUpdate();
 		}	
 		catch (SQLException e) {

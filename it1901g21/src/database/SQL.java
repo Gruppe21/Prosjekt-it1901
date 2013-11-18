@@ -82,7 +82,8 @@ public class SQL {
 		}
 		catch (SQLException e) {
 			System.out.println("Cannot connect to the database! Check your connection!");
-			ErrorMessage error = new ErrorMessage("Connection timed out", "Cannot connect to database! Check your connection!");
+			ErrorMessage error = new ErrorMessage("Connection timed out", "Cannot connect to database! Check your connection!\nIn order for the connection "
+					+ "to work, you must be connected to Eduroam at NTNU!");
 			return false;
 		}
 		catch (Exception e) {

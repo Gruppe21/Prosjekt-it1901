@@ -3,11 +3,18 @@ package it1901g21;
 public class Localization {
 	
 	private int sheepId;
-	private int i;
+	private int locId;
 	private String time;
 	private String xPos;
 	private String yPos;
 	
+	/**
+	 * Standard localisation constructor
+	 * @param sheepId the sheep localised
+	 * @param time time of the localisation
+	 * @param xPos x-position
+	 * @param yPos y-position
+	 */
 	public Localization(int sheepId, String time, String xPos, String yPos) {
 		this.sheepId = sheepId;
 		this.time = time;
@@ -15,6 +22,9 @@ public class Localization {
 		this.yPos = yPos;
 	}
 	
+	/**
+	 * Alternative localisation constructor with no parameters
+	 */
 	public Localization() {
 		
 	}
@@ -23,8 +33,8 @@ public class Localization {
 		return sheepId;
 	}
 	
-	public int getIndex() {
-		return i;
+	public int getLocId() {
+		return locId;
 	}
 	
 	public String getTime() {
@@ -43,8 +53,8 @@ public class Localization {
 		this.sheepId = id;
 	}
 	
-	public void setIndex(int i) {
-		this.i = i;
+	public void setLocId(int id) {
+		this.locId = id;
 	}
 	
 	public void setTime(String time) {

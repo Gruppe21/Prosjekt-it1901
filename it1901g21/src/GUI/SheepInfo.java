@@ -117,11 +117,14 @@ public class SheepInfo {
 		JList list = new JList(listmodel);
 		scrollPane.setViewportView(list);
 		
-		addLocations();
+		updateLocations();
 		openSheepInfo();
 	}
 	
-	private void addLocations() {
+	/**
+	 * Updates the list of previously known locations
+	 */
+	public void updateLocations() {
 		
 		listmodel.clear();
 		for (Localization loc : sheep.getLoc()) {

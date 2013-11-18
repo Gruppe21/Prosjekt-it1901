@@ -172,7 +172,7 @@ public class MainScreen extends JFrame {
 				JList list = (JList)evt.getSource();
 				if (evt.getClickCount() == 2){
 					int index = list.locationToIndex(evt.getPoint());
-					SheepInfo sheepinfo = new SheepInfo(getMain(), getMain().getFarmer().getSheepHerd().get(index));
+					sheepinfo = new SheepInfo(getMain(), getMain().getFarmer().getSheepHerd().get(index));
 				}
 			}
 		});
@@ -275,5 +275,9 @@ public class MainScreen extends JFrame {
 	
 	private Main getMain() {
 		return main;
+	}
+	
+	public SheepInfo getSheepInfo() {
+		return sheepinfo;
 	}
 }

@@ -233,20 +233,26 @@ public class Main {
 		this.update(false);
 	}
 	
-	public void updateLocData(Sheep sheep, Localization loc) {
+	public void updateLocData(Sheep sheep, String[] coordinates) {
 		
-		if (sheep.getLoc().size() >= 20) {
-			//this.loc.remove(0);
+		// Create new localisation data based on coordinates
+		Localization loc = new Localization(sheep.getId(), getCurrentTime().toString(), coordinates[0], coordinates[1]);
+		
+		// Delete oldest data
+		if (sheep.getLoc().size() >= 10) {
+			pst.deleteLoc(sheep.getLoc().get(0));
 		}
 		
-		// Adds localisation data locally
-		sheep.setLastLoc(loc);
-		
-		// Adds localisation data in the database
+		// Add localisation data in the database
 		pst.addLoc(loc);
 		
+		// Update program to retrieve latest data from database
 		this.update(false);
 		
+		// Update the list of previously known locations
+		mainscreen.getSheepInfo().updateLocations();
+		
+		/* Just a debug test */
 		for (Localization test : sheep.getLoc()) {
 			System.out.println(sheep.getEarTag() + " ID: " + sheep.getId() + "  " + test.getX() + " " + test.getX());
 			System.out.println("Size: " + sheep.getLoc().size());

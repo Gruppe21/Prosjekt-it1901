@@ -53,7 +53,7 @@ public class Pinger {
 			sheep.setYPos(newCoordinates[1]);
 			
 			// Adds location data to the sheep's location list
-			this.addLocationData(sheep, newCoordinates);
+			main.updateLocData(sheep, newCoordinates);
 			
 			// Sends the request to update database further
 			main.updateSheepPos(sheep.getId(), newCoordinates);
@@ -115,17 +115,6 @@ public class Pinger {
 		y += Integer.toString(yR);
 		
 		return new String[] {x, y};
-	}
-	
-	/**
-	 * Adds location data to be stored in sheep
-	 * @param sheep
-	 * @param coordinates
-	 */
-	private void addLocationData(Sheep sheep, String[] coordinates) {
-		
-		Localization loc = new Localization(sheep.getId(), main.getCurrentTime().toString(), coordinates[0], coordinates[1]);
-		main.updateLocData(sheep, loc);
 	}
 	
 }
