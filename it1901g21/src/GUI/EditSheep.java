@@ -26,6 +26,7 @@ public class EditSheep extends JFrame {
 	private JButton btnAvbryt;
 	private JLabel lblSerialnumber;
 	private JLabel lblBirthdate;
+	private Sheep sheep;
 
 	/**
 	 * Create the frame.
@@ -68,16 +69,9 @@ public class EditSheep extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				String rHealth = health.getText();
-				String rweightS = weight.getText();
+				String rWeightS = weight.getText();
 				
-				int rweight = Integer.parseInt(rweightS);
-				
-				sheep.setHealth(rHealth);
-				sheep.setWeight(rweight);
-				
-				//need to close sheep info, and must refresh main
-				SheepInfo.closeSheepInfo();
-				closeEditSheep();
+				edit(rHealth,rWeightS);
 				
 			}
 			
@@ -125,5 +119,23 @@ public class EditSheep extends JFrame {
 	
 	private void closeEditSheep(){
 		this.setVisible(false);
+	}
+	
+	private void edit(String health, String weight){
+		
+		if (health.length()==0||weight.length()==0){
+			ErrorMessage errorMsg = new ErrorMessage("", "Something is missing from the fields");
+			return;
+		}
+		
+		int rweight = Integer.parseInt(weight);
+		
+		sheep.setHealth(health);
+		sheep.setWeight(rweight);
+		
+		//need to close sheep info, and must refresh main
+		SheepInfo.closeSheepInfo();
+		closeEditSheep();
+		
 	}
 }
