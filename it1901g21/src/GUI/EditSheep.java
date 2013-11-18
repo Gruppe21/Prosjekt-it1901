@@ -86,6 +86,14 @@ public class EditSheep extends JFrame {
 		btnAvbryt = new JButton("Cancel");
 		btnAvbryt.setBounds(12, 204, 124, 23);
 		contentPane.add(btnAvbryt);
+		btnAvbryt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				closeEditSheep();
+				
+			}
+			
+		});
 		
 		JLabel lblVekt = new JLabel("Weight (kg):");
 		lblVekt.setBounds(57, 148, 124, 14);
