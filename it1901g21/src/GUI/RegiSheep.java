@@ -61,20 +61,20 @@ public class RegiSheep extends JFrame {
 		contentPane.add(Weight_textField);
 		Weight_textField.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("Ear tag ID");
-		lblNewLabel.setBounds(57, 34, 124, 14);
+		JLabel lblNewLabel = new JLabel("Ear tag ID:");
+		lblNewLabel.setBounds(12, 34, 124, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblHelse = new JLabel("Birth Date (yyyy.mm.dd):");
-		lblHelse.setBounds(57, 65, 135, 14);
+		lblHelse.setBounds(12, 65, 167, 14);
 		contentPane.add(lblHelse);
 		
 		JLabel lblAlder = new JLabel("Health:");
-		lblAlder.setBounds(57, 96, 124, 14);
+		lblAlder.setBounds(12, 96, 124, 14);
 		contentPane.add(lblAlder);
 		
 		JLabel lblVekt = new JLabel("Weight (kg):");
-		lblVekt.setBounds(57, 127, 124, 14);
+		lblVekt.setBounds(12, 127, 124, 14);
 		contentPane.add(lblVekt);
 		
 		btnNewButton = new JButton("Done");
