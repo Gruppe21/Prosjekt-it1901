@@ -58,7 +58,7 @@ public class MyCellRenderer extends JLabel implements ListCellRenderer<Object> {
      *
      */
     public int getSelectionIndex(int index){
-    	System.out.println("Selected index: " + index);
+    	
     	return index;
     }
 }
