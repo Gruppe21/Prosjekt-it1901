@@ -71,7 +71,7 @@ public class Login extends JFrame {
 		
 		// Login button
 		JButton btnLogin = new JButton("Login");
-		btnLogin.setBounds(114, 143, 238, 23);
+		btnLogin.setBounds(240, 143, 112, 23);
 		contentPane.add(btnLogin);
 		this.getRootPane().setDefaultButton(btnLogin);
 		
@@ -87,23 +87,12 @@ public class Login extends JFrame {
 		
 		// New user button
 		JButton btnNewUser = new JButton("New user");
-		btnNewUser.setBounds(114, 177, 112, 23);
+		btnNewUser.setBounds(114, 143, 112, 23);
 		contentPane.add(btnNewUser);
 		
 		btnNewUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				registerNewUser();
-			}
-		});
-		
-		// Forgot pass button 
-		JButton btnForgotPass = new JButton("Forgot Pass");
-		btnForgotPass.setBounds(240, 177, 112, 23);
-		contentPane.add(btnForgotPass);
-		
-		btnForgotPass.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
 			}
 		});
 		
