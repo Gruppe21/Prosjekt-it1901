@@ -15,6 +15,7 @@ import javax.swing.JButton;
 public class Profile {
 	
 	private Main main;
+	private Farmer farmer;
 	private JFrame frame;
 
 	/**
@@ -22,7 +23,7 @@ public class Profile {
 	 */
 	public Profile(Main main) {
 		this.main = main;
-		Farmer farmer = this.main.getFarmer();
+		this.farmer = main.getFarmer();
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 300, 259);
