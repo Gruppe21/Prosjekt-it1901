@@ -140,7 +140,6 @@ public class EditSheep extends JFrame {
 
 	private void edit(String health, String weight){
 		
-		
 		// Check for letters in weight
 		if (!isNumeric(weight)) {
 			ErrorMessage error = new ErrorMessage("", "Please only use numbers for weight!");
@@ -152,7 +151,7 @@ public class EditSheep extends JFrame {
 			ErrorMessage error = new ErrorMessage("", "In health description, use maximum 25 symbols.");
 			return;
 		}
-		if (weight.length() > 10) {
+		if (weight.length() > 4) {
 			ErrorMessage error = new ErrorMessage("-.-", "Come on, not even your mother is that fat...");
 			return;
 		}
