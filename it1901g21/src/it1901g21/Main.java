@@ -214,6 +214,12 @@ public class Main {
 		this.update(false);
 	}
 	
+	public void updateEditProfile(String name, String Email, String phoneNumber, 
+		String contactEmail, String contactPhone, int id) {
+		pst.editFarmer(name, Email, phoneNumber, contactEmail, contactPhone, id);
+		this.update(false);
+	}
+	
 	/**
 	 * Updates the farmer object in the local program to match the farmer in the database.
 	 * Also updates all GUI stuff.

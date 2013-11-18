@@ -168,6 +168,38 @@ public class Farmers extends SQL {
 		}
 		return null;
 	}
+	
+	/**
+	 * Allows editing of name, email, phone number etc. of farmer.
+	 * @param name
+	 * @param Email
+	 * @param phoneNumber
+	 * @param contactEmail
+	 * @param contactPhone
+	 * @param id
+	 */
+public void editFarmer(String name, String Email, String phoneNumber, 
+		String contactEmail, String contactPhone, int id) {
+		
+		try {
+			preparedStatement = connect.prepareStatement("UPDATE Farmers SET Name = ?, Mail = ?, Phone = ?, ReserveMail = ?, ReservePhone = ? WHERE Id = ?");
+			preparedStatement.setString(1, name);
+			preparedStatement.setString(2, Email);
+			preparedStatement.setString(3, phoneNumber);
+			preparedStatement.setString(4, contactEmail);
+			preparedStatement.setString(5, contactPhone);
+			preparedStatement.setString(5, contactPhone);
+			preparedStatement.setInt(6, id);
+			
+			preparedStatement.executeUpdate();
+			
+		} catch (SQLException ex) {
+			Logger lgr = Logger.getLogger(Farmers.class.getName());
+			lgr.log(Level.SEVERE, ex.getMessage(), ex);
+		}
+		
+	}
+	
 	/**
 	 * Takes email as argument
 	 * Checks whether the user (email) exists in the database
