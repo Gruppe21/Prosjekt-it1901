@@ -49,6 +49,7 @@ public class DelSheep {
 		springLayout.putConstraint(SpringLayout.EAST, textField, 0, SpringLayout.EAST, btnConfirm);
 		springLayout.putConstraint(SpringLayout.EAST, btnConfirm, -42, SpringLayout.EAST, frame.getContentPane());
 		frame.getContentPane().add(btnConfirm);
+		frame.getRootPane().setDefaultButton(btnConfirm);
 		
 		JButton btnCancel = new JButton("Cancel");
 		springLayout.putConstraint(SpringLayout.WEST, btnConfirm, 87, SpringLayout.EAST, btnCancel);
