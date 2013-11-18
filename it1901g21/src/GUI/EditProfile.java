@@ -153,6 +153,11 @@ public class EditProfile {
 			return;
 		}
 		
+		if (Email.length()<=0){
+			ErrorMessage errorMsg = new ErrorMessage("", "E-mail can not be empty!");
+			return;
+		}
+		
 		if (contactPhone.length()>=12||phoneNumber.length()>=12){
 			ErrorMessage errorMsg = new ErrorMessage("", "Phone number is too long!");
 			return;
