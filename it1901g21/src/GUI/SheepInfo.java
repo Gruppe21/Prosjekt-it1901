@@ -65,6 +65,7 @@ public class SheepInfo {
 		btnDone = new JButton("Done");
 		btnDone.setBounds(296, 433, 124, 23);
 		contentPane.add(btnDone);
+		frame.getRootPane().setDefaultButton(btnDone);
 		
 		btnDone.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

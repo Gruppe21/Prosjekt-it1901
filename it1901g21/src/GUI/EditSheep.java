@@ -69,6 +69,7 @@ public class EditSheep extends JFrame {
 		btnDone = new JButton("Done");
 		btnDone.setBounds(296, 204, 124, 23);
 		contentPane.add(btnDone);
+		this.getRootPane().setDefaultButton(btnDone);
 		
 		btnDone.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

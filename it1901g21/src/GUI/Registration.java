@@ -136,6 +136,7 @@ public class Registration extends JFrame {
 		JButton btnDone = new JButton("Done");
 		btnDone.setBounds(285, 295, 133, 23);
 		contentPane.add(btnDone);
+		this.getRootPane().setDefaultButton(btnDone);
 		
 		btnDone.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

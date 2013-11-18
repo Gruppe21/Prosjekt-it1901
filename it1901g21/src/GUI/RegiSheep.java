@@ -24,7 +24,7 @@ public class RegiSheep extends JFrame {
 	private JTextField BirthDate_textField;
 	private JTextField Health_textField;
 	private JTextField Weight_textField;
-	private JButton btnNewButton;
+	private JButton btnDone;
 	private JButton btnAvbryt;
 	
 	/**
@@ -77,9 +77,10 @@ public class RegiSheep extends JFrame {
 		lblVekt.setBounds(12, 127, 124, 14);
 		contentPane.add(lblVekt);
 		
-		btnNewButton = new JButton("Done");
-		btnNewButton.setBounds(300, 171, 124, 23);
-		contentPane.add(btnNewButton);
+		btnDone = new JButton("Done");
+		btnDone.setBounds(300, 171, 124, 23);
+		contentPane.add(btnDone);
+		this.getRootPane().setDefaultButton(btnDone);
 		
 		btnAvbryt = new JButton("Cancel");
 		btnAvbryt.setBounds(10, 171, 124, 23);
@@ -88,7 +89,7 @@ public class RegiSheep extends JFrame {
 		/*
 		 * Action to happen when user click "Done"
 		 */
-		btnNewButton.addActionListener(new ActionListener() {
+		btnDone.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				// Check for empty fields

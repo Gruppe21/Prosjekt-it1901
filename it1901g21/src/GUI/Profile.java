@@ -58,6 +58,7 @@ public class Profile {
 		JButton btnDone = new JButton("Done");
 		springLayout.putConstraint(SpringLayout.SOUTH, btnDone, -10, SpringLayout.SOUTH, frame.getContentPane());
 		frame.getContentPane().add(btnDone);
+		frame.getRootPane().setDefaultButton(btnDone);
 		
 		btnDone.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

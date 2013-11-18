@@ -102,7 +102,7 @@ public class EditProfile {
 		JButton btnDone = new JButton("Done");
 		btnDone.setBounds(214, 179, 97, 25);
 		frame.getContentPane().add(btnDone);
-		
+		frame.getRootPane().setDefaultButton(btnDone);
 		
 		
 		frame.setVisible(true);
