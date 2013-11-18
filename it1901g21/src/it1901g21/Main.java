@@ -39,6 +39,7 @@ public class Main {
 	private RegiSheep regiSheep;
 	private DelSheep delSheep;
 	
+	private SendMail sendMail;
 	private Date date;
 	
 	private final String PROJECTPATH;
@@ -344,5 +345,11 @@ public class Main {
 		System.out.println("Round 2, Salt: " + round2[1]);
 		*/
 	}
+	
+//	public void mailAlert(String farmer_mail, String farmer_name, String timestamp, String sheepId, String sheepX, String sheepY, index){
+//		
+//		sendMail(farmer.getMail(), farmer.getName(), timestamp, farmer.getSheepHerd()., )
+//		
+//	}
 	
 }
