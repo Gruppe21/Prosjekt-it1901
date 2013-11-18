@@ -17,6 +17,8 @@ public class EditProfile {
 	
 	private Farmer farmer;
 	private Main main;
+	private Profile profile;
+	
 	private JFrame frame;
 	private JTextField txtName;
 	private JTextField txtEmail;
@@ -27,9 +29,10 @@ public class EditProfile {
 	/**
 	 * Create the application.
 	 */
-	public EditProfile(Main main) {
+	public EditProfile(Main main, Profile profile) {
 		this.main = main;
 		farmer = this.main.getFarmer();
+		this.profile = profile;
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 340, 263);
@@ -158,7 +161,13 @@ public class EditProfile {
 			return;
 		}
 		
+		// Sends the edit request to main
 		main.updateEditProfile(name, Email, phoneNumber, contactEmail, contactPhone, farmer.getId());
+		
+		// Updates the personal information instantaneously
+		profile.updateInfo();
+		
+		// Closes the edit-profile window
 		closeEditProfile();
 	}
 }
