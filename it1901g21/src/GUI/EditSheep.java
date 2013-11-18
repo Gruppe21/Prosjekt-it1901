@@ -1,13 +1,18 @@
 package GUI;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import it1901g21.Main;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+
 import it1901g21.Farmer;
 import it1901g21.Sheep;
 
@@ -15,9 +20,9 @@ import it1901g21.Sheep;
 public class EditSheep extends JFrame {
 	
 	private JPanel contentPane;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JButton btnNewButton;
+	private JTextField health;
+	private JTextField weight;
+	private JButton btnDone;
 	private JButton btnAvbryt;
 	private JLabel lblSerialnumber;
 	private JLabel lblBirthdate;
@@ -25,7 +30,7 @@ public class EditSheep extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EditSheep(Main main, Sheep sheep) {
+	public EditSheep(Main main, final Sheep sheep) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 287);
 		contentPane = new JPanel();
@@ -33,15 +38,15 @@ public class EditSheep extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(223, 118, 177, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		health = new JTextField();
+		health.setBounds(223, 118, 177, 20);
+		contentPane.add(health);
+		health.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(223, 151, 177, 20);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		weight = new JTextField();
+		weight.setBounds(223, 151, 177, 20);
+		contentPane.add(weight);
+		weight.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Sheep number:");
 		lblNewLabel.setBounds(57, 34, 124, 14);
@@ -55,9 +60,28 @@ public class EditSheep extends JFrame {
 		lblAlder.setBounds(57, 121, 124, 14);
 		contentPane.add(lblAlder);
 		
-		btnNewButton = new JButton("Done");
-		btnNewButton.setBounds(296, 204, 124, 23);
-		contentPane.add(btnNewButton);
+		btnDone = new JButton("Done");
+		btnDone.setBounds(296, 204, 124, 23);
+		contentPane.add(btnDone);
+		
+		btnDone.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				String rHealth = health.getText();
+				String rweightS = weight.getText();
+				
+				int rweight = Integer.parseInt(rweightS);
+				
+				sheep.setHealth(rHealth);
+				sheep.setWeight(rweight);
+				
+				closeEditSheep();
+				
+				//SheepInfo.closeSheepInfo();
+				
+			}
+			
+		});
 		
 		btnAvbryt = new JButton("Cancel");
 		btnAvbryt.setBounds(12, 204, 124, 23);
@@ -89,5 +113,9 @@ public class EditSheep extends JFrame {
 		
 		this.setVisible(true);
 		
+	}
+	
+	private void closeEditSheep(){
+		this.setVisible(false);
 	}
 }
