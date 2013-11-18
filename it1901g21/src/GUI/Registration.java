@@ -183,6 +183,21 @@ public class Registration extends JFrame {
 			return;
 		}
 		
+		if (firstName.length()+lastName.length()>=25){
+			ErrorMessage errorMsg = new ErrorMessage("", "Name is too long!");
+			return;
+		}
+		
+		if (mail.length()>=55||resMail.length()>=55){
+			ErrorMessage errorMsg = new ErrorMessage("", "E-mail is too long!");
+			return;
+		}
+		
+		if (tlf.length()>12||resTlf.length()>=12){
+			ErrorMessage errorMsg = new ErrorMessage("", "Phone number is too long!");
+			return;
+		}
+		
 		closeRegistration();
 		main.newFarmer(firstName, lastName, mail, tlf, resMail, resTlf, password);
 	}

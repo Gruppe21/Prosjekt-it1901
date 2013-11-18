@@ -156,7 +156,7 @@ public class EditProfile {
 			return;
 		}
 		
-		if (contactPhone.length()>=12||phoneNumber.length()>=12){
+		if (contactPhone.length()>12||phoneNumber.length()>=12){
 			ErrorMessage errorMsg = new ErrorMessage("", "Phone number is too long!");
 			return;
 		}
