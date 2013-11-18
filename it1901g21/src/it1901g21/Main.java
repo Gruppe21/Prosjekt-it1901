@@ -13,7 +13,6 @@ import javax.swing.JLabel;
 
 import database.Farmers;
 import database.PasswordHash;
-
 import GUI.DelSheep;
 import GUI.ErrorMessage;
 import GUI.Login;
@@ -234,6 +233,27 @@ public class Main {
 		this.update(false);
 	}
 	
+	public void updateLocData(Sheep sheep, Localization loc) {
+		
+		if (sheep.getLoc().size() >= 20) {
+			//this.loc.remove(0);
+		}
+		
+		// Adds localisation data locally
+		sheep.setLastLoc(loc);
+		
+		// Adds localisation data in the database
+		pst.addLoc(loc);
+		
+		this.update(false);
+		
+		for (Localization test : sheep.getLoc()) {
+			System.out.println(sheep.getEarTag() + "   " + test.getX() + " " + test.getX());
+			System.out.println("Size: " + sheep.getLoc().size());
+		}
+		
+	}
+	
 	/**
 	 * Updates the farmer object in the local program to match the farmer in the database.
 	 * Also updates all GUI stuff.
@@ -244,6 +264,11 @@ public class Main {
 		
 		// Updates the farmer's sheep herd
 		this.getFarmer().setSheepHerd(pst.farmersSheep(this.getFarmer()));
+		
+		// Updates the sheep's localisation data
+		for (Sheep sheep : getFarmer().getSheepHerd()) {
+			sheep.setLocArray(pst.getLoc(sheep));
+		}
 		
 		// GUI: Map update
 		mainscreen.updateMap();

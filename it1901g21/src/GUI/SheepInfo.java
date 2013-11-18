@@ -1,5 +1,6 @@
 package GUI;
 import it1901g21.Farmer;
+import it1901g21.Localization;
 import it1901g21.Sheep;
 
 import java.awt.BorderLayout;
@@ -123,8 +124,8 @@ public class SheepInfo {
 	private void addLocations() {
 		
 		listmodel.clear();
-		for (String[] loc : sheep.getLoc()) {
-			listmodel.addElement("X-position: " + loc[0] + "      Y-position: " + loc[1]);
+		for (Localization loc : sheep.getLoc()) {
+			listmodel.addElement("X-position: " + loc.getX() + "      Y-position: " + loc.getY());
 			listmodel.addElement("ostekake");
 		}
 	}

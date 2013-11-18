@@ -52,14 +52,14 @@ public class Pinger {
 			sheep.setXPos(newCoordinates[0]);
 			sheep.setYPos(newCoordinates[1]);
 			
-			// Adds the coordinates to the sheep's location list
-			sheep.setLastLoc(newCoordinates);
+			// Adds location data to the sheep's location list
+			this.addLocationData(sheep, newCoordinates);
 			
 			// Sends the request to update database further
 			main.updateSheepPos(sheep.getId(), newCoordinates);
 		}
 	}
-	
+
 	/**
 	 * Version 2.
 	 * Generates new coordinates based on the current coordinates
@@ -116,6 +116,18 @@ public class Pinger {
 		
 		return new String[] {x, y};
 	}
+	
+	/**
+	 * Adds location data to be stored in sheep
+	 * @param sheep
+	 * @param coordinates
+	 */
+	private void addLocationData(Sheep sheep, String[] coordinates) {
+		
+		Localization loc = new Localization(sheep.getId(), main.getCurrentTime().toString(), coordinates[0], coordinates[1]);
+		main.updateLocData(sheep, loc);
+	}
+	
 }
 
 /**

@@ -1,6 +1,7 @@
 package database;
 
 import it1901g21.Farmer;
+import it1901g21.Localization;
 import it1901g21.Sheep;
 
 import java.sql.SQLException;
@@ -70,7 +71,8 @@ public class Farmers extends SQL {
 			preparedStatement.setString(7, sheep.getXPos());
 			preparedStatement.setString(8, sheep.getYPos());
 			preparedStatement.executeUpdate();
-		} catch (SQLException ex) {
+		}
+		catch (SQLException ex) {
 			Logger lgr = Logger.getLogger(Farmers.class.getName());
 			lgr.log(Level.SEVERE, ex.getMessage(), ex);
 		}
@@ -307,6 +309,59 @@ public void editFarmer(String name, String Email, String phoneNumber,
 		}
 		
 		return sheeplist;
+	}
+	
+	/**
+	 * Loads the localization log from the database
+	 * @param sheep the sheep to load data from
+	 * @return
+	 */
+	public ArrayList<Localization> getLoc(Sheep sheep) {
+		
+		ArrayList<Localization> loc = new ArrayList<Localization>();
+		
+		try {
+			preparedStatement = connect.prepareStatement("SELECT * FROM Localization WHERE SheepId = ?");
+			preparedStatement.setInt(1, sheep.getId());
+			resultSet = preparedStatement.executeQuery();
+			
+			while (resultSet.next()) {
+				
+				Localization pos = new Localization();
+				
+				pos.setSheepId(resultSet.getInt("sheepId"));
+				pos.setTime(resultSet.getString("Time"));
+				pos.setX(resultSet.getString("xPos"));
+				pos.setY(resultSet.getString("yPos"));
+				
+				loc.add(pos);
+			}
+			
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return loc;	
+	}
+	
+	/**
+	 * Adds localization data to database
+	 * @param loc
+	 */
+	public void addLoc(Localization loc){		
+		
+		try {	
+			preparedStatement = connect.prepareStatement("INSERT INTO Localization (SheepId, Time, xPos, yPos) VALUES(?, ?, ?, ?)");
+			preparedStatement.setInt(1, loc.getSheepId());
+			preparedStatement.setString(2, loc.getTime());
+			preparedStatement.setString(3, loc.getX());
+			preparedStatement.setString(4, loc.getY());
+			preparedStatement.executeUpdate();
+		}	
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

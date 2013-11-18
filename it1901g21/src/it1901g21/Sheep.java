@@ -16,7 +16,7 @@ public class Sheep {
 	private String health;
 	private String xPos;
 	private String yPos;
-	private ArrayList<String[]> loc;
+	private ArrayList<Localization> loc;
 	
 	/**
 	 * Standard sheep constructor
@@ -37,15 +37,14 @@ public class Sheep {
 		this.health = health;
 		this.xPos = xPos;
 		this.yPos = yPos;
-		this.loc = new ArrayList<String[]>();
-		
+		this.loc = new ArrayList<Localization>();	
 	}
 	
 	/**
 	 * Alternative sheep constructor with no parameters
 	 */
 	public Sheep() {
-		this.loc = new ArrayList<String[]>();
+		this.loc = new ArrayList<Localization>();
 	}
 	
 	public int getFarmerId() {
@@ -80,7 +79,7 @@ public class Sheep {
 		return yPos;
 	}
 	
-	public ArrayList<String[]> getLoc() {
+	public ArrayList<Localization> getLoc() {
 		return loc;
 	}
 	
@@ -116,21 +115,16 @@ public class Sheep {
 		this.yPos = yPos;
 	}
 	
+	public void setLocArray(ArrayList<Localization> loc) {
+		this.loc = loc;
+	}
+	
 	/**
 	 * Adds coordinates to the last known location list
-	 * @param coordinates x-position in String[0], y-position in String[1]
+	 * @param locData the localization data
 	 */
-	public void setLastLoc(String[] coordinates) {
-		
-		if (this.loc.size() >= 20) {
-			//this.loc.remove(0);
-		}
-		this.loc.add(coordinates);
-		
-		for (String[] test : this.loc) {
-			//System.out.println(this.getEarTag() + "   " + test[0] + " " + test[1]);
-			//System.out.println("Size: " + this.loc.size());
-		}
+	public void setLastLoc(Localization locData) {
+		this.loc.add(locData);
 	}
 	
 }
