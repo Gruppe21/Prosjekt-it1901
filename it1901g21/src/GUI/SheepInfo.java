@@ -126,7 +126,6 @@ public class SheepInfo {
 		listmodel.clear();
 		for (Localization loc : sheep.getLoc()) {
 			listmodel.addElement("X-position: " + loc.getX() + "      Y-position: " + loc.getY());
-			listmodel.addElement("ostekake");
 		}
 	}
 	

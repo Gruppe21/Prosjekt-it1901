@@ -248,7 +248,7 @@ public class Main {
 		this.update(false);
 		
 		for (Localization test : sheep.getLoc()) {
-			System.out.println(sheep.getEarTag() + "   " + test.getX() + " " + test.getX());
+			System.out.println(sheep.getEarTag() + " ID: " + sheep.getId() + "  " + test.getX() + " " + test.getX());
 			System.out.println("Size: " + sheep.getLoc().size());
 		}
 		
