@@ -20,6 +20,8 @@ import javax.swing.ListSelectionModel;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -160,6 +162,17 @@ public class MainScreen extends JFrame {
 		ListCellRenderer renderer = new MyCellRenderer();
 		list.setCellRenderer(renderer);
 		
+		/**
+		 * Double click listener for list
+		 */
+		list.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt){
+				JList list = (JList)evt.getSource();
+				if (evt.getClickCount() == 2){
+					System.out.println("OPEN SHEEP WINDOW!!!");
+				}
+			}
+		});
 		
 	}
 	
