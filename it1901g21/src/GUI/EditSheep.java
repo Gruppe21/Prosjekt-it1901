@@ -30,7 +30,7 @@ public class EditSheep extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EditSheep(Main main, final Sheep sheep) {
+	public EditSheep(final Main main, final Sheep sheep) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 287);
 		contentPane = new JPanel();
@@ -77,7 +77,7 @@ public class EditSheep extends JFrame {
 				
 				closeEditSheep();
 				
-				//SheepInfo.closeSheepInfo();
+				//need to close sheep info, and must refresh main
 				
 			}
 			

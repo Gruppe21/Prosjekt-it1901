@@ -115,7 +115,7 @@ public class Registration extends JFrame {
 		contentPane.add(contactTlf);
 		contactTlf.setColumns(10);
 		
-		lblContactPersonName = new JLabel("Contact person Name");
+		lblContactPersonName = new JLabel("Contact person E-mail");
 		lblContactPersonName.setBounds(21, 236, 168, 14);
 		contentPane.add(lblContactPersonName);
 		

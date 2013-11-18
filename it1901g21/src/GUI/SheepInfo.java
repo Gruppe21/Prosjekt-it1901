@@ -113,6 +113,7 @@ public class SheepInfo extends JFrame {
 	/**
 	 * Closes the sheep info
 	 */
+	
 	public void closeSheepInfo() {
 		this.setVisible(false);
 	}
