@@ -183,7 +183,7 @@ public class Registration extends JFrame {
 			return;
 		}
 		
-		if (firstName.length()+lastName.length()>=100){
+		if (firstName.length()+lastName.length()>=25){
 			ErrorMessage errorMsg = new ErrorMessage("", "Name is too long!");
 			return;
 		}
