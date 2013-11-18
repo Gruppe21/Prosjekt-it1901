@@ -69,7 +69,7 @@ public class Alarm {
 						main.getFarmer().getSheepHerd().get(rngint).getId(), 
 						main.getFarmer().getSheepHerd().get(rngint).getXPos(), 
 						main.getFarmer().getSheepHerd().get(rngint).getYPos());
-				
+				closeAlarm();
 			}
 		});
 		
