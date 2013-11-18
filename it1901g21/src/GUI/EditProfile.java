@@ -116,7 +116,7 @@ public class EditProfile {
 				String rContactPhone = txtContactPhone.getText();
 
 				edit(rName,rEmail,rPhone,rContactMail,rContactPhone);
-				closeEditProfile();
+				
 			}
 			
 		});
@@ -159,6 +159,6 @@ public class EditProfile {
 		}
 		
 		main.updateEditProfile(name, Email, phoneNumber, contactEmail, contactPhone, farmer.getId());
-		
+		closeEditProfile();
 	}
 }
