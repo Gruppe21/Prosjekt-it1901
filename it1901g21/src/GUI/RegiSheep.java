@@ -40,6 +40,7 @@ public class RegiSheep extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		this.setResizable(false);
 		
 		EarTag_textField = new JTextField();
 		EarTag_textField.setBounds(191, 31, 209, 20);

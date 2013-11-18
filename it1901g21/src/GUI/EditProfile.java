@@ -34,6 +34,7 @@ public class EditProfile {
 		frame.setBounds(100, 100, 340, 263);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
 		
 		JLabel lblFirstName = new JLabel("Name:");
 		lblFirstName.setBounds(10, 31, 38, 16);

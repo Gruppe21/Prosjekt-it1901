@@ -62,7 +62,7 @@ public class MainScreen extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+		this.setResizable(false);
 		
 		
 		/**
@@ -161,8 +161,7 @@ public class MainScreen extends JFrame {
 		JList list = new JList(listmodel);
 		scrollPane.setViewportView(list);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		ListCellRenderer renderer = new MyCellRenderer();
-		list.setCellRenderer(renderer);
+		
 		
 		/**
 		 * Double click listener for list

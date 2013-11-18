@@ -30,6 +30,7 @@ public class Alarm {
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
+		frame.setResizable(false);
 		
 		JLabel lblPleaseEnterSheep = new JLabel("Send Email?");
 		springLayout.putConstraint(SpringLayout.NORTH, lblPleaseEnterSheep, 66, SpringLayout.NORTH, frame.getContentPane());
