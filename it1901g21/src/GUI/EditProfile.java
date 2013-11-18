@@ -143,6 +143,21 @@ public class EditProfile {
 	private void edit(String name, String Email, String phoneNumber, 
 		String contactEmail, String contactPhone){
 		
+		if (name.length()>=25){
+			ErrorMessage errorMsg = new ErrorMessage("", "Name is too long!");
+			return;
+		}
+		
+		if (Email.length()>=55||contactEmail.length()>=55){
+			ErrorMessage errorMsg = new ErrorMessage("", "E-mail is too long!");
+			return;
+		}
+		
+		if (contactPhone.length()>=12||phoneNumber.length()>=12){
+			ErrorMessage errorMsg = new ErrorMessage("", "Phone number is too long!");
+			return;
+		}
+		
 		main.updateEditProfile(name, Email, phoneNumber, contactEmail, contactPhone, farmer.getId());
 		
 	}
