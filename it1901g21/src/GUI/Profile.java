@@ -51,7 +51,7 @@ public class Profile {
 		frame.getContentPane().add(lblContactPhone);
 		
 		JButton btnDone = new JButton("Done");
-		btnDone.setBounds(205, 189, 61, 25);
+		btnDone.setBounds(190, 189, 76, 25);
 		frame.getContentPane().add(btnDone);
 		frame.getRootPane().setDefaultButton(btnDone);
 		
@@ -86,7 +86,7 @@ public class Profile {
 		frame.getContentPane().add(lblgetContactPhone);
 		
 		JButton btnEdit = new JButton("Edit");
-		btnEdit.setBounds(25, 189, 61, 25);
+		btnEdit.setBounds(25, 189, 76, 25);
 		frame.getContentPane().add(btnEdit);
 		
 		btnEdit.addActionListener(new ActionListener() {

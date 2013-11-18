@@ -38,23 +38,23 @@ public class EditProfile {
 		frame.setResizable(false);
 		
 		JLabel lblFirstName = new JLabel("Name:");
-		lblFirstName.setBounds(10, 31, 38, 16);
+		lblFirstName.setBounds(20, 31, 38, 16);
 		frame.getContentPane().add(lblFirstName);
 		
 		JLabel lblEmail = new JLabel("E-mail:");
-		lblEmail.setBounds(10, 60, 41, 16);
+		lblEmail.setBounds(20, 60, 41, 16);
 		frame.getContentPane().add(lblEmail);
 		
 		JLabel lblPhoneNumber = new JLabel("Phone number:");
-		lblPhoneNumber.setBounds(10, 89, 88, 16);
+		lblPhoneNumber.setBounds(20, 89, 88, 16);
 		frame.getContentPane().add(lblPhoneNumber);
 		
 		JLabel lblContactPersonName = new JLabel("Contact mail:");
-		lblContactPersonName.setBounds(10, 118, 76, 16);
+		lblContactPersonName.setBounds(20, 118, 76, 16);
 		frame.getContentPane().add(lblContactPersonName);
 		
 		JLabel lblContactPhone = new JLabel("Contact Phone:");
-		lblContactPhone.setBounds(11, 147, 87, 16);
+		lblContactPhone.setBounds(20, 147, 87, 16);
 		frame.getContentPane().add(lblContactPhone);
 		
 		JLabel lblGetLastName = new JLabel();
