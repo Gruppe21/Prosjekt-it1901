@@ -4,8 +4,10 @@ import it1901g21.Sheep;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 import it1901g21.Main;
 
@@ -19,23 +21,26 @@ import javax.swing.JScrollPane;
 import javax.swing.JList;
 
 
-public class SheepInfo extends JFrame {
+public class SheepInfo {
 	
 	private JPanel contentPane;
 	private JButton btnDone;
 	private JLabel lblSerialnumber;
 	private JLabel lblBirthdate;
 	private Main main;
+	private static JFrame frame;
 
 	/**
 	 * Create the frame.
 	 */
 	public SheepInfo(Main main, final Sheep sheep) {
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 516);
+		frame = new JFrame();
+		
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setBounds(100, 100, 450, 516);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+		frame.setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Sheep number:");
@@ -107,15 +112,16 @@ public class SheepInfo extends JFrame {
 	 * Opens the sheep info
 	 */
 	public void openSheepInfo() {
-		this.setVisible(true);
+		frame.setVisible(true);
 	}
 	
 	/**
 	 * Closes the sheep info
 	 */
+
 	
-	public void closeSheepInfo() {
-		this.setVisible(false);
+	public static void closeSheepInfo() {
+		frame.setVisible(false);
 	}
 	
 	private Main getMain() {

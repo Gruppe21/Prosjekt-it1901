@@ -76,7 +76,7 @@ public class EditSheep extends JFrame {
 				sheep.setWeight(rweight);
 				
 				//need to close sheep info, and must refresh main
-				
+				SheepInfo.closeSheepInfo();
 				closeEditSheep();
 				
 			}
