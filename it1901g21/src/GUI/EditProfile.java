@@ -156,8 +156,18 @@ public class EditProfile {
 			return;
 		}
 		
-		if (contactPhone.length()>=12||phoneNumber.length()>=12){
+		if (contactPhone.length()>12||phoneNumber.length()>12){
 			ErrorMessage errorMsg = new ErrorMessage("", "Phone number is too long!");
+			return;
+		}
+		
+		if (!isNumeric(contactPhone)) {
+			ErrorMessage error = new ErrorMessage("", "Please only use numbers for Phone number(s)!");
+			return;
+		}
+		
+		if (!isNumeric(phoneNumber)) {
+			ErrorMessage error = new ErrorMessage("", "Please only use numbers for Phone number(s)!");
 			return;
 		}
 		
@@ -170,4 +180,14 @@ public class EditProfile {
 		// Closes the edit-profile window
 		closeEditProfile();
 	}
+	
+	private boolean isNumeric(String string) {
+		for (char c : string.toCharArray()) {
+			if (!Character.isDigit(c))
+				return false;
+		}
+		return true;
+	}
+
+
 }
