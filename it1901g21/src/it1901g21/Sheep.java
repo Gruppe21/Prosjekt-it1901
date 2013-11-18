@@ -38,6 +38,7 @@ public class Sheep {
 		this.xPos = xPos;
 		this.yPos = yPos;
 		this.loc = new ArrayList<String[]>();
+		
 	}
 	
 	/**
@@ -122,9 +123,14 @@ public class Sheep {
 	public void setLastLoc(String[] coordinates) {
 		
 		if (this.loc.size() >= 20) {
-			this.loc.remove(0);
+			//this.loc.remove(0);
 		}
 		this.loc.add(coordinates);
+		
+		for (String[] test : this.loc) {
+			System.out.println(this.getEarTag() + "   " + test[0] + " " + test[1]);
+			System.out.println("Size: " + this.loc.size());
+		}
 	}
 	
 }

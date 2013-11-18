@@ -100,7 +100,7 @@ public class Main {
 			this.loadFarmer(pst.getFarmer(em));
 			
 			// Loads the logged-in farmer's sheep
-			this.getFarmer().setSheepHerd(pst.farmersSheep(this.getFarmer().getId()));
+			this.getFarmer().setSheepHerd(pst.farmersSheep(this.getFarmer()));
 			
 			// Loads the sheep into the GUI list
 			this.mainscreen.updateListSheep();
@@ -225,7 +225,7 @@ public class Main {
 	public void update(boolean updateList) {
 		
 		// Updates the farmer's sheep herd
-		this.getFarmer().setSheepHerd(pst.farmersSheep(this.getFarmer().getId()));
+		this.getFarmer().setSheepHerd(pst.farmersSheep(this.getFarmer()));
 		
 		// GUI: Map update
 		mainscreen.updateMap();

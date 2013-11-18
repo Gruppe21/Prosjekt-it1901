@@ -246,12 +246,13 @@ public class Farmers extends SQL {
 	 * Loads all sheep of a given farmer into a ArrayList
 	 * @return the list of all sheep
 	 */
-	public ArrayList<Sheep> farmersSheep(int farmerId) {
+	public ArrayList<Sheep> farmersSheep(Farmer farmer) {
 
 		ArrayList<Sheep> sheeplist = new ArrayList<Sheep>();
 
 		try {
-			preparedStatement = connect.prepareStatement("SELECT * FROM Sheep WHERE FarmerId = "+ farmerId + "");
+			preparedStatement = connect.prepareStatement("SELECT * FROM Sheep WHERE FarmerId = ?");
+			preparedStatement.setInt(1, farmer.getId());
 			resultSet = preparedStatement.executeQuery();
 			
 			while (resultSet.next()) {
@@ -266,7 +267,7 @@ public class Farmers extends SQL {
 				sheep.setXPos(resultSet.getString("Xpos"));
 				sheep.setYPos(resultSet.getString("Ypos"));
 				
-				sheeplist.add(sheep);				
+				sheeplist.add(sheep);
 			}
 			
 		} catch (SQLException e) {
