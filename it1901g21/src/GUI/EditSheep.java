@@ -142,6 +142,14 @@ public class EditSheep extends JFrame {
 
 	private void edit(String health, String weight){
 		
+		int rweight = 0;
+		
+		// Check for empty fields
+		if (health.equals("") || weight.equals("")) {
+			ErrorMessage error = new ErrorMessage("", "Please fill in every field");
+			return;
+		}
+		
 		// Check for letters in weight
 		if (!isNumeric(weight)) {
 			ErrorMessage error = new ErrorMessage("", "Please only use numbers for weight!");
@@ -158,7 +166,12 @@ public class EditSheep extends JFrame {
 			return;
 		}
 		
-		int rweight = Integer.parseInt(weight);
+		try {
+			rweight = Integer.parseInt(weight);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		SheepInfo.closeSheepInfo();
 		closeEditSheep();

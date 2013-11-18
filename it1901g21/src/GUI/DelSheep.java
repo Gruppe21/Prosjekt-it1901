@@ -74,16 +74,13 @@ public class DelSheep {
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if (textField.getText() == null) {
+				if (textField.getText().equals("")) {
 					ErrorMessage error = new ErrorMessage("", "Please enter the ear tag!");
 					return;
 				}
 				
 				String earTag = textField.getText();
 				sendDeleteSheep(earTag);
-				
-				// Resets the text field
-				textField.setText(null);
 				
 			}
 		});
@@ -109,7 +106,11 @@ public class DelSheep {
 	 * Sends the prompt to delete the sheep to Main
 	 */
 	private void sendDeleteSheep(String earTag) {
-		closeDelSheep();
-		main.deleteSheep(earTag);
+		
+		if (main.deleteSheep(earTag)) {
+			closeDelSheep();
+			textField.setText(null);
+		}
 	}
+	
 }

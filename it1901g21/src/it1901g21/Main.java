@@ -174,8 +174,9 @@ public class Main {
 	/**
 	 * Deletes the sheep from logged-in farmer's herd
 	 * @param eartag the sheep's ear tag
+	 * @return whether sheep is found and deleted from farmer's herd
 	 */
-	public void deleteSheep(String earTag) {
+	public boolean deleteSheep(String earTag) {
 		
 		boolean foundSheep = false;
 		for (Sheep sheep : this.getFarmer().getSheepHerd()) {
@@ -189,10 +190,11 @@ public class Main {
 		
 		if (!foundSheep) {
 			ErrorMessage error = new ErrorMessage("", "No such sheep found in farmer's herd!");
-			return;
+			return false;
 		}
 		
 		this.update(true);
+		return true;
 	}
 	
 	/**
