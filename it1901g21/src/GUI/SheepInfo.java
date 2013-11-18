@@ -1,9 +1,14 @@
 package GUI;
 import it1901g21.Farmer;
 import it1901g21.Sheep;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import it1901g21.Main;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -17,8 +22,7 @@ import javax.swing.JList;
 public class SheepInfo extends JFrame {
 	
 	private JPanel contentPane;
-	private JButton btnNewButton;
-	private JButton btnAvbryt;
+	private JButton btnDone;
 	private JLabel lblSerialnumber;
 	private JLabel lblBirthdate;
 	private Main main;
@@ -46,13 +50,15 @@ public class SheepInfo extends JFrame {
 		lblAlder.setBounds(57, 92, 124, 14);
 		contentPane.add(lblAlder);
 		
-		btnNewButton = new JButton("Done");
-		btnNewButton.setBounds(296, 433, 124, 23);
-		contentPane.add(btnNewButton);
+		btnDone = new JButton("Done");
+		btnDone.setBounds(296, 433, 124, 23);
+		contentPane.add(btnDone);
 		
-		btnAvbryt = new JButton("Cancel");
-		btnAvbryt.setBounds(12, 433, 124, 23);
-		contentPane.add(btnAvbryt);
+		btnDone.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				closeSheepInfo();
+			}
+		});
 		
 		JLabel lblVekt = new JLabel("Weight (kg):");
 		lblVekt.setBounds(57, 119, 124, 14);
@@ -79,8 +85,14 @@ public class SheepInfo extends JFrame {
 		contentPane.add(lblLastKnownLoactions);
 		
 		JButton btnEdit = new JButton("Edit");
-		btnEdit.setBounds(148, 433, 136, 23);
+		btnEdit.setBounds(12, 433, 136, 23);
 		contentPane.add(btnEdit);
+		
+		btnEdit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EditSheep editsheep = new EditSheep(getMain());
+			}
+		});
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(57, 176, 322, 244);
@@ -105,4 +117,7 @@ public class SheepInfo extends JFrame {
 		this.setVisible(false);
 	}
 	
+	private Main getMain() {
+		return main;
+	}
 }

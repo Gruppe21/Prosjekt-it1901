@@ -1,7 +1,7 @@
 package GUI;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
+import it1901g21.Main;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -23,7 +23,7 @@ public class EditSheep extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EditSheep() {
+	public EditSheep(Main main) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 287);
 		contentPane = new JPanel();
