@@ -36,10 +36,11 @@ import javax.swing.JScrollPane;
 
 public class MainScreen extends JFrame {
 	
-	private Main main;
+	private static Main main;
 	private RegiSheep regiSheep;
 	private DelSheep delSheep;
 	private Alarm alarm;
+	private SheepInfo sheepinfo;
 	
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
@@ -61,6 +62,7 @@ public class MainScreen extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
 		
 		
 		/**
@@ -169,7 +171,8 @@ public class MainScreen extends JFrame {
 			public void mouseClicked(MouseEvent evt){
 				JList list = (JList)evt.getSource();
 				if (evt.getClickCount() == 2){
-					System.out.println("OPEN SHEEP WINDOW!!!");
+					int index = list.locationToIndex(evt.getPoint());
+					SheepInfo sheepinfo = new SheepInfo(getMain(),MainScreen.main.getFarmer().getSheepHerd().get(index));
 				}
 			}
 		});

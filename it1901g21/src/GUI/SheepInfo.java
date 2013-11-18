@@ -1,7 +1,9 @@
 package GUI;
+import it1901g21.Farmer;
+import it1901g21.Sheep;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
+import it1901g21.Main;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -19,11 +21,12 @@ public class SheepInfo extends JFrame {
 	private JButton btnAvbryt;
 	private JLabel lblSerialnumber;
 	private JLabel lblBirthdate;
+	private Main main;
 
 	/**
 	 * Create the frame.
 	 */
-	public SheepInfo() {
+	public SheepInfo(Main main, Sheep sheep) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 516);
 		contentPane = new JPanel();
@@ -55,7 +58,7 @@ public class SheepInfo extends JFrame {
 		lblVekt.setBounds(57, 119, 124, 14);
 		contentPane.add(lblVekt);
 		
-		lblSerialnumber = new JLabel("SerialNumber");
+		lblSerialnumber = new JLabel(sheep.getEarTag());
 		lblSerialnumber.setBounds(223, 34, 177, 14);
 		contentPane.add(lblSerialnumber);
 		
@@ -85,6 +88,7 @@ public class SheepInfo extends JFrame {
 		
 		JList list = new JList();
 		scrollPane.setViewportView(list);
+		openSheepInfo();
 	}
 	
 	/**
