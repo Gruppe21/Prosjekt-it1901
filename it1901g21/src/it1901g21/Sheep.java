@@ -1,5 +1,7 @@
 package it1901g21;
 
+import java.util.ArrayList;
+
 /**
  * The Sheep class.
  * Holds a sheep.
@@ -14,9 +16,10 @@ public class Sheep {
 	private String health;
 	private String xPos;
 	private String yPos;
+	private ArrayList<String[]> loc;
 	
 	/**
-	 * Stardand sheep constructor
+	 * Standard sheep constructor
 	 * @param farmerId the farmer's ID
 	 * @param id the sheep's ID
 	 * @param earTag the sheep's ear tag
@@ -34,13 +37,14 @@ public class Sheep {
 		this.health = health;
 		this.xPos = xPos;
 		this.yPos = yPos;
+		this.loc = new ArrayList<String[]>();
 	}
 	
 	/**
 	 * Alternative sheep constructor with no parameters
 	 */
 	public Sheep() {
-		
+		this.loc = new ArrayList<String[]>();
 	}
 	
 	public int getFarmerId() {
@@ -75,6 +79,10 @@ public class Sheep {
 		return yPos;
 	}
 	
+	public ArrayList<String[]> getLoc() {
+		return loc;
+	}
+	
 	public void setFarmerId(int farmerId) {
 		this.farmerId = farmerId;
 	}
@@ -105,6 +113,19 @@ public class Sheep {
 	
 	public void setYPos(String yPos) {
 		this.yPos = yPos;
+	}
+	
+	/**
+	 * Adds coordinates to the last known location list
+	 * @param coordinates x-position in String[0], y-position in String[1]
+	 */
+	public void setLastLoc(String[] coordinates) {
+		
+		if (this.loc.size() >= 20) {
+			this.loc.remove(0);
+		}
+		System.out.println("adds");
+		this.loc.add(coordinates);
 	}
 	
 }

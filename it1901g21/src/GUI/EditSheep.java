@@ -26,11 +26,17 @@ public class EditSheep extends JFrame {
 	private JButton btnAvbryt;
 	private JLabel lblSerialnumber;
 	private JLabel lblBirthdate;
+	private Main main;
+	private Sheep sheep;
 
 	/**
 	 * Create the frame.
 	 */
-	public EditSheep(final Main main, final Sheep sheep) {
+	public EditSheep(Main main, Sheep sheep) {
+		
+		this.main = main;
+		this.sheep = sheep;
+		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 287);
 		contentPane = new JPanel();
@@ -68,14 +74,27 @@ public class EditSheep extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				String rHealth = health.getText();
-				String rweightS = weight.getText();
+				String rWeight = weight.getText();
 				
-				int rweight = Integer.parseInt(rweightS);
+				// Check for letters in weight
+				if (!isNumeric(rWeight)) {
+					ErrorMessage error = new ErrorMessage("", "Please only use numbers for weight!");
+					return;
+				}
 				
-				sheep.setHealth(rHealth);
-				sheep.setWeight(rweight);
+				/* Check for too long inputs */
+				if (rHealth.length() > 25) {
+					ErrorMessage error = new ErrorMessage("", "In health description, use maximum 25 symbols.");
+					return;
+				}
+				if (rWeight.length() > 10) {
+					ErrorMessage error = new ErrorMessage("-.-", "Come on, not even your mother is that fat...");
+					return;
+				}
 				
-				//need to close sheep info, and must refresh main
+				int rweight = Integer.parseInt(rWeight);
+				
+				sendEditSheep(rHealth, rweight);
 				
 				closeEditSheep();
 				
@@ -117,5 +136,25 @@ public class EditSheep extends JFrame {
 	
 	private void closeEditSheep(){
 		this.setVisible(false);
+	}
+	
+	/**
+	 * Sends the request to edit sheep to main
+	 */
+	private void sendEditSheep(String health, int weight) {
+		main.updateEditSheep(sheep.getId(), health, weight);
+	}
+	
+	/**
+	 * Checks if string is numeric
+	 * @param string the string to check
+	 * @return true or false
+	 */
+	private boolean isNumeric(String string) {
+		for (char c : string.toCharArray()) {
+			if (!Character.isDigit(c))
+				return false;
+		}
+		return true;
 	}
 }

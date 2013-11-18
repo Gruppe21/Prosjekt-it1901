@@ -52,6 +52,9 @@ public class Pinger {
 			sheep.setXPos(newCoordinates[0]);
 			sheep.setYPos(newCoordinates[1]);
 			
+			// Adds the coordinates to the sheep's location list
+			sheep.setLastLoc(newCoordinates);
+			
 			// Sends the request to update database further
 			main.updateSheepPos(sheep.getId(), newCoordinates);
 		}

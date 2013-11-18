@@ -112,6 +112,28 @@ public class Farmers extends SQL {
 	}
 	
 	/**
+	 * Updates the sheep's health and weight information, if edited
+	 * @param id
+	 * @param health
+	 * @param weight
+	 */
+	public void editSheep(int id, String health, int weight) {
+		
+		try {
+			preparedStatement = connect.prepareStatement("UPDATE Sheep SET Health = ?, Weight = ? WHERE Id = ?");
+			preparedStatement.setString(1, health);
+			preparedStatement.setInt(2, weight);
+			preparedStatement.setInt(3, id);
+			preparedStatement.executeUpdate();
+			
+		} catch (SQLException ex) {
+			Logger lgr = Logger.getLogger(Farmers.class.getName());
+			lgr.log(Level.SEVERE, ex.getMessage(), ex);
+		}
+		
+	}
+	
+	/**
 	 * Loads the farmer from the database 
 	 * @param mail the farmer's mail
 	 * @return the farmer 

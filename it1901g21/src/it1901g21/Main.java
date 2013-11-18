@@ -204,6 +204,17 @@ public class Main {
 	}
 	
 	/**
+	 * Sends the request to update the sheep's health and weight
+	 * @param id
+	 * @param health
+	 * @param weight
+	 */
+	public void updateEditSheep(int id, String health, int weight) {
+		pst.editSheep(id, health, weight);
+		this.update(false);
+	}
+	
+	/**
 	 * Updates the farmer object in the local program to match the farmer in the database.
 	 * Also updates all GUI stuff.
 	 * ALWAYS USE THIS AFTER SOMETHING CHANGES!

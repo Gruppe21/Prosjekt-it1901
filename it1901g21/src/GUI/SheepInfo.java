@@ -12,6 +12,7 @@ import it1901g21.Main;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.DefaultListModel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -25,12 +26,18 @@ public class SheepInfo extends JFrame {
 	private JButton btnDone;
 	private JLabel lblSerialnumber;
 	private JLabel lblBirthdate;
+	private DefaultListModel listmodel;
 	private Main main;
+	private Sheep sheep;
 
 	/**
 	 * Create the frame.
 	 */
-	public SheepInfo(Main main, final Sheep sheep) {
+	public SheepInfo(Main main, Sheep sheep) {
+		
+		this.main = main;
+		this.sheep = sheep;
+		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 516);
 		contentPane = new JPanel();
@@ -90,7 +97,7 @@ public class SheepInfo extends JFrame {
 		
 		btnEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				EditSheep editsheep = new EditSheep(getMain(),sheep);
+				openEditSheepWindow();
 			}
 		});
 		
@@ -98,9 +105,24 @@ public class SheepInfo extends JFrame {
 		scrollPane.setBounds(57, 176, 322, 244);
 		contentPane.add(scrollPane);
 		
-		JList list = new JList();
+		listmodel = new DefaultListModel();
+		JList list = new JList(listmodel);
 		scrollPane.setViewportView(list);
+		
+		addLocations();
 		openSheepInfo();
+	}
+	
+	private void addLocations() {
+		
+		listmodel.clear();
+		for (String[] loc : sheep.getLoc()) {
+			listmodel.addElement("X-position: " + loc[0] + "      Y-position: " + loc[1]);
+		}
+	}
+	
+	private void openEditSheepWindow() {
+		EditSheep editsheep = new EditSheep(getMain(), sheep);
 	}
 	
 	/**
@@ -113,7 +135,6 @@ public class SheepInfo extends JFrame {
 	/**
 	 * Closes the sheep info
 	 */
-	
 	public void closeSheepInfo() {
 		this.setVisible(false);
 	}

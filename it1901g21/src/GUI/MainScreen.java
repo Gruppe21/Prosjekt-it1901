@@ -36,7 +36,7 @@ import javax.swing.JScrollPane;
 
 public class MainScreen extends JFrame {
 	
-	private static Main main;
+	private Main main;
 	private RegiSheep regiSheep;
 	private DelSheep delSheep;
 	private Alarm alarm;
@@ -172,7 +172,7 @@ public class MainScreen extends JFrame {
 				JList list = (JList)evt.getSource();
 				if (evt.getClickCount() == 2){
 					int index = list.locationToIndex(evt.getPoint());
-					SheepInfo sheepinfo = new SheepInfo(getMain(),MainScreen.main.getFarmer().getSheepHerd().get(index));
+					SheepInfo sheepinfo = new SheepInfo(getMain(), getMain().getFarmer().getSheepHerd().get(index));
 				}
 			}
 		});
@@ -217,7 +217,7 @@ public class MainScreen extends JFrame {
 		if (xlist.size()>=0){
 			map.setIcon(null);
 			map.setText("Map deactivated! more info on console!");
-			System.out.println("Map deactivated, see line 193-198 in MainScreen.java");
+			//System.out.println("Map deactivated, see line 193-198 in MainScreen.java");
 			return;
 		}
 		
@@ -271,7 +271,6 @@ public class MainScreen extends JFrame {
 	private void openDelSheepWindow() {
 		delSheep.openDelSheep();
 	}
-	
 	
 	private Main getMain() {
 		return main;
