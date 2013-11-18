@@ -193,8 +193,23 @@ public class Registration extends JFrame {
 			return;
 		}
 		
-		if (tlf.length()>12||resTlf.length()>=12){
+		if (tlf.length()>12){
 			ErrorMessage errorMsg = new ErrorMessage("", "Phone number is too long!");
+			return;
+		}
+		
+		if (resTlf.length()>12){
+			ErrorMessage errorMsg = new ErrorMessage("", "Contact Phone number is too long!");
+			return;
+		}
+		
+		if (!isNumeric(tlf)) {
+			ErrorMessage error = new ErrorMessage("", "Please only use numbers for Phone number(s)!");
+			return;
+		}
+		
+		if (!isNumeric(resTlf)) {
+			ErrorMessage error = new ErrorMessage("", "Please only use numbers for Phone number(s)!");
 			return;
 		}
 		
@@ -202,4 +217,11 @@ public class Registration extends JFrame {
 		main.newFarmer(firstName, lastName, mail, tlf, resMail, resTlf, password);
 	}
 	
+	private boolean isNumeric(String string) {
+		for (char c : string.toCharArray()) {
+			if (!Character.isDigit(c))
+				return false;
+		}
+		return true;
+	}
 }
