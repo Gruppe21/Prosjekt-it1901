@@ -75,29 +75,8 @@ public class EditSheep extends JFrame {
 
 				String rHealth = health.getText();
 				String rWeight = weight.getText();
-				
-				// Check for letters in weight
-				if (!isNumeric(rWeight)) {
-					ErrorMessage error = new ErrorMessage("", "Please only use numbers for weight!");
-					return;
-				}
-				
-				/* Check for too long inputs */
-				if (rHealth.length() > 25) {
-					ErrorMessage error = new ErrorMessage("", "In health description, use maximum 25 symbols.");
-					return;
-				}
-				if (rWeight.length() > 10) {
-					ErrorMessage error = new ErrorMessage("-.-", "Come on, not even your mother is that fat...");
-					return;
-				}
-				
-				int rweight = Integer.parseInt(rWeight);
-				
-				sendEditSheep(rHealth, rweight);
-				
-				closeEditSheep();
-				
+
+				edit(rHealth,rWeight);
 			}
 			
 		});
@@ -147,13 +126,6 @@ public class EditSheep extends JFrame {
 	}
 	
 	/**
-	 * Sends the request to edit sheep to main
-	 */
-	private void sendEditSheep(String health, int weight) {
-		main.updateEditSheep(sheep.getId(), health, weight);
-	}
-	
-	/**
 	 * Checks if string is numeric
 	 * @param string the string to check
 	 * @return true or false
@@ -164,5 +136,33 @@ public class EditSheep extends JFrame {
 				return false;
 		}
 		return true;
+	}
+
+	private void edit(String health, String weight){
+		
+		
+		// Check for letters in weight
+		if (!isNumeric(weight)) {
+			ErrorMessage error = new ErrorMessage("", "Please only use numbers for weight!");
+			return;
+		}
+		
+		/* Check for too long inputs */
+		if (health.length() > 25) {
+			ErrorMessage error = new ErrorMessage("", "In health description, use maximum 25 symbols.");
+			return;
+		}
+		if (weight.length() > 10) {
+			ErrorMessage error = new ErrorMessage("-.-", "Come on, not even your mother is that fat...");
+			return;
+		}
+		
+		int rweight = Integer.parseInt(weight);
+		
+		SheepInfo.closeSheepInfo();
+		closeEditSheep();
+		
+		main.updateEditSheep(sheep.getId(), health, rweight);
+		
 	}
 }

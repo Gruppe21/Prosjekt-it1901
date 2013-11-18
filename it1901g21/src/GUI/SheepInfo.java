@@ -31,7 +31,7 @@ public class SheepInfo {
 	private DefaultListModel listmodel;
 	private Main main;
 	private Sheep sheep;
-	private JFrame frame;
+	private static JFrame frame;
 
 	/**
 	 * Create the frame.
@@ -140,7 +140,7 @@ public class SheepInfo {
 	/**
 	 * Closes the sheep info
 	 */	
-	public void closeSheepInfo() {
+	public static void closeSheepInfo() {
 		frame.setVisible(false);
 	}
 	
