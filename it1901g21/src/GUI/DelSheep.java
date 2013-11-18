@@ -29,34 +29,25 @@ public class DelSheep {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 400, 200);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		SpringLayout springLayout = new SpringLayout();
-		frame.getContentPane().setLayout(springLayout);
 		frame.setResizable(false);
+		frame.getContentPane().setLayout(null);
 		
 		JLabel lblPleaseEnterSheep = new JLabel("Please enter the Sheep's ear tag:");
-		springLayout.putConstraint(SpringLayout.NORTH, lblPleaseEnterSheep, 67, SpringLayout.NORTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.WEST, lblPleaseEnterSheep, 10, SpringLayout.WEST, frame.getContentPane());
+		lblPleaseEnterSheep.setBounds(10, 67, 192, 16);
 		frame.getContentPane().add(lblPleaseEnterSheep);
 		
 		textField = new JTextField();
-		springLayout.putConstraint(SpringLayout.NORTH, textField, -3, SpringLayout.NORTH, lblPleaseEnterSheep);
+		textField.setBounds(237, 64, 115, 22);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		JButton btnConfirm = new JButton("Confirm");
-		springLayout.putConstraint(SpringLayout.NORTH, btnConfirm, 15, SpringLayout.SOUTH, textField);
-		springLayout.putConstraint(SpringLayout.SOUTH, btnConfirm, -27, SpringLayout.SOUTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.WEST, textField, 0, SpringLayout.WEST, btnConfirm);
-		springLayout.putConstraint(SpringLayout.EAST, textField, 0, SpringLayout.EAST, btnConfirm);
-		springLayout.putConstraint(SpringLayout.EAST, btnConfirm, -42, SpringLayout.EAST, frame.getContentPane());
+		btnConfirm.setBounds(237, 101, 115, 37);
 		frame.getContentPane().add(btnConfirm);
 		frame.getRootPane().setDefaultButton(btnConfirm);
 		
 		JButton btnCancel = new JButton("Cancel");
-		springLayout.putConstraint(SpringLayout.WEST, btnConfirm, 87, SpringLayout.EAST, btnCancel);
-		springLayout.putConstraint(SpringLayout.NORTH, btnCancel, 18, SpringLayout.SOUTH, lblPleaseEnterSheep);
-		springLayout.putConstraint(SpringLayout.WEST, btnCancel, 47, SpringLayout.WEST, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, btnCancel, 150, SpringLayout.WEST, frame.getContentPane());
+		btnCancel.setBounds(47, 101, 103, 37);
 		frame.getContentPane().add(btnCancel);
 		
 		/*

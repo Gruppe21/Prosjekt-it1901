@@ -28,26 +28,19 @@ public class Alarm {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 400, 200);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		SpringLayout springLayout = new SpringLayout();
-		frame.getContentPane().setLayout(springLayout);
 		frame.setResizable(false);
+		frame.getContentPane().setLayout(null);
 		
 		JLabel lblPleaseEnterSheep = new JLabel("Send Email?");
-		springLayout.putConstraint(SpringLayout.NORTH, lblPleaseEnterSheep, 66, SpringLayout.NORTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, lblPleaseEnterSheep, -149, SpringLayout.EAST, frame.getContentPane());
+		lblPleaseEnterSheep.setBounds(156, 74, 70, 16);
 		frame.getContentPane().add(lblPleaseEnterSheep);
 		
 		JButton btnConfirm = new JButton("Yes");
-		springLayout.putConstraint(SpringLayout.NORTH, btnConfirm, 101, SpringLayout.NORTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.SOUTH, btnConfirm, -27, SpringLayout.SOUTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, btnConfirm, -42, SpringLayout.EAST, frame.getContentPane());
+		btnConfirm.setBounds(237, 101, 115, 37);
 		frame.getContentPane().add(btnConfirm);
 		
 		JButton btnCancel = new JButton("No");
-		springLayout.putConstraint(SpringLayout.NORTH, btnCancel, 101, SpringLayout.NORTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.WEST, btnConfirm, 87, SpringLayout.EAST, btnCancel);
-		springLayout.putConstraint(SpringLayout.WEST, btnCancel, 47, SpringLayout.WEST, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, btnCancel, 150, SpringLayout.WEST, frame.getContentPane());
+		btnCancel.setBounds(47, 101, 103, 37);
 		frame.getContentPane().add(btnCancel);
 		
 		/*

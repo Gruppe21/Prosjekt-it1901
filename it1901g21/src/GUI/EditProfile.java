@@ -91,7 +91,7 @@ public class EditProfile {
 		txtContactPhone.setColumns(10);
 		
 		JButton btnCancel = new JButton("Cancel");
-		btnCancel.setBounds(10, 178, 97, 25);
+		btnCancel.setBounds(21, 179, 97, 25);
 		frame.getContentPane().add(btnCancel);
 		
 		btnCancel.addActionListener(new ActionListener() {
