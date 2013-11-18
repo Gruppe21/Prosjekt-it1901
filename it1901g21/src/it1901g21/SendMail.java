@@ -12,6 +12,8 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import GUI.ErrorMessage;
+
 
 public class SendMail {
 
@@ -48,8 +50,8 @@ public class SendMail {
 
             System.out.println("Done");
 
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            ErrorMessage errorMsg = new ErrorMessage("","Invalid E-mail!");
         }
     }
 }
