@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import it1901g21.Farmer;
+import it1901g21.Sheep;
 
 
 public class EditSheep extends JFrame {
@@ -23,7 +25,7 @@ public class EditSheep extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EditSheep(Main main) {
+	public EditSheep(Main main, Sheep sheep) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 287);
 		contentPane = new JPanel();
@@ -65,11 +67,11 @@ public class EditSheep extends JFrame {
 		lblVekt.setBounds(57, 148, 124, 14);
 		contentPane.add(lblVekt);
 		
-		lblSerialnumber = new JLabel("SerialNumber");
+		lblSerialnumber = new JLabel(sheep.getEarTag());
 		lblSerialnumber.setBounds(223, 34, 177, 14);
 		contentPane.add(lblSerialnumber);
 		
-		lblBirthdate = new JLabel("BirthDate");
+		lblBirthdate = new JLabel(sheep.getBirthDate());
 		lblBirthdate.setBounds(223, 65, 177, 14);
 		contentPane.add(lblBirthdate);
 		
@@ -77,12 +79,12 @@ public class EditSheep extends JFrame {
 		lblLocation.setBounds(57, 92, 56, 16);
 		contentPane.add(lblLocation);
 		
-		JLabel lblXpos = new JLabel("xpos");
-		lblXpos.setBounds(223, 92, 56, 16);
+		JLabel lblXpos = new JLabel(sheep.getXPos());
+		lblXpos.setBounds(223, 92, 94, 16);
 		contentPane.add(lblXpos);
 		
-		JLabel lblYpos = new JLabel("ypos");
-		lblYpos.setBounds(291, 92, 56, 16);
+		JLabel lblYpos = new JLabel(sheep.getYPos());
+		lblYpos.setBounds(329, 92, 91, 16);
 		contentPane.add(lblYpos);
 		
 		this.setVisible(true);

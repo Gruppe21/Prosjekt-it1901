@@ -30,7 +30,7 @@ public class SheepInfo extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SheepInfo(Main main, Sheep sheep) {
+	public SheepInfo(Main main, final Sheep sheep) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 516);
 		contentPane = new JPanel();
@@ -68,15 +68,15 @@ public class SheepInfo extends JFrame {
 		lblSerialnumber.setBounds(223, 34, 177, 14);
 		contentPane.add(lblSerialnumber);
 		
-		lblBirthdate = new JLabel("BirthDate");
+		lblBirthdate = new JLabel(sheep.getBirthDate());
 		lblBirthdate.setBounds(223, 65, 177, 14);
 		contentPane.add(lblBirthdate);
 		
-		JLabel lblHealth = new JLabel("Health");
+		JLabel lblHealth = new JLabel(sheep.getHealth());
 		lblHealth.setBounds(223, 91, 177, 14);
 		contentPane.add(lblHealth);
 		
-		JLabel lblWeight = new JLabel("weight");
+		JLabel lblWeight = new JLabel(String.valueOf(sheep.getWeigth()));
 		lblWeight.setBounds(223, 118, 177, 14);
 		contentPane.add(lblWeight);
 		
@@ -90,7 +90,7 @@ public class SheepInfo extends JFrame {
 		
 		btnEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				EditSheep editsheep = new EditSheep(getMain());
+				EditSheep editsheep = new EditSheep(getMain(),sheep);
 			}
 		});
 		
