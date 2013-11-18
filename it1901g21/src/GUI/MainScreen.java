@@ -30,6 +30,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JScrollPane;
 
@@ -232,8 +233,10 @@ public class MainScreen extends JFrame {
 			waypoints = waypoints + "&markers=color:blue%7Clabel:S%7C" + xlist.get(i) + "," + ylist.get(i);
 		}
 		
+		Random random = new Random();
+		
 		try {
-            String imageUrl = "http://maps.google.com/maps/api/staticmap?center="+ xlist.get(0) +","+ ylist.get(0) +"&zoom=13&size=243x221&maptype=satellite"+waypoints+"&sensor=false";
+            String imageUrl = "http://maps.google.com/maps/api/staticmap?center="+ xlist.get(random.nextInt(xlist.size())) +","+ ylist.get(random.nextInt(ylist.size())) +"&zoom=13&size=243x221&maptype=satellite"+waypoints+"&sensor=false";
             String destinationFile = "image.jpg";
             String str = destinationFile;
             URL url = new URL(imageUrl);
