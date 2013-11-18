@@ -219,7 +219,17 @@ public class Main {
 	
 	public void updateEditProfile(String name, String Email, String phoneNumber, 
 		String contactEmail, String contactPhone, int id) {
+		
+		// Updates the farmer locally
+		farmer.setName(name);
+		farmer.setMail(Email);
+		farmer.setTlf(phoneNumber);
+		farmer.setResMail(contactEmail);
+		farmer.setResTlf(contactPhone);
+		
+		// Updates the farmer in the database
 		pst.editFarmer(name, Email, phoneNumber, contactEmail, contactPhone, id);
+		
 		this.update(false);
 	}
 	
