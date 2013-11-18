@@ -128,8 +128,8 @@ public class Sheep {
 		this.loc.add(coordinates);
 		
 		for (String[] test : this.loc) {
-			System.out.println(this.getEarTag() + "   " + test[0] + " " + test[1]);
-			System.out.println("Size: " + this.loc.size());
+			//System.out.println(this.getEarTag() + "   " + test[0] + " " + test[1]);
+			//System.out.println("Size: " + this.loc.size());
 		}
 	}
 	
