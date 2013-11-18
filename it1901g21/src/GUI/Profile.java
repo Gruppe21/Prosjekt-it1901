@@ -29,6 +29,7 @@ public class Profile {
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
+		frame.setResizable(false);
 		
 		JLabel lblFirstName = new JLabel("Name:");
 		springLayout.putConstraint(SpringLayout.NORTH, lblFirstName, 31, SpringLayout.NORTH, frame.getContentPane());

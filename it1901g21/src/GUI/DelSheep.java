@@ -31,6 +31,7 @@ public class DelSheep {
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
+		frame.setResizable(false);
 		
 		JLabel lblPleaseEnterSheep = new JLabel("Please enter the Sheep's ear tag:");
 		springLayout.putConstraint(SpringLayout.NORTH, lblPleaseEnterSheep, 67, SpringLayout.NORTH, frame.getContentPane());
