@@ -58,7 +58,7 @@ public class Profile {
 		frame.getContentPane().add(lblContactPhone);
 		
 		JButton btnDone = new JButton("Done");
-		btnDone.setBounds(205, 189, 61, 25);
+		btnDone.setBounds(178, 189, 88, 25);
 		frame.getContentPane().add(btnDone);
 		frame.getRootPane().setDefaultButton(btnDone);
 		
@@ -73,23 +73,23 @@ public class Profile {
 		frame.getContentPane().add(lblname);
 		
 		lvlGetEmail = new JLabel(farmer.getMail());
-		lvlGetEmail.setBounds(57, 53, 65, 16);
+		lvlGetEmail.setBounds(57, 53, 209, 16);
 		frame.getContentPane().add(lvlGetEmail);
 		
 		lblGetTlf = new JLabel(farmer.getTlf());
-		lblGetTlf.setBounds(106, 75, 65, 16);
+		lblGetTlf.setBounds(106, 75, 160, 16);
 		frame.getContentPane().add(lblGetTlf);
 		
 		lblgetContactname = new JLabel(farmer.getResMail());
-		lblgetContactname.setBounds(92, 97, 65, 16);
+		lblgetContactname.setBounds(92, 97, 174, 16);
 		frame.getContentPane().add(lblgetContactname);
 		
 		lblgetContactPhone = new JLabel(farmer.getResTlf());
-		lblgetContactPhone.setBounds(103, 119, 65, 16);
+		lblgetContactPhone.setBounds(103, 119, 163, 16);
 		frame.getContentPane().add(lblgetContactPhone);
 		
 		JButton btnEdit = new JButton("Edit");
-		btnEdit.setBounds(25, 189, 61, 25);
+		btnEdit.setBounds(25, 189, 88, 25);
 		frame.getContentPane().add(btnEdit);
 		
 		btnEdit.addActionListener(new ActionListener() {

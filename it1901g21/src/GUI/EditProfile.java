@@ -66,31 +66,31 @@ public class EditProfile {
 		
 		txtName = new JTextField();
 		txtName.setText(farmer.getName());
-		txtName.setBounds(195, 28, 116, 22);
+		txtName.setBounds(133, 28, 178, 22);
 		frame.getContentPane().add(txtName);
 		txtName.setColumns(10);
 		
 		txtEmail = new JTextField();
 		txtEmail.setText(farmer.getMail());
-		txtEmail.setBounds(195, 57, 116, 22);
+		txtEmail.setBounds(133, 57, 178, 22);
 		frame.getContentPane().add(txtEmail);
 		txtEmail.setColumns(10);
 		
 		txtPhone = new JTextField();
 		txtPhone.setText(farmer.getTlf());
-		txtPhone.setBounds(195, 86, 116, 22);
+		txtPhone.setBounds(133, 86, 178, 22);
 		frame.getContentPane().add(txtPhone);
 		txtPhone.setColumns(10);
 		
 		txtContactMail = new JTextField();
 		txtContactMail.setText(farmer.getResMail());
-		txtContactMail.setBounds(195, 115, 116, 22);
+		txtContactMail.setBounds(133, 115, 178, 22);
 		frame.getContentPane().add(txtContactMail);
 		txtContactMail.setColumns(10);
 		
 		txtContactPhone = new JTextField();
 		txtContactPhone.setText(farmer.getResTlf());
-		txtContactPhone.setBounds(195, 144, 116, 22);
+		txtContactPhone.setBounds(133, 144, 178, 22);
 		frame.getContentPane().add(txtContactPhone);
 		txtContactPhone.setColumns(10);
 		

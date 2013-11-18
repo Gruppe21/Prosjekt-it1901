@@ -19,7 +19,7 @@ public class Alarm {
 	
 	private JFrame frame;
 
-	private void mailsender(String farmer_mail, String farmer_name, String timestamp, int sheepId, String sheepX, String sheepY){
+	private void mailsender(String farmer_mail, String farmer_name, String timestamp, String sheepId, String sheepX, String sheepY){
 		main.mailAlert(farmer_mail, farmer_name, timestamp, sheepId, sheepX, sheepY);
 	}
 	/**
@@ -62,14 +62,14 @@ public class Alarm {
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Random rng = new Random();
-				int rngint = rng.nextInt(5);
+				int rngint = rng.nextInt(main.getFarmer().getSheepHerd().size());
 				mailsender(main.getFarmer().getMail(), 
 						main.getFarmer().getName(), 
 						main.getCurrentTime().toString(), 
-						main.getFarmer().getSheepHerd().get(rngint).getId(), 
+						main.getFarmer().getSheepHerd().get(rngint).getEarTag(), 
 						main.getFarmer().getSheepHerd().get(rngint).getXPos(), 
 						main.getFarmer().getSheepHerd().get(rngint).getYPos());
-				
+				closeAlarm();
 			}
 		});
 		

@@ -358,7 +358,7 @@ public class Main {
 	}
 	
 	public void mailAlert(String farmer_mail, String farmer_name, 
-			String timestamp, int sheepId, String sheepX, String sheepY){
+			String timestamp, String sheepId, String sheepX, String sheepY){
 		
 		sendMail = new SendMail(farmer_mail, farmer_name, timestamp, sheepId, sheepX, sheepY);
 		
