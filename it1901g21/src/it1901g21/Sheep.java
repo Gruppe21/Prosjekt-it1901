@@ -124,7 +124,6 @@ public class Sheep {
 		if (this.loc.size() >= 20) {
 			this.loc.remove(0);
 		}
-		System.out.println("adds");
 		this.loc.add(coordinates);
 	}
 	
