@@ -17,7 +17,13 @@ public class Profile {
 	private Main main;
 	private Farmer farmer;
 	private JFrame frame;
-
+	
+	private JLabel lblname;
+	private JLabel lvlGetEmail;
+	private JLabel lblGetTlf;
+	private JLabel lblgetContactname;
+	private JLabel lblgetContactPhone;
+	
 	/**
 	 * Create the application.
 	 */
@@ -62,27 +68,23 @@ public class Profile {
 			}
 		});
 		
-		JLabel lblname = new JLabel(farmer.getName());
+		lblname = new JLabel(farmer.getName());
 		lblname.setBounds(54, 31, 212, 16);
 		frame.getContentPane().add(lblname);
 		
-		JLabel lblGetLastName = new JLabel();
-		lblGetLastName.setBounds(73, 53, 0, 0);
-		frame.getContentPane().add(lblGetLastName);
-		
-		JLabel lvlGetEmail = new JLabel(farmer.getMail());
+		lvlGetEmail = new JLabel(farmer.getMail());
 		lvlGetEmail.setBounds(57, 53, 65, 16);
 		frame.getContentPane().add(lvlGetEmail);
 		
-		JLabel lblGetTlf = new JLabel(farmer.getTlf());
+		lblGetTlf = new JLabel(farmer.getTlf());
 		lblGetTlf.setBounds(106, 75, 65, 16);
 		frame.getContentPane().add(lblGetTlf);
 		
-		JLabel lblgetContactname = new JLabel(farmer.getResMail());
+		lblgetContactname = new JLabel(farmer.getResMail());
 		lblgetContactname.setBounds(92, 97, 65, 16);
 		frame.getContentPane().add(lblgetContactname);
 		
-		JLabel lblgetContactPhone = new JLabel(farmer.getResTlf());
+		lblgetContactPhone = new JLabel(farmer.getResTlf());
 		lblgetContactPhone.setBounds(103, 119, 65, 16);
 		frame.getContentPane().add(lblgetContactPhone);
 		
@@ -92,13 +94,23 @@ public class Profile {
 		
 		btnEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				EditProfile editprofile = new EditProfile(getMain());
+				openEditProfile();
 			}
 		});
 		
 		frame.setVisible(true);
 	}
-
+	
+	/**
+	 * Updates the personal information
+	 */
+	public void updateInfo() {
+		lblname.setText(farmer.getName());
+		lvlGetEmail.setText(farmer.getMail());
+		lblGetTlf.setText(farmer.getTlf());
+		lblgetContactname.setText(farmer.getResMail());
+		lblgetContactPhone.setText(farmer.getResTlf());
+	}
 
 	/**
 	 * Close window method
@@ -109,5 +121,9 @@ public class Profile {
 	
 	private Main getMain() {
 		return main;
+	}
+	
+	private void openEditProfile() {
+		EditProfile editprofile = new EditProfile(getMain(), this);
 	}
 }
