@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 
 public class EditProfile {
 	
+	private Farmer farmer;
 	private Main main;
 	private JFrame frame;
 	private JTextField txtName;
@@ -28,7 +29,7 @@ public class EditProfile {
 	 */
 	public EditProfile(Main main) {
 		this.main = main;
-		Farmer farmer = this.main.getFarmer();
+		farmer = this.main.getFarmer();
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 340, 263);
@@ -105,6 +106,20 @@ public class EditProfile {
 		frame.getContentPane().add(btnDone);
 		frame.getRootPane().setDefaultButton(btnDone);
 		
+		btnDone.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				String rName = txtName.getText();
+				String rEmail = txtEmail.getText();
+				String rPhone = txtPhone.getText();
+				String rContactMail = txtContactMail.getText();
+				String rContactPhone = txtContactPhone.getText();
+
+				edit(rName,rEmail,rPhone,rContactMail,rContactPhone);
+				closeEditProfile();
+			}
+			
+		});
 		
 		frame.setVisible(true);
 	}
@@ -115,5 +130,20 @@ public class EditProfile {
 	 */
 	private void closeEditProfile(){
 		frame.setVisible(false);
+	}
+	
+	/**
+	 * Send update request to SQL for profile editing.
+	 * @param name
+	 * @param Email
+	 * @param phoneNumber
+	 * @param contactEmail
+	 * @param contactPhone
+	 */
+	private void edit(String name, String Email, String phoneNumber, 
+		String contactEmail, String contactPhone){
+		
+		main.updateEditProfile(name, Email, phoneNumber, contactEmail, contactPhone, farmer.getId());
+		
 	}
 }
