@@ -64,7 +64,7 @@ public class SheepInfo {
 		contentPane.add(lblAlder);
 		
 		btnDone = new JButton("Done");
-		btnDone.setBounds(296, 433, 124, 23);
+		btnDone.setBounds(308, 433, 124, 23);
 		contentPane.add(btnDone);
 		frame.getRootPane().setDefaultButton(btnDone);
 		
