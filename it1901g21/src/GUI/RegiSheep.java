@@ -1,6 +1,7 @@
 package GUI;
 
 import it1901g21.Main;
+import it1901g21.Sheep;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -30,7 +31,7 @@ public class RegiSheep extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public RegiSheep(Main main) {
+	public RegiSheep(final Main main) {
 		
 		this.main = main;
 		
@@ -121,6 +122,12 @@ public class RegiSheep extends JFrame {
 				if (Weight_textField.getText().length() > 4) {
 					ErrorMessage error = new ErrorMessage("-.-", "Come on, not even your mother is that fat...");
 					return;
+				}
+				for (Sheep s : main.getFarmer().getSheepHerd()){
+					if (s.getEarTag().equals(EarTag_textField.getText())){
+						ErrorMessage error = new ErrorMessage("", "This eartag is already in use!");
+						return;
+					}
 				}
 				
 				String sheepNumber = EarTag_textField.getText();
