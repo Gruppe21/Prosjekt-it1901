@@ -173,7 +173,7 @@ public class Registration extends JFrame {
 		String password = new String(passwordField);
 		String confirmPassword = new String(confirmPasswordField);
 		
-		// Checks if passwords are the same, and then checks password lenght.
+		// Checks if passwords are the same, and then checks password length.
 		if (!password.equals(confirmPassword)) {
 			ErrorMessage errorMsg = new ErrorMessage("", "The passwords do not match. Please try again.");
 			return;

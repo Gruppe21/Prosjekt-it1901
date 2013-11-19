@@ -119,12 +119,4 @@ public class Sheep {
 		this.loc = loc;
 	}
 	
-	/**
-	 * Adds coordinates to the last known location list
-	 * @param locData the localisation data
-	 */
-	public void setLastLoc(Localization locData) {
-		this.loc.add(locData);
-	}
-	
 }

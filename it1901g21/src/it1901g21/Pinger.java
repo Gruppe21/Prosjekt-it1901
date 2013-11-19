@@ -40,6 +40,7 @@ public class Pinger {
 	public void newSheepCoordinates() {
 		
 		if (main.getFarmer().getSheepHerd().isEmpty()) {
+			System.out.println("Farmer has no sheep registered");
 			return;
 		}
 		
@@ -52,14 +53,14 @@ public class Pinger {
 			sheep.setXPos(newCoordinates[0]);
 			sheep.setYPos(newCoordinates[1]);
 			
-			// Adds location data to the sheep's location list
-			main.updateLocData(sheep, newCoordinates);
-			
 			// Sends the request to update database further
 			main.updateSheepPos(sheep.getId(), newCoordinates);
+
+			// Adds location data to the sheep's location list
+			main.updateLocData(sheep, newCoordinates);
 		}
 	}
-
+	
 	/**
 	 * Version 2.
 	 * Generates new coordinates based on the current coordinates

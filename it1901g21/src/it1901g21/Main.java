@@ -120,6 +120,12 @@ public class Main {
 			// Loads the logged-in farmer's sheep
 			this.getFarmer().setSheepHerd(pst.farmersSheep(this.getFarmer()));
 			
+			// Loads the sheep's localisation data
+			for (Sheep sheep : getFarmer().getSheepHerd()) {
+				sheep.setLocArray(pst.getLoc(sheep));
+				System.out.println("SIZE WHEN LOGGED IN: " + sheep.getLoc().size());
+			}
+			
 			// Loads the sheep into the GUI list
 			this.mainscreen.updateListSheep();
 			
@@ -201,6 +207,9 @@ public class Main {
 			
 			if (sheep.getEarTag().equals(earTag)) {	
 				foundSheep = true;
+				
+				// Deletes sheep and its localisation data
+				pst.deleteAllLoc(sheep);
 				pst.deleteSheep(sheep);
 				break;
 			}
@@ -254,8 +263,8 @@ public class Main {
 		
 		// Create new localisation data based on coordinates
 		Localization loc = new Localization(sheep.getId(), getCurrentTime().toString(), coordinates[0], coordinates[1]);
-		
-		// Delete oldest data
+		System.out.println("Size: " + sheep.getLoc().size());
+		// Delete oldest data if more than 10 entries are present
 		if (sheep.getLoc().size() >= 10) {
 			pst.deleteLoc(sheep.getLoc().get(0));
 		}
@@ -267,12 +276,11 @@ public class Main {
 		this.update(false);
 		
 		// Update the list of previously known locations
-		//mainscreen.getSheepInfo().updateLocations(sheep);
+		mainscreen.getSheepInfo().updateLocations(sheep);
 		
 		/* Just a debug test */
 		for (Localization test : sheep.getLoc()) {
 			System.out.println(sheep.getEarTag() + " ID: " + sheep.getId() + "  " + test.getX() + " " + test.getX());
-			System.out.println("Size: " + sheep.getLoc().size());
 		}
 		
 	}
@@ -374,7 +382,7 @@ public class Main {
 		try {
 			
 			/**
-			 * Oppretter ny sau, legger den til i db
+			 * Create new sheep and add it to the database
 			 */
 			// Sheep sheep = new Sheep(2, 55, "JKL8654", 102009, 39, "Frisk",
 			// "63.432473","10.349329");
@@ -395,11 +403,11 @@ public class Main {
 		System.out.println("Round 1, Hash: " + round1[0]);
 		System.out.println("Round 1, Salt: " + round1[1]);
 		
-		System.out.println(ph.isValidated("littlengrepassord", round1[0], round1[1]));
-		System.out.println(ph.isValidated("littlengrepassore", round1[0], round1[1]));
+		System.out.println(ph.isValidated("longpasswordthingy", round1[0], round1[1]));
+		System.out.println(ph.isValidated("longpasswordthingy", round1[0], round1[1]));
 		
 		/*
-		String[] round2 = ph.isValidatedDebug("littlengrepassord", round1[1], round1[0]);
+		String[] round2 = ph.isValidatedDebug("long_password_thingy", round1[1], round1[0]);
 		System.out.println("Round 2, Hash: " + round2[0]);
 		System.out.println("Round 2, Salt: " + round2[1]);
 		*/

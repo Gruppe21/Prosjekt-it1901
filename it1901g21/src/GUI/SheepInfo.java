@@ -27,6 +27,7 @@ public class SheepInfo {
 	
 	private JPanel contentPane;
 	private JButton btnDone;
+	private JButton btnEdit;
 	private JLabel lblSerialnumber;
 	private JLabel lblBirthdate;
 	private JLabel lblHealth;
@@ -63,6 +64,10 @@ public class SheepInfo {
 		JLabel lblAlder = new JLabel("Health:");
 		lblAlder.setBounds(57, 92, 124, 14);
 		contentPane.add(lblAlder);
+
+		btnEdit = new JButton("Edit");
+		btnEdit.setBounds(12, 433, 136, 23);
+		contentPane.add(btnEdit);
 		
 		btnDone = new JButton("Done");
 		btnDone.setBounds(308, 433, 124, 23);
@@ -115,10 +120,6 @@ public class SheepInfo {
 		lblBirthdate.setText(sheep.getBirthDate());
 		lblHealth.setText(sheep.getHealth());
 		lblWeight.setText(String.valueOf(sheep.getWeigth()));
-		
-		JButton btnEdit = new JButton("Edit");
-		btnEdit.setBounds(12, 433, 136, 23);
-		contentPane.add(btnEdit);
 		
 		btnEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

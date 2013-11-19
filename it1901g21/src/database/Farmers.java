@@ -366,16 +366,32 @@ public void editFarmer(String name, String Email, String phoneNumber,
 	}
 	
 	/**
-	 * Deletes localisation data from database
+	 * Deletes a single localisation data from database
 	 * @param loc
 	 */
 	public void deleteLoc(Localization loc) {		
 		
-		try {	
+		try {
 			preparedStatement = connect.prepareStatement("DELETE FROM Localization WHERE locId = ?");
 			preparedStatement.setInt(1, loc.getLocId());
 			preparedStatement.executeUpdate();
 		}	
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Deletes all localisation data for a sheep
+	 * @param sheep
+	 */
+	public void deleteAllLoc(Sheep sheep) {
+		
+		try {
+			preparedStatement = connect.prepareStatement("DELETE FROM Localization WHERE SheepId = ?");
+			preparedStatement.setInt(1, sheep.getId());
+			preparedStatement.executeUpdate();
+		}
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
