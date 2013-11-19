@@ -70,10 +70,7 @@ public class Main {
 	 * Standard Main constructor
 	 */
 	public Main() {
-		//this is for testing{
-		String xlist[]={"63.430570"};
-		String ylist[]={"10.392165"};
-		//}
+		
 		PROJECTPATH = findProjectPath();
 		loggedIn = false;
 		connected = false;
@@ -85,7 +82,7 @@ public class Main {
 		regiSheep = new RegiSheep(this);
 		delSheep = new DelSheep(this);
 		sheepInfo = new SheepInfo(this);
-		mainscreen = new MainScreen(this, regiSheep, delSheep, sheepInfo, xlist, ylist);
+		mainscreen = new MainScreen(this, regiSheep, delSheep, sheepInfo);
 		registration = new Registration(this);
 		login = new Login(this, pst, registration);
 		

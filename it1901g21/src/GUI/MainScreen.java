@@ -51,7 +51,7 @@ public class MainScreen extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MainScreen(Main main, RegiSheep regiSheep, DelSheep delSheep, SheepInfo sheepInfo, String[] xlist,String[] ylist) {
+	public MainScreen(Main main, RegiSheep regiSheep, DelSheep delSheep, SheepInfo sheepInfo) {
 		
 		this.main = main;
 		this.regiSheep = regiSheep;

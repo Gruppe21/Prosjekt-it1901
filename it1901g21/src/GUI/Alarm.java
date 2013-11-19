@@ -2,6 +2,7 @@ package GUI;
 
 import it1901g21.Main;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +19,7 @@ public class Alarm {
 	private Main main;
 	
 	private JFrame frame;
+	private JLabel sending;
 
 	private void mailsender(String farmer_mail, String farmer_name, String timestamp, String sheepId, String sheepX, String sheepY){
 		main.mailAlert(farmer_mail, farmer_name, timestamp, sheepId, sheepX, sheepY);
@@ -38,6 +40,11 @@ public class Alarm {
 		JLabel lblPleaseEnterSheep = new JLabel("Send Email?");
 		lblPleaseEnterSheep.setBounds(156, 74, 70, 16);
 		frame.getContentPane().add(lblPleaseEnterSheep);
+		
+		sending = new JLabel();
+		sending.setBounds(47, 142, 200, 30);
+		sending.setForeground(new Color(18, 100, 9));
+		frame.getContentPane().add(sending);
 		
 		JButton btnConfirm = new JButton("Yes");
 		btnConfirm.setBounds(237, 101, 115, 37);
@@ -61,8 +68,10 @@ public class Alarm {
 		 */
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				Random rng = new Random();
 				int rngint = rng.nextInt(main.getFarmer().getSheepHerd().size());
+				
 				mailsender(main.getFarmer().getMail(), 
 						main.getFarmer().getName(), 
 						main.getCurrentTime().toString(), 
@@ -76,7 +85,9 @@ public class Alarm {
 						main.getFarmer().getSheepHerd().get(rngint).getEarTag(), 
 						main.getFarmer().getSheepHerd().get(rngint).getXPos(), 
 						main.getFarmer().getSheepHerd().get(rngint).getYPos());
+				
 				closeAlarm();
+				
 			}
 		});
 		
@@ -84,6 +95,9 @@ public class Alarm {
 		
 	}
 	
+	private void setSendingText(String text) {
+		sending.setText(text);
+	}
 	
 	/**
 	 * Opens the delSheep window
