@@ -123,7 +123,7 @@ public class Main {
 			// Loads the sheep's localisation data
 			for (Sheep sheep : getFarmer().getSheepHerd()) {
 				sheep.setLocArray(pst.getLoc(sheep));
-				System.out.println("SIZE WHEN LOGGED IN: " + sheep.getLoc().size());
+				System.out.println("SIZE OF SHEEP'S LOCALISATION LIST: " + sheep.getLoc().size());
 			}
 			
 			// Loads the sheep into the GUI list
@@ -263,7 +263,10 @@ public class Main {
 		
 		// Create new localisation data based on coordinates
 		Localization loc = new Localization(sheep.getId(), getCurrentTime().toString(), coordinates[0], coordinates[1]);
+		
+		// Print to console current size of sheep's location list
 		System.out.println("Size: " + sheep.getLoc().size());
+		
 		// Delete oldest data if more than 10 entries are present
 		if (sheep.getLoc().size() >= 10) {
 			pst.deleteLoc(sheep.getLoc().get(0));
@@ -276,13 +279,7 @@ public class Main {
 		this.update(false);
 		
 		// Update the list of previously known locations
-		mainscreen.getSheepInfo().updateLocations(sheep);
-		
-		/* Just a debug test */
-		for (Localization test : sheep.getLoc()) {
-			System.out.println(sheep.getEarTag() + " ID: " + sheep.getId() + "  " + test.getX() + " " + test.getX());
-		}
-		
+		mainscreen.getSheepInfo().updateLocations(sheep);	
 	}
 	
 	/**

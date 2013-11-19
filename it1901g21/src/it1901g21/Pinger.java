@@ -163,5 +163,7 @@ class Update extends TimerTask {
 			System.out.println("Farmer currently logged in: " + farmer.getName());
 		else
 			System.out.println("No farmer is logged in. Please re-farm later!");
+		
+		System.out.println("");
 	}
 }
