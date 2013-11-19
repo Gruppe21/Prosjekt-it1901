@@ -36,9 +36,9 @@ public class SheepInfo {
 	private JLabel lblWeight;
 	private DefaultListModel listmodel;
 	private Main main;
-	private Sheep sheep;
 	private static JFrame frame;
 	private static boolean isOpen;
+	private int index;
 
 	/**
 	 * Create the frame.
@@ -119,9 +119,10 @@ public class SheepInfo {
 		
 	}
 	
-	public void seeSheep(final Sheep sheep) {
+	public void seeSheep(int index) {
 		
-		this.sheep = sheep;
+		this.index = index;
+		Sheep sheep = main.getFarmer().getSheepHerd().get(index);
 		
 		lblSerialnumber.setText(sheep.getEarTag());
 		lblBirthdate.setText(sheep.getBirthDate());
@@ -130,7 +131,7 @@ public class SheepInfo {
 		
 		btnEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				openEditSheepWindow(sheep);
+				openEditSheepWindow();
 			}
 		});
 		
@@ -143,11 +144,12 @@ public class SheepInfo {
 	public void updateLocations() {
 		
 		if (!isOpen) {
-			System.out.println("SHEEPINFO IS NOT OPEN");
 			return;
 		}
 		
 		listmodel.clear();
+		
+		Sheep sheep = main.getFarmer().getSheepHerd().get(index);
 		
 		System.out.println("CURRENT SHEEP IN LIST IS: " + sheep.getEarTag());
 		
@@ -155,18 +157,19 @@ public class SheepInfo {
 		SwingUtilities.invokeLater(new Runnable() {
 		    public void run() {
 		        listmodel.clear();
-		        System.out.println("UPdATE");
-		        for (Localization loc : sheep.getLoc()) {
+		        for (Localization loc : main.getFarmer().getSheepHerd().get(index).getLoc()) {
 					listmodel.addElement("X-position: " + loc.getX() + "      Y-position: " + loc.getY());
 				}
 		    }
 		});
 		
+		System.out.println(sheep.getXPos());
+		
 		
 	}
 	
-	private void openEditSheepWindow(Sheep sheep) {
-		EditSheep editsheep = new EditSheep(getMain(), sheep);
+	private void openEditSheepWindow() {
+		EditSheep editsheep = new EditSheep(getMain(), main.getFarmer().getSheepHerd().get(index));
 	}
 	
 	/**
@@ -185,9 +188,9 @@ public class SheepInfo {
 		frame.setVisible(false);
 	}
 	
-	public int getSheepId() {
+	/*public int getSheepId() {
 		return sheep.getId();
-	}
+	}*/
 	
 	private Main getMain() {
 		return main;

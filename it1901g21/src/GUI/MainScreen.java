@@ -189,7 +189,7 @@ public class MainScreen extends JFrame {
 	
 	public void openSheepInfo(int index) {
 		sheepinfo.openSheepInfo();
-		sheepinfo.seeSheep(getMain().getFarmer().getSheepHerd().get(index));
+		sheepinfo.seeSheep(index);
 	}
 	
 	/**

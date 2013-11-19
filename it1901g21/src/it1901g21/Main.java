@@ -123,7 +123,7 @@ public class Main {
 			// Loads the sheep's localisation data
 			for (Sheep sheep : getFarmer().getSheepHerd()) {
 				sheep.setLocArray(pst.getLoc(sheep));
-				System.out.println("SIZE OF SHEEP'S LOCALISATION LIST: " + sheep.getLoc().size());
+				System.out.println("SIZE OF " + sheep.getEarTag() + " LOCALISATION LIST: " + sheep.getLoc().size());
 			}
 			
 			// Loads the sheep into the GUI list
@@ -243,6 +243,15 @@ public class Main {
 		this.update(false);
 	}
 	
+	/**
+	 * Updates the current profile
+	 * @param name
+	 * @param Email
+	 * @param phoneNumber
+	 * @param contactEmail
+	 * @param contactPhone
+	 * @param id
+	 */
 	public void updateEditProfile(String name, String Email, String phoneNumber, 
 		String contactEmail, String contactPhone, int id) {
 		
@@ -259,6 +268,11 @@ public class Main {
 		this.update(false);
 	}
 	
+	/**
+	 * Updates the location data for a sheep
+	 * @param sheep
+	 * @param coordinates
+	 */
 	public void updateLocData(Sheep sheep, String[] coordinates) {
 		
 		// Create new localisation data based on coordinates
@@ -276,6 +290,9 @@ public class Main {
 		pst.addLoc(loc);
 	}
 	
+	/**
+	 * Method that should be run once after every ping
+	 */
 	public void updateAfterPing() {
 
 		// Update program to retrieve latest data from database
