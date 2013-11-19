@@ -52,7 +52,7 @@ public class SheepInfo {
 		contentPane.setLayout(null);
 		frame.setResizable(false);
 		
-		JLabel lblNewLabel = new JLabel("Sheep number:");
+		JLabel lblNewLabel = new JLabel("Eartag:");
 		lblNewLabel.setBounds(57, 34, 124, 14);
 		contentPane.add(lblNewLabel);
 		

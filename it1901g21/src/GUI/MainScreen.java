@@ -219,13 +219,13 @@ public class MainScreen extends JFrame {
 		}
 		
 		//deactivate map
-		
+		/*
 		if (xlist.size()>=0){
 			map.setIcon(null);
 			map.setText("Map deactivated! more info on console!");
 			//System.out.println("Map deactivated, see line 193-198 in MainScreen.java");
 			return;
-		}
+		}*/
 		
 		if (xlist.size()==0){
 			map.setIcon(null);
