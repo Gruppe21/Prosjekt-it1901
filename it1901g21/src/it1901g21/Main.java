@@ -53,7 +53,7 @@ public class Main {
 	private RegiSheep regiSheep;
 	private DelSheep delSheep;
 	private SheepInfo sheepInfo;
-	
+	private Contact_SendMail contact_sendmail;
 	private SendMail sendMail;
 	private Date date;
 	
@@ -434,6 +434,13 @@ public class Main {
 			String timestamp, String sheepId, String sheepX, String sheepY){
 		
 		sendMail = new SendMail(farmer_mail, farmer_name, timestamp, sheepId, sheepX, sheepY);
+		
+	}
+	
+	public void contact_mailAlert(String farmer_mail, String farmer_name, 
+			String timestamp, String sheepId, String sheepX, String sheepY){
+		
+		contact_sendmail = new Contact_SendMail(farmer_mail, farmer_name, timestamp, sheepId, sheepX, sheepY);
 		
 	}
 	

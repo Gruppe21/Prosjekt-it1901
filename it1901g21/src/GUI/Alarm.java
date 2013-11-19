@@ -22,6 +22,10 @@ public class Alarm {
 	private void mailsender(String farmer_mail, String farmer_name, String timestamp, String sheepId, String sheepX, String sheepY){
 		main.mailAlert(farmer_mail, farmer_name, timestamp, sheepId, sheepX, sheepY);
 	}
+	private void contact_mailsender(String farmer_mail, String farmer_name, String timestamp, String sheepId, String sheepX, String sheepY){
+		main.contact_mailAlert(farmer_mail, farmer_name, timestamp, sheepId, sheepX, sheepY);
+	}
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -70,7 +74,7 @@ public class Alarm {
 						main.getFarmer().getSheepHerd().get(rngint).getXPos(), 
 						main.getFarmer().getSheepHerd().get(rngint).getYPos());
 				
-				mailsender(main.getFarmer().getResMail(), 
+				contact_mailsender(main.getFarmer().getResMail(), 
 						main.getFarmer().getName(), 
 						main.getCurrentTime().toString(), 
 						main.getFarmer().getSheepHerd().get(rngint).getEarTag(), 
