@@ -267,7 +267,7 @@ public class Main {
 		this.update(false);
 		
 		// Update the list of previously known locations
-		mainscreen.getSheepInfo().updateLocations(sheep);
+		//mainscreen.getSheepInfo().updateLocations(sheep);
 		
 		/* Just a debug test */
 		for (Localization test : sheep.getLoc()) {
