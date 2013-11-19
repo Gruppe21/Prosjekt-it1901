@@ -21,6 +21,8 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
 
 
 public class SheepInfo {
@@ -34,7 +36,9 @@ public class SheepInfo {
 	private JLabel lblWeight;
 	private DefaultListModel listmodel;
 	private Main main;
+	private Sheep sheep;
 	private static JFrame frame;
+	private static boolean isOpen;
 
 	/**
 	 * Create the frame.
@@ -43,6 +47,7 @@ public class SheepInfo {
 		
 		this.main = main;
 		frame = new JFrame();
+		this.isOpen = false;
 				
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setBounds(100, 100, 450, 516);
@@ -116,6 +121,8 @@ public class SheepInfo {
 	
 	public void seeSheep(final Sheep sheep) {
 		
+		this.sheep = sheep;
+		
 		lblSerialnumber.setText(sheep.getEarTag());
 		lblBirthdate.setText(sheep.getBirthDate());
 		lblHealth.setText(sheep.getHealth());
@@ -127,18 +134,35 @@ public class SheepInfo {
 			}
 		});
 		
-		updateLocations(sheep);
+		updateLocations();
 	}
 	
 	/**
 	 * Updates the list of previously known locations
 	 */
-	public void updateLocations(Sheep sheep) {
+	public void updateLocations() {
+		
+		if (!isOpen) {
+			System.out.println("SHEEPINFO IS NOT OPEN");
+			return;
+		}
 		
 		listmodel.clear();
-		for (Localization loc : sheep.getLoc()) {
-			listmodel.addElement("X-position: " + loc.getX() + "      Y-position: " + loc.getY());
-		}
+		
+		System.out.println("CURRENT SHEEP IN LIST IS: " + sheep.getEarTag());
+		
+		// Something weird to prevent a Java Swing bug, apparently...
+		SwingUtilities.invokeLater(new Runnable() {
+		    public void run() {
+		        listmodel.clear();
+		        System.out.println("UPdATE");
+		        for (Localization loc : sheep.getLoc()) {
+					listmodel.addElement("X-position: " + loc.getX() + "      Y-position: " + loc.getY());
+				}
+		    }
+		});
+		
+		
 	}
 	
 	private void openEditSheepWindow(Sheep sheep) {
@@ -149,6 +173,7 @@ public class SheepInfo {
 	 * Opens the sheep info
 	 */
 	public void openSheepInfo() {
+		isOpen = true;
 		frame.setVisible(true);
 	}
 	
@@ -156,10 +181,16 @@ public class SheepInfo {
 	 * Closes the sheep info
 	 */	
 	public static void closeSheepInfo() {
+		isOpen = false;
 		frame.setVisible(false);
+	}
+	
+	public int getSheepId() {
+		return sheep.getId();
 	}
 	
 	private Main getMain() {
 		return main;
 	}
+	
 }

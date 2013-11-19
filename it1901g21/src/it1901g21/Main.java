@@ -274,12 +274,15 @@ public class Main {
 		
 		// Add localisation data in the database
 		pst.addLoc(loc);
-		
+	}
+	
+	public void updateAfterPing() {
+
 		// Update program to retrieve latest data from database
 		this.update(false);
 		
 		// Update the list of previously known locations
-		mainscreen.getSheepInfo().updateLocations(sheep);	
+		mainscreen.getSheepInfo().updateLocations();	
 	}
 	
 	/**

@@ -21,7 +21,7 @@ public class Pinger {
 		this.farmer = main.getFarmer();
 		update = new Update(main, this);
 		timer = new Timer("Update");
-		updateFrequency = 10000; // 1 hour is 3600000 ms
+		updateFrequency = 5000; // 1 hour is 3600000 ms
 		
 		startPinger();
 		
@@ -59,6 +59,8 @@ public class Pinger {
 			// Adds location data to the sheep's location list
 			main.updateLocData(sheep, newCoordinates);
 		}
+		
+		main.updateAfterPing();
 	}
 	
 	/**
