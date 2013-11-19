@@ -51,11 +51,12 @@ public class MainScreen extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MainScreen(Main main, RegiSheep regiSheep, DelSheep delSheep, String[] xlist,String[] ylist) {
+	public MainScreen(Main main, RegiSheep regiSheep, DelSheep delSheep, SheepInfo sheepInfo, String[] xlist,String[] ylist) {
 		
 		this.main = main;
 		this.regiSheep = regiSheep;
 		this.delSheep = delSheep;
+		this.sheepinfo = sheepInfo;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 691, 529);
@@ -172,7 +173,7 @@ public class MainScreen extends JFrame {
 				JList list = (JList)evt.getSource();
 				if (evt.getClickCount() == 2){
 					int index = list.locationToIndex(evt.getPoint());
-					sheepinfo = new SheepInfo(getMain(), getMain().getFarmer().getSheepHerd().get(index));
+					openSheepInfo(index);
 				}
 			}
 		});
@@ -184,6 +185,11 @@ public class MainScreen extends JFrame {
 	 */
 	public void openMainScreen() {
 		this.setVisible(true);
+	}
+	
+	public void openSheepInfo(int index) {
+		sheepinfo.openSheepInfo();
+		sheepinfo.seeSheep(getMain().getFarmer().getSheepHerd().get(index));
 	}
 	
 	/**
@@ -214,12 +220,12 @@ public class MainScreen extends JFrame {
 		
 		//deactivate map
 		
-		/*if (xlist.size()>=0){
+		if (xlist.size()>=0){
 			map.setIcon(null);
 			map.setText("Map deactivated! more info on console!");
 			//System.out.println("Map deactivated, see line 193-198 in MainScreen.java");
 			return;
-		}*/
+		}
 		
 		if (xlist.size()==0){
 			map.setIcon(null);
