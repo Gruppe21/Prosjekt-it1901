@@ -214,12 +214,12 @@ public class MainScreen extends JFrame {
 		
 		//deactivate map
 		
-		if (xlist.size()>=0){
+		/*if (xlist.size()>=0){
 			map.setIcon(null);
 			map.setText("Map deactivated! more info on console!");
 			//System.out.println("Map deactivated, see line 193-198 in MainScreen.java");
 			return;
-		}
+		}*/
 		
 		if (xlist.size()==0){
 			map.setIcon(null);
@@ -230,7 +230,8 @@ public class MainScreen extends JFrame {
 		String waypoints = "";
 		
 		for (int i = 0; i < xlist.size(); i++) {
-			waypoints = waypoints + "&markers=color:blue%7Clabel:S%7C" + xlist.get(i) + "," + ylist.get(i);
+			int pos = i+1;
+			waypoints = waypoints + "&markers=color:blue%7Clabel:"+pos+"%7C" + xlist.get(i) + "," + ylist.get(i);
 		}
 		Random random = new Random();
 		
