@@ -69,6 +69,13 @@ public class Alarm {
 						main.getFarmer().getSheepHerd().get(rngint).getEarTag(), 
 						main.getFarmer().getSheepHerd().get(rngint).getXPos(), 
 						main.getFarmer().getSheepHerd().get(rngint).getYPos());
+				
+				mailsender(main.getFarmer().getResMail(), 
+						main.getFarmer().getName(), 
+						main.getCurrentTime().toString(), 
+						main.getFarmer().getSheepHerd().get(rngint).getEarTag(), 
+						main.getFarmer().getSheepHerd().get(rngint).getXPos(), 
+						main.getFarmer().getSheepHerd().get(rngint).getYPos());
 				closeAlarm();
 			}
 		});
