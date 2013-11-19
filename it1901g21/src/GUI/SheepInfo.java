@@ -29,18 +29,18 @@ public class SheepInfo {
 	private JButton btnDone;
 	private JLabel lblSerialnumber;
 	private JLabel lblBirthdate;
+	private JLabel lblHealth;
+	private JLabel lblWeight;
 	private DefaultListModel listmodel;
 	private Main main;
-	private Sheep sheep;
 	private static JFrame frame;
 
 	/**
 	 * Create the frame.
 	 */
-	public SheepInfo(Main main, Sheep sheep) {
+	public SheepInfo(Main main) {
 		
 		this.main = main;
-		this.sheep = sheep;
 		frame = new JFrame();
 				
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -79,35 +79,25 @@ public class SheepInfo {
 		lblVekt.setBounds(57, 119, 124, 14);
 		contentPane.add(lblVekt);
 		
-		lblSerialnumber = new JLabel(sheep.getEarTag());
+		lblSerialnumber = new JLabel();
 		lblSerialnumber.setBounds(223, 34, 177, 14);
 		contentPane.add(lblSerialnumber);
 		
-		lblBirthdate = new JLabel(sheep.getBirthDate());
+		lblBirthdate = new JLabel();
 		lblBirthdate.setBounds(223, 65, 177, 14);
 		contentPane.add(lblBirthdate);
 		
-		JLabel lblHealth = new JLabel(sheep.getHealth());
+		lblHealth = new JLabel();
 		lblHealth.setBounds(223, 91, 177, 14);
 		contentPane.add(lblHealth);
 		
-		JLabel lblWeight = new JLabel(String.valueOf(sheep.getWeigth()));
+		lblWeight = new JLabel();
 		lblWeight.setBounds(223, 118, 177, 14);
 		contentPane.add(lblWeight);
 		
 		JLabel lblLastKnownLoactions = new JLabel("Last known loactions:");
 		lblLastKnownLoactions.setBounds(57, 146, 177, 16);
 		contentPane.add(lblLastKnownLoactions);
-		
-		JButton btnEdit = new JButton("Edit");
-		btnEdit.setBounds(12, 433, 136, 23);
-		contentPane.add(btnEdit);
-		
-		btnEdit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				openEditSheepWindow();
-			}
-		});
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(57, 176, 322, 244);
@@ -117,14 +107,32 @@ public class SheepInfo {
 		JList list = new JList(listmodel);
 		scrollPane.setViewportView(list);
 		
-		updateLocations();
-		openSheepInfo();
+	}
+	
+	public void seeSheep(final Sheep sheep) {
+		
+		lblSerialnumber.setText(sheep.getEarTag());
+		lblBirthdate.setText(sheep.getBirthDate());
+		lblHealth.setText(sheep.getHealth());
+		lblWeight.setText(String.valueOf(sheep.getWeigth()));
+		
+		JButton btnEdit = new JButton("Edit");
+		btnEdit.setBounds(12, 433, 136, 23);
+		contentPane.add(btnEdit);
+		
+		btnEdit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				openEditSheepWindow(sheep);
+			}
+		});
+		
+		updateLocations(sheep);
 	}
 	
 	/**
 	 * Updates the list of previously known locations
 	 */
-	public void updateLocations() {
+	public void updateLocations(Sheep sheep) {
 		
 		listmodel.clear();
 		for (Localization loc : sheep.getLoc()) {
@@ -132,7 +140,7 @@ public class SheepInfo {
 		}
 	}
 	
-	private void openEditSheepWindow() {
+	private void openEditSheepWindow(Sheep sheep) {
 		EditSheep editsheep = new EditSheep(getMain(), sheep);
 	}
 	

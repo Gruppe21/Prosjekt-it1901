@@ -33,6 +33,7 @@ import GUI.Login;
 import GUI.MainScreen;
 import GUI.RegiSheep;
 import GUI.Registration;
+import GUI.SheepInfo;
 
 /**
  * Main Class.
@@ -51,6 +52,7 @@ public class Main {
 	private Registration registration;
 	private RegiSheep regiSheep;
 	private DelSheep delSheep;
+	private SheepInfo sheepInfo;
 	
 	private SendMail sendMail;
 	private Date date;
@@ -82,7 +84,8 @@ public class Main {
 		
 		regiSheep = new RegiSheep(this);
 		delSheep = new DelSheep(this);
-		mainscreen = new MainScreen(this, regiSheep, delSheep, xlist, ylist);
+		sheepInfo = new SheepInfo(this);
+		mainscreen = new MainScreen(this, regiSheep, delSheep, sheepInfo, xlist, ylist);
 		registration = new Registration(this);
 		login = new Login(this, pst, registration);
 		
@@ -264,7 +267,7 @@ public class Main {
 		this.update(false);
 		
 		// Update the list of previously known locations
-		mainscreen.getSheepInfo().updateLocations();
+		mainscreen.getSheepInfo().updateLocations(sheep);
 		
 		/* Just a debug test */
 		for (Localization test : sheep.getLoc()) {
