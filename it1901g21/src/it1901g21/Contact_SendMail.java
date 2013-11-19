@@ -17,17 +17,12 @@ import GUI.ErrorMessage;
 /**
  * 
  * @author Jango
- * This will send a mail to the farmer that has had an attack on a sheep in his flock.
+ *	Has same function as SendMail, only this one is designed for the contact to recieve.
  */
+public class Contact_SendMail {
 
-public class SendMail {
+    public Contact_SendMail(String farmer_mail, String farmer_name, String timestamp, String sheepId, String sheepX, String sheepY) {
 
-    public SendMail(String farmer_mail, String farmer_name, String timestamp, String sheepId, String sheepX, String sheepY) {
-
-    	/**
-    	 * Set up the mail sender.
-    	 */
-    	
         final String username = "g21.sheepalert@gmail.com";			//mailadressen som sender mail
         final String password = "imsdallomper";						//passord
 
@@ -37,10 +32,6 @@ public class SendMail {
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
 
-        /**
-         * Attempt to log in
-         */
-        
         Session session = Session.getInstance(props,
           new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -54,9 +45,8 @@ public class SendMail {
             message.setFrom(new InternetAddress(username));
             message.setRecipients(Message.RecipientType.TO,
                 InternetAddress.parse(farmer_mail));					//mail-addresse til mottaker
-            message.setSubject("ALARM! Your sheep is under attack!!!");			
-            message.setText(farmer_name	+ ","								//innhold i mailen
-                + "\n\n Your sheep, ID: " + sheepId + " is under attack by something, could be a wolf (or aliens)! \n Attack happened at "+timestamp+"!"
+            message.setSubject("ALARM! An attack on a sheep in " + farmer_name + "'s sheep herd has occured!");			
+            message.setText("Farmer " + farmer_name + " has had an attack on a sheep, Eartag ID: " + sheepId + "! \nAttack happened at "+timestamp+"!" + "\nPlease inform him immediately!"
                 + "\n\n https://maps.google.com/maps/api/staticmap?size=300x300&maptype=satellite&sensor=false&markers=color:red%7Clabel:S%7C"+sheepX+","+sheepY);
 
             Transport.send(message);
