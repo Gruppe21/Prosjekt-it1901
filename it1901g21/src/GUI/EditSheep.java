@@ -28,14 +28,16 @@ public class EditSheep extends JFrame {
 	private JLabel lblBirthdate;
 	private Main main;
 	private Sheep sheep;
+	private SheepInfo sheepInfo;
 
 	/**
 	 * Create the frame.
 	 */
-	public EditSheep(Main main, Sheep sheep) {
+	public EditSheep(Main main, Sheep sheep, SheepInfo sheepInfo) {
 		
 		this.main = main;
 		this.sheep = sheep;
+		this.sheepInfo = sheepInfo;
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 287);
@@ -173,10 +175,9 @@ public class EditSheep extends JFrame {
 			e.printStackTrace();
 		}
 		
-		//SheepInfo.closeSheepInfo();
-		closeEditSheep();
-		
 		main.updateEditSheep(sheep.getId(), health, rweight);
 		
+		sheepInfo.updateInfo();
+		closeEditSheep();
 	}
 }

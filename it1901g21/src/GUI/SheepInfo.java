@@ -36,8 +36,8 @@ public class SheepInfo {
 	private JLabel lblWeight;
 	private DefaultListModel listmodel;
 	private Main main;
-	private static JFrame frame;
-	private static boolean isOpen;
+	private JFrame frame;
+	private boolean isOpen;
 	private int index;
 
 	/**
@@ -82,6 +82,12 @@ public class SheepInfo {
 		btnDone.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeSheepInfo();
+			}
+		});
+
+		btnEdit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				openEditSheepWindow();
 			}
 		});
 		
@@ -129,12 +135,6 @@ public class SheepInfo {
 		lblHealth.setText(sheep.getHealth());
 		lblWeight.setText(String.valueOf(sheep.getWeigth()));
 		
-		btnEdit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				openEditSheepWindow();
-			}
-		});
-		
 		updateLocations();
 	}
 	
@@ -151,7 +151,7 @@ public class SheepInfo {
 		
 		Sheep sheep = main.getFarmer().getSheepHerd().get(index);
 		
-		System.out.println("CURRENT SHEEP IN LIST IS: " + sheep.getEarTag());
+		System.out.println("SHOWING LOCATIONS FOR SHEEP: " + sheep.getEarTag());
 		
 		// Something weird to prevent a Java Swing bug, apparently...
 		SwingUtilities.invokeLater(new Runnable() {
@@ -163,13 +163,27 @@ public class SheepInfo {
 		    }
 		});
 		
-		System.out.println(sheep.getXPos());
+	}
+	
+	/**
+	 * Updates the sheep info. Used when sheep is edited while info-window is still open.
+	 */
+	public void updateInfo() {
 		
+		Sheep sheep = main.getFarmer().getSheepHerd().get(index);
+		
+		lblSerialnumber.setText(sheep.getEarTag());
+		lblBirthdate.setText(sheep.getBirthDate());
+		lblHealth.setText(sheep.getHealth());
+		lblWeight.setText(String.valueOf(sheep.getWeigth()));
 		
 	}
 	
+	/**
+	 * Used to open the edit-sheep-window for the given sheep
+	 */
 	private void openEditSheepWindow() {
-		EditSheep editsheep = new EditSheep(getMain(), main.getFarmer().getSheepHerd().get(index));
+		EditSheep editsheep = new EditSheep(getMain(), main.getFarmer().getSheepHerd().get(index), this);
 	}
 	
 	/**
@@ -183,14 +197,10 @@ public class SheepInfo {
 	/**
 	 * Closes the sheep info
 	 */	
-	public static void closeSheepInfo() {
+	public void closeSheepInfo() {
 		isOpen = false;
 		frame.setVisible(false);
 	}
-	
-	/*public int getSheepId() {
-		return sheep.getId();
-	}*/
 	
 	private Main getMain() {
 		return main;
