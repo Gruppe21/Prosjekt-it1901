@@ -183,36 +183,35 @@ public class Registration extends JFrame {
 			return;
 		}
 		
+		/* Checks input lenghts */
 		if (firstName.length()+lastName.length()>=25){
 			ErrorMessage errorMsg = new ErrorMessage("", "Name is too long!");
 			return;
 		}
-		
 		if (mail.length()>=55||resMail.length()>=55){
 			ErrorMessage errorMsg = new ErrorMessage("", "E-mail is too long!");
 			return;
 		}
-		
 		if (tlf.length()>12){
 			ErrorMessage errorMsg = new ErrorMessage("", "Phone number is too long!");
 			return;
 		}
-		
 		if (resTlf.length()>12){
 			ErrorMessage errorMsg = new ErrorMessage("", "Contact Phone number is too long!");
 			return;
 		}
 		
+		/* Check for letters in input */
 		if (!isNumeric(tlf)) {
 			ErrorMessage error = new ErrorMessage("", "Please only use numbers for Phone number(s)!");
 			return;
 		}
-		
 		if (!isNumeric(resTlf)) {
 			ErrorMessage error = new ErrorMessage("", "Please only use numbers for Phone number(s)!");
 			return;
 		}
 		
+		WarningMessage msg = new WarningMessage("", "Farmer registered successfully!");
 		closeRegistration();
 		main.newFarmer(firstName, lastName, mail, tlf, resMail, resTlf, password);
 	}

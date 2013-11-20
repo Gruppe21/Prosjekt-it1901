@@ -34,6 +34,7 @@ import GUI.MainScreen;
 import GUI.RegiSheep;
 import GUI.Registration;
 import GUI.SheepInfo;
+import GUI.WarningMessage;
 
 /**
  * Main Class.
