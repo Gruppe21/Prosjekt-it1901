@@ -58,9 +58,9 @@ public class SheepInfo {
 		contentPane.setLayout(null);
 		frame.setResizable(false);
 		
-		JLabel lblNewLabel = new JLabel("Eartag:");
-		lblNewLabel.setBounds(57, 34, 124, 14);
-		contentPane.add(lblNewLabel);
+		JLabel lblID = new JLabel("Eartag:");
+		lblID.setBounds(57, 34, 124, 14);
+		contentPane.add(lblID);
 		
 		JLabel lblHelse = new JLabel("Birth Date (yyyy.mm.dd):");
 		lblHelse.setBounds(57, 65, 159, 14);
