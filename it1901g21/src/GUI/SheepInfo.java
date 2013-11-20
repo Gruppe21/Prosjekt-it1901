@@ -36,6 +36,8 @@ public class SheepInfo {
 	private JLabel lblWeight;
 	private DefaultListModel listmodel;
 	private Main main;
+	private EditSheep editSheep;
+	
 	private JFrame frame;
 	private boolean isOpen;
 	private int index;
@@ -46,8 +48,9 @@ public class SheepInfo {
 	public SheepInfo(Main main) {
 		
 		this.main = main;
-		frame = new JFrame();
 		this.isOpen = false;
+		frame = new JFrame();
+		editSheep = new EditSheep(getMain(), this);
 				
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setBounds(100, 100, 450, 516);
@@ -136,6 +139,7 @@ public class SheepInfo {
 		lblWeight.setText(String.valueOf(sheep.getWeigth()));
 		
 		updateLocations();
+		
 	}
 	
 	/**
@@ -153,15 +157,20 @@ public class SheepInfo {
 		
 		System.out.println("SHOWING LOCATIONS FOR SHEEP: " + sheep.getEarTag());
 		
-		// Something weird to prevent a Java Swing bug, apparently...
+		// Updates the previously-known-locations list. With something weird to prevent a Java Swing bug, apparently...
 		SwingUtilities.invokeLater(new Runnable() {
 		    public void run() {
 		        listmodel.clear();
 		        for (Localization loc : main.getFarmer().getSheepHerd().get(index).getLoc()) {
-					listmodel.addElement("     X-position: " + loc.getX() + "            Y-position: " + loc.getY());
+		        	listmodel.addElement("      X-position: " + loc.getX() + "            Y-position: " + loc.getY());
 				}
 		    }
 		});
+		
+		// If open, updates the edit-sheep-window's sheep locations
+		if (editSheep.isOpen()) {
+			editSheep.updateLocationInfo();
+		}
 		
 	}
 	
@@ -176,14 +185,13 @@ public class SheepInfo {
 		lblBirthdate.setText(sheep.getBirthDate());
 		lblHealth.setText(sheep.getHealth());
 		lblWeight.setText(String.valueOf(sheep.getWeigth()));
-		
 	}
 	
 	/**
 	 * Used to open the edit-sheep-window for the given sheep
 	 */
 	private void openEditSheepWindow() {
-		EditSheep editsheep = new EditSheep(getMain(), main.getFarmer().getSheepHerd().get(index), this);
+		editSheep.openEditSheep(index);
 	}
 	
 	/**

@@ -26,18 +26,22 @@ public class EditSheep extends JFrame {
 	private JButton btnAvbryt;
 	private JLabel lblSerialnumber;
 	private JLabel lblBirthdate;
+	private JLabel lblXpos;
+	private JLabel lblYpos;
+	
 	private Main main;
-	private Sheep sheep;
 	private SheepInfo sheepInfo;
+	private int index;
+	private boolean isOpen;
 
 	/**
 	 * Create the frame.
 	 */
-	public EditSheep(Main main, Sheep sheep, SheepInfo sheepInfo) {
+	public EditSheep(Main main, SheepInfo sheepInfo) {
 		
 		this.main = main;
-		this.sheep = sheep;
 		this.sheepInfo = sheepInfo;
+		this.isOpen = false;
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 287);
@@ -101,11 +105,11 @@ public class EditSheep extends JFrame {
 		lblVekt.setBounds(57, 148, 124, 14);
 		contentPane.add(lblVekt);
 		
-		lblSerialnumber = new JLabel(sheep.getEarTag());
+		lblSerialnumber = new JLabel();
 		lblSerialnumber.setBounds(223, 34, 177, 14);
 		contentPane.add(lblSerialnumber);
 		
-		lblBirthdate = new JLabel(sheep.getBirthDate());
+		lblBirthdate = new JLabel();
 		lblBirthdate.setBounds(223, 65, 177, 14);
 		contentPane.add(lblBirthdate);
 		
@@ -113,20 +117,64 @@ public class EditSheep extends JFrame {
 		lblLocation.setBounds(57, 92, 56, 16);
 		contentPane.add(lblLocation);
 		
-		JLabel lblXpos = new JLabel(sheep.getXPos());
+		lblXpos = new JLabel();
 		lblXpos.setBounds(223, 92, 94, 16);
 		contentPane.add(lblXpos);
 		
-		JLabel lblYpos = new JLabel(sheep.getYPos());
+		lblYpos = new JLabel();
 		lblYpos.setBounds(329, 92, 91, 16);
 		contentPane.add(lblYpos);
 		
+	}
+	
+	/**
+	 * Opens the edit-sheep-window. Remember the index!
+	 * @param index the index so the window knows which sheep to edit
+	 */
+	public void openEditSheep(int index) {
+		
+		this.index = index;
+		this.isOpen = true;
+		this.update();
 		this.setVisible(true);
+	}
+	
+	public void closeEditSheep(){
+		this.isOpen = false;
+		this.setVisible(false);
+	}
+	
+	/**
+	 * Updates the edit-sheep-window with the sheep's information
+	 */
+	private void update() {
+		
+		Sheep sheep = main.getFarmer().getSheepHerd().get(index);
+		
+		lblSerialnumber.setText(sheep.getEarTag());
+		lblBirthdate.setText(sheep.getBirthDate());
+		lblXpos.setText(sheep.getXPos());
+		lblYpos.setText(sheep.getYPos());
 		
 	}
 	
-	private void closeEditSheep(){
-		this.setVisible(false);
+	/**
+	 * Updates ONLY the location text in the edit-sheep-window
+	 */
+	public void updateLocationInfo() {
+		
+		Sheep sheep = main.getFarmer().getSheepHerd().get(index);
+		
+		lblXpos.setText(sheep.getXPos());
+		lblYpos.setText(sheep.getYPos());
+	}
+	
+	/**
+	 * Returns whether the edit-sheep-window is open or not
+	 * @return true or false
+	 */
+	public boolean isOpen() {
+		return isOpen;
 	}
 	
 	/**
@@ -141,10 +189,13 @@ public class EditSheep extends JFrame {
 		}
 		return true;
 	}
-
+	
+	/**
+	 * Edits the sheep's information
+	 * @param health
+	 * @param weight
+	 */
 	private void edit(String health, String weight){
-		
-		int rweight = 0;
 		
 		// Check for empty fields
 		if (health.equals("") || weight.equals("")) {
@@ -167,6 +218,9 @@ public class EditSheep extends JFrame {
 			ErrorMessage error = new ErrorMessage("-.-", "Come on, not even your mother is that fat...");
 			return;
 		}
+		
+		Sheep sheep = main.getFarmer().getSheepHerd().get(index);
+		int rweight = 0;
 		
 		try {
 			rweight = Integer.parseInt(weight);
