@@ -57,10 +57,10 @@ public class EditSheep extends JFrame {
 		contentPane.add(weight);
 		weight.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("Eartag:");
-		lblNewLabel.setBounds(57, 34, 124, 14);
-		contentPane.add(lblNewLabel);
-		
+		JLabel lblID = new JLabel("Eartag:");
+		lblID.setBounds(57, 34, 124, 14);
+		contentPane.add(lblID);
+	
 		JLabel lblHelse = new JLabel("Birth Date (yyyy.mm.dd):");
 		lblHelse.setBounds(57, 65, 159, 14);
 		contentPane.add(lblHelse);
