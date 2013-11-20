@@ -62,13 +62,13 @@ public class SheepInfo {
 		lblID.setBounds(57, 34, 124, 14);
 		contentPane.add(lblID);
 		
-		JLabel lblHelse = new JLabel("Birth Date (yyyy.mm.dd):");
-		lblHelse.setBounds(57, 65, 159, 14);
-		contentPane.add(lblHelse);
-		
-		JLabel lblAlder = new JLabel("Health:");
-		lblAlder.setBounds(57, 92, 124, 14);
+		JLabel lblAlder = new JLabel("Birth Date (yyyy.mm.dd):");
+		lblAlder.setBounds(57, 65, 159, 14);
 		contentPane.add(lblAlder);
+		
+		JLabel lblHelse = new JLabel("Health:");
+		lblHelse.setBounds(57, 92, 124, 14);
+		contentPane.add(lblHelse);
 
 		btnEdit = new JButton("Edit");
 		btnEdit.setBounds(12, 433, 136, 23);
