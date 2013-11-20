@@ -40,9 +40,9 @@ public class EditProfile {
 		frame.getContentPane().setLayout(null);
 		frame.setResizable(false);
 		
-		JLabel lblFirstName = new JLabel("Name:");
-		lblFirstName.setBounds(10, 31, 38, 16);
-		frame.getContentPane().add(lblFirstName);
+		JLabel lblName = new JLabel("Name:");
+		lblName.setBounds(10, 31, 38, 16);
+		frame.getContentPane().add(lblName);
 		
 		JLabel lblEmail = new JLabel("E-mail:");
 		lblEmail.setBounds(10, 60, 41, 16);
