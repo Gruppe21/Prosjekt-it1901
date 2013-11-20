@@ -158,7 +158,7 @@ public class SheepInfo {
 		    public void run() {
 		        listmodel.clear();
 		        for (Localization loc : main.getFarmer().getSheepHerd().get(index).getLoc()) {
-					listmodel.addElement("X-position: " + loc.getX() + "      Y-position: " + loc.getY());
+					listmodel.addElement("     X-position: " + loc.getX() + "            Y-position: " + loc.getY());
 				}
 		    }
 		});

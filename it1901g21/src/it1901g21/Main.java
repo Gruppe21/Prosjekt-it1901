@@ -120,7 +120,7 @@ public class Main {
 			// Loads the sheep's localisation data
 			for (Sheep sheep : getFarmer().getSheepHerd()) {
 				sheep.setLocArray(pst.getLoc(sheep));
-				System.out.println("SIZE OF " + sheep.getEarTag() + " LOCALISATION LIST: " + sheep.getLoc().size());
+				System.out.println("SIZE OF " + sheep.getEarTag() + "'s LOCALISATION LIST: " + sheep.getLoc().size());
 			}
 			
 			// Loads the sheep into the GUI list
