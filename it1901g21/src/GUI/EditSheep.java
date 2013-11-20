@@ -61,13 +61,13 @@ public class EditSheep extends JFrame {
 		lblID.setBounds(57, 34, 124, 14);
 		contentPane.add(lblID);
 	
-		JLabel lblHelse = new JLabel("Birth Date (yyyy.mm.dd):");
-		lblHelse.setBounds(57, 65, 159, 14);
-		contentPane.add(lblHelse);
-		
-		JLabel lblAlder = new JLabel("Health:");
-		lblAlder.setBounds(57, 121, 124, 14);
+		JLabel lblAlder = new JLabel("Birth Date (yyyy.mm.dd):");
+		lblAlder.setBounds(57, 65, 159, 14);
 		contentPane.add(lblAlder);
+		
+		JLabel lblHelse = new JLabel("Health:");
+		lblHelse.setBounds(57, 121, 124, 14);
+		contentPane.add(lblHelse);
 		
 		btnDone = new JButton("Done");
 		btnDone.setBounds(296, 204, 124, 23);
