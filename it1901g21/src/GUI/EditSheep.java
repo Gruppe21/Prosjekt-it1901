@@ -155,7 +155,8 @@ public class EditSheep extends JFrame {
 		lblBirthdate.setText(sheep.getBirthDate());
 		lblXpos.setText(sheep.getXPos());
 		lblYpos.setText(sheep.getYPos());
-		
+		health.setText(sheep.getHealth());
+		weight.setText(Integer.toString(sheep.getWeigth()));
 	}
 	
 	/**

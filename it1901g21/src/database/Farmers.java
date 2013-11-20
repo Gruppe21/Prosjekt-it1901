@@ -32,9 +32,8 @@ public class Farmers extends SQL {
 			preparedStatement.setString(7, farmer.getSalt());
 			preparedStatement.executeUpdate();
 		} 
-		catch (SQLException ex){
-			Logger lgr = Logger.getLogger(Farmers.class.getName());
-			lgr.log(Level.SEVERE, ex.getMessage(), ex);
+		catch (SQLException e){
+			e.printStackTrace();
 		}
 	}
 	
@@ -49,9 +48,8 @@ public class Farmers extends SQL {
 			preparedStatement.setString(1, farmer.getMail());
 			preparedStatement.executeUpdate();
 		} 
-		catch (SQLException ex) {
-			Logger lgr = Logger.getLogger(Farmers.class.getName());
-			lgr.log(Level.SEVERE, ex.getMessage(), ex);
+		catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -72,9 +70,8 @@ public class Farmers extends SQL {
 			preparedStatement.setString(8, sheep.getYPos());
 			preparedStatement.executeUpdate();
 		}
-		catch (SQLException ex) {
-			Logger lgr = Logger.getLogger(Farmers.class.getName());
-			lgr.log(Level.SEVERE, ex.getMessage(), ex);
+		catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -88,9 +85,8 @@ public class Farmers extends SQL {
 			preparedStatement.setInt(1, sheep.getId());
 			preparedStatement.executeUpdate();
 			
-		} catch (SQLException ex) {
-			Logger lgr = Logger.getLogger(Farmers.class.getName());
-			lgr.log(Level.SEVERE, ex.getMessage(), ex);
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -106,9 +102,8 @@ public class Farmers extends SQL {
 			preparedStatement.setInt(3, id);
 			preparedStatement.executeUpdate();
 			
-		} catch (SQLException ex) {
-			Logger lgr = Logger.getLogger(Farmers.class.getName());
-			lgr.log(Level.SEVERE, ex.getMessage(), ex);
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		
 	}
@@ -128,9 +123,8 @@ public class Farmers extends SQL {
 			preparedStatement.setInt(3, id);
 			preparedStatement.executeUpdate();
 			
-		} catch (SQLException ex) {
-			Logger lgr = Logger.getLogger(Farmers.class.getName());
-			lgr.log(Level.SEVERE, ex.getMessage(), ex);
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		
 	}
@@ -195,9 +189,8 @@ public void editFarmer(String name, String Email, String phoneNumber,
 			
 			preparedStatement.executeUpdate();
 			
-		} catch (SQLException ex) {
-			Logger lgr = Logger.getLogger(Farmers.class.getName());
-			lgr.log(Level.SEVERE, ex.getMessage(), ex);
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		
 	}

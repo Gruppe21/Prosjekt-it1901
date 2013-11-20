@@ -276,7 +276,7 @@ public class Main {
 		Localization loc = new Localization(sheep.getId(), getCurrentTime().toString(), coordinates[0], coordinates[1]);
 		
 		// Print to console current size of sheep's location list
-		System.out.println("Size: " + sheep.getLoc().size());
+		System.out.println("Size of " + sheep.getEarTag() + "' LOCATION LIST: " + sheep.getLoc().size());
 		
 		// Delete oldest data if more than 10 entries are present
 		if (sheep.getLoc().size() >= 10) {
