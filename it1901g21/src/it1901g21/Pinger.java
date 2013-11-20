@@ -21,7 +21,7 @@ public class Pinger {
 		this.farmer = main.getFarmer();
 		update = new Update(main, this);
 		timer = new Timer("Update");
-		updateFrequency = 5000; // 1 hour is 3600000 ms
+		updateFrequency = 60000; // 1 minute is 60000 ms
 		
 		startPinger();
 		
