@@ -173,7 +173,7 @@ public class EditSheep extends JFrame {
 			e.printStackTrace();
 		}
 		
-		SheepInfo.closeSheepInfo();
+		//SheepInfo.closeSheepInfo();
 		closeEditSheep();
 		
 		main.updateEditSheep(sheep.getId(), health, rweight);
