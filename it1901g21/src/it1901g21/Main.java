@@ -1,5 +1,4 @@
 
-
 //IT 1901 gruppe 21
 //           __  _
 //       .-.'  `; `-._  __  _
@@ -14,16 +13,10 @@
 
 package it1901g21;
 
-import java.awt.BorderLayout;
 import java.awt.Desktop;
-import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
-
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 import database.Farmers;
 import database.PasswordHash;
@@ -34,7 +27,6 @@ import GUI.MainScreen;
 import GUI.RegiSheep;
 import GUI.Registration;
 import GUI.SheepInfo;
-import GUI.WarningMessage;
 
 /**
  * Main Class.
@@ -54,8 +46,6 @@ public class Main {
 	private RegiSheep regiSheep;
 	private DelSheep delSheep;
 	private SheepInfo sheepInfo;
-	private Contact_SendMail contact_sendmail;
-	private SendMail sendMail;
 	private Date date;
 	
 	private final String PROJECTPATH;
@@ -431,14 +421,14 @@ public class Main {
 	public void mailAlert(String farmer_mail, String farmer_name, 
 			String timestamp, String sheepId, String sheepX, String sheepY){
 		
-		sendMail = new SendMail(farmer_mail, farmer_name, timestamp, sheepId, sheepX, sheepY);
+		SendMail sendMail = new SendMail(farmer_mail, farmer_name, timestamp, sheepId, sheepX, sheepY);
 		
 	}
 	
 	public void contact_mailAlert(String farmer_mail, String farmer_name, 
 			String timestamp, String sheepId, String sheepX, String sheepY){
 		
-		contact_sendmail = new Contact_SendMail(farmer_mail, farmer_name, timestamp, sheepId, sheepX, sheepY);
+		Contact_SendMail contact_sendmail = new Contact_SendMail(farmer_mail, farmer_name, timestamp, sheepId, sheepX, sheepY);
 		
 	}
 	

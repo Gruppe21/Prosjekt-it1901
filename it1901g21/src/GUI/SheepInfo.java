@@ -1,14 +1,10 @@
 package GUI;
-import it1901g21.Farmer;
+
 import it1901g21.Localization;
 import it1901g21.Sheep;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 
 import it1901g21.Main;
 
@@ -16,13 +12,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.DefaultListModel;
-import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.SwingUtilities;
-import javax.swing.SwingWorker;
 
 
 public class SheepInfo {

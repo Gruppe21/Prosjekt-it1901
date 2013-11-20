@@ -1,10 +1,9 @@
 package GUI;
+
 import it1901g21.Main;
 import it1901g21.Sheep;
 
-import java.awt.BorderLayout;
 import java.awt.Desktop;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -14,7 +13,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JList;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import javax.swing.ListCellRenderer;
 import javax.swing.ListSelectionModel;
 
 import java.awt.Color;

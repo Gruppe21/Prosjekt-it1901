@@ -1,8 +1,7 @@
 package GUI;
+
 import it1901g21.Main;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -36,9 +35,7 @@ public class Registration extends JFrame {
 	private JTextField contactTlf;
 	private JLabel lblContactPersonName;
 	private JLabel lblContactPersonNumber;
-
 	
-
 	/**
 	 * Create the frame.
 	 */
