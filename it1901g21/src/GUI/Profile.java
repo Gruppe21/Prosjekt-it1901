@@ -37,9 +37,9 @@ public class Profile {
 		frame.setResizable(false);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblFirstName = new JLabel("Name:");
-		lblFirstName.setBounds(10, 31, 38, 16);
-		frame.getContentPane().add(lblFirstName);
+		JLabel lblName = new JLabel("Name:");
+		lblName.setBounds(10, 31, 38, 16);
+		frame.getContentPane().add(lblName);
 		
 		JLabel lblEmail = new JLabel("E-mail:");
 		lblEmail.setBounds(10, 53, 41, 16);
